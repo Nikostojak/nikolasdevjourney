@@ -1,3 +1,4 @@
+HEAD
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -34,3 +35,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# Nikolas Dev Journey
+
+Welcome to my personal developer blog project!
+
+This website is built with **Next.js** and it will document my journey through learning **Python**, **Web Development**, and **Software Engineering**.
+
+## Technologies Used
+- Next.js
+- React
+- Node.js
+- Git & GitHub
+
+## My Goal 🎯
+To share my progress, tutorials, and experiences as I become a full-stack developer.
+
+Stay tuned for new posts and updates!
+
+---
+b524f351c0a6a3be3ca6f8ece5d766dfe09da204
