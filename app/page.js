@@ -8,13 +8,31 @@ export default function HomePage() {
       flexDirection: 'column',
       justifyContent: 'space-between',
       alignItems: 'center',
-      backgroundColor: '#f0f4ff',
-      fontFamily: 'Arial, sans-serif',
+      fontFamily: 'Poppins, Arial, sans-serif', // <<<<<< ovdje
       textAlign: 'center',
-      padding: '2rem'
+      padding: '2rem',
+      backgroundImage: 'url(https://images.unsplash.com/photo-1581090700227-1c065c40686b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundAttachment: 'fixed',
+      position: 'relative',
+      overflow: 'hidden'
     }}>
+    
       
-      {/* NAVIGACIJA */}
+      {/* Blur sloj preko pozadine */}
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Lagano izbjeljivanje
+        backdropFilter: 'blur(5px)',
+        zIndex: 1
+      }} />
+
+      {/* Navigacija */}
       <nav style={{
         width: '100%',
         display: 'flex',
@@ -23,7 +41,8 @@ export default function HomePage() {
         padding: '1rem 2rem',
         backgroundColor: '#0070f3',
         color: '#fff',
-        borderRadius: '8px'
+        borderRadius: '8px',
+        zIndex: 2
       }}>
         <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
           Nikolas
@@ -36,8 +55,8 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* HEADER */}
-      <div style={{ marginTop: '4rem' }}>
+      {/* Sadržaj */}
+      <div style={{ marginTop: '6rem', zIndex: 2 }}>
         <h1 style={{
           fontSize: '4rem',
           color: '#0070f3',
@@ -47,9 +66,9 @@ export default function HomePage() {
         </h1>
 
         <p style={{
-          fontSize: '1.5rem',
+          fontSize: '1.8rem',
           color: '#333',
-          maxWidth: '600px',
+          maxWidth: '700px',
           marginBottom: '2rem'
         }}>
           Join me as I explore and study Python, Web Development, and the world of Software Engineering.
@@ -71,11 +90,12 @@ export default function HomePage() {
         </button>
       </div>
 
-      {/* FOOTER */}
+      {/* Footer */}
       <footer style={{
         marginTop: '4rem',
         fontSize: '1rem',
-        color: '#666'
+        color: '#666',
+        zIndex: 2
       }}>
         © 2025 Nikolas Developer Journey. All rights reserved.
       </footer>
