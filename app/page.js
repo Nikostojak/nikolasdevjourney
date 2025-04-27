@@ -5,7 +5,7 @@ export default function HomePage() {
     <main
       style={{
         minHeight: '100vh',
-        backgroundImage: 'url("/slika za pozadinu.png")',
+        backgroundImage: 'url("/background.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
