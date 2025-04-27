@@ -2,118 +2,101 @@
 
 export default function HomePage() {
   return (
-    <main style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      fontFamily: 'Poppins, Arial, sans-serif',
-      textAlign: 'center',
-      padding: '2rem',
-      backgroundImage: `
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('/background-code.jpg')
-      `,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      backgroundAttachment: 'fixed',
-      color: '#ffffff', // bijeli tekst za bolji kontrast
-    }}>
-      <h1 style={{
-        fontSize: '4rem',
-        color: '#00bfff',
-        marginBottom: '1rem',
-      }}>
-        Nikolas Developer Journey
-      </h1>
-
-      <p style={{
-        fontSize: '1.5rem',
-        color: '#ddd',
-        maxWidth: '600px',
-        marginBottom: '2rem',
-    }}>
-    
-      
-      {/* Blur sloj preko pozadine */}
-      <div style={{
-        position: 'absolute',
-        top: 0, left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Lagano izbjeljivanje
-        backdropFilter: 'blur(5px)',
-        zIndex: 1
-      }} />
-
-      {/* Navigacija */}
-      <nav style={{
-        width: '100%',
+    <main
+      style={{
+        minHeight: '100vh',
+        backgroundImage: 'url("/slika za pozadinu.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '1rem 2rem',
-        backgroundColor: '#0070f3',
-        color: '#fff',
-        borderRadius: '8px',
-        zIndex: 2
-      }}>
-        <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
-          Nikolas
-        </div>
-        <div style={{ display: 'flex', gap: '1.5rem', fontSize: '1.2rem' }}>
-          <a href="#" style={{ color: '#fff', textDecoration: 'none' }}>Home</a>
-          <a href="#" style={{ color: '#fff', textDecoration: 'none' }}>Blog</a>
-          <a href="#" style={{ color: '#fff', textDecoration: 'none' }}>About</a>
-          <a href="#" style={{ color: '#fff', textDecoration: 'none' }}>Contact</a>
+        fontFamily: "'Poppins', Arial, sans-serif",
+        padding: '2rem',
+        textAlign: 'center',
+      }}
+    >
+      {/* Navigacija */}
+      <nav
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '1rem 2rem',
+          backgroundColor: 'rgba(0, 112, 243, 0.8)',
+          borderRadius: '12px',
+          marginBottom: '2rem',
+        }}
+      >
+        <div style={{ fontSize: '1.5rem', color: 'white', fontWeight: 'bold' }}>Nikolas</div>
+        <div style={{ display: 'flex', gap: '2rem' }}>
+          <a href="#" style={{ color: 'white', textDecoration: 'none' }}>Home</a>
+          <a href="#" style={{ color: 'white', textDecoration: 'none' }}>Blog</a>
+          <a href="#" style={{ color: 'white', textDecoration: 'none' }}>About</a>
+          <a href="#" style={{ color: 'white', textDecoration: 'none' }}>Contact</a>
         </div>
       </nav>
 
-      {/* Sadržaj */}
-      <div style={{ marginTop: '6rem', zIndex: 2 }}>
-        <h1 style={{
-          fontSize: '4rem',
-          color: '#0070f3',
-          marginBottom: '1rem'
-        }}>
+      {/* Naslov */}
+      <div style={{ marginTop: '4rem' }}>
+        <h1 style={{ fontSize: '3rem', color: '#0070f3', marginBottom: '1rem' }}>
           Nikolas Developer Journey
         </h1>
-
-        <p style={{
-          fontSize: '1.8rem',
-          color: '#333',
-          maxWidth: '700px',
-          marginBottom: '2rem'
-        }}>
+        <p
+          style={{
+            fontSize: '1.5rem',
+            color: '#fff',
+            maxWidth: '600px',
+            marginBottom: '2rem',
+            textShadow: '0 0 5px rgba(0,0,0,0.7)',
+          }}
+        >
           Join me as I explore and study Python, Web Development, and the world of Software Engineering.
         </p>
-
-        <button style={{
-          padding: '1rem 2rem',
-          fontSize: '1.2rem',
-          backgroundColor: '#0070f3',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '8px',
-          cursor: 'pointer',
-          transition: 'background-color 0.3s ease'
-        }}
-        onMouseOver={(e) => e.target.style.backgroundColor = '#005bb5'}
-        onMouseOut={(e) => e.target.style.backgroundColor = '#0070f3'}>
+        <button
+          style={{
+            padding: '1rem 2rem',
+            fontSize: '1.2rem',
+            backgroundColor: '#0070f3',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease',
+          }}
+          onMouseOver={(e) => (e.target.style.backgroundColor = '#005bb5')}
+          onMouseOut={(e) => (e.target.style.backgroundColor = '#0070f3')}
+        >
           Read My Blog
         </button>
       </div>
 
       {/* Footer */}
-      <footer style={{
-        marginTop: '4rem',
-        fontSize: '1rem',
-        color: '#666',
-        zIndex: 2
-      }}>
-        © 2025 Nikolas Developer Journey. All rights reserved.
+      <footer
+        style={{
+          marginTop: '4rem',
+          padding: '1rem',
+          width: '100%',
+          textAlign: 'center',
+          color: '#aaa',
+          fontSize: '0.9rem',
+        }}
+      >
+        <div style={{ marginBottom: '0.5rem' }}>
+          © 2025 Nikolas Developer Journey. All rights reserved.
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <img src="/linkedin.svg" alt="LinkedIn" style={{ width: '24px', height: '24px' }} />
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <img src="/github.svg" alt="GitHub" style={{ width: '24px', height: '24px' }} />
+          </a>
+        </div>
       </footer>
     </main>
   );
