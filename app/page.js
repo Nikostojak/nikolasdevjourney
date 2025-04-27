@@ -154,3 +154,5 @@ export default function HomePage() {
     </a>
   </div>
 </footer>
+</main>   {/* OVAJ DIO MI JE NEDOSTAJAO */}
+
