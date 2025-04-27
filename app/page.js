@@ -8,16 +8,32 @@ export default function HomePage() {
       flexDirection: 'column',
       justifyContent: 'space-between',
       alignItems: 'center',
-      fontFamily: 'Poppins, Arial, sans-serif', // <<<<<< ovdje
+      fontFamily: 'Poppins, Arial, sans-serif',
       textAlign: 'center',
       padding: '2rem',
-      backgroundImage: 'url(https://images.unsplash.com/photo-1581090700227-1c065c40686b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)',
+      backgroundImage: `
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('/background-code.jpg')
+      `,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundAttachment: 'fixed',
-      position: 'relative',
-      overflow: 'hidden'
+      color: '#ffffff', // bijeli tekst za bolji kontrast
+    }}>
+      <h1 style={{
+        fontSize: '4rem',
+        color: '#00bfff',
+        marginBottom: '1rem',
+      }}>
+        Nikolas Developer Journey
+      </h1>
+
+      <p style={{
+        fontSize: '1.5rem',
+        color: '#ddd',
+        maxWidth: '600px',
+        marginBottom: '2rem',
     }}>
     
       
