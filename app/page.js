@@ -156,4 +156,3 @@ const skillStyle = {
   fontSize: '1rem',
   fontWeight: 'bold'
 };
-
