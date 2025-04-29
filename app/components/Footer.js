@@ -23,7 +23,7 @@ export default function Footer() {
         marginTop: '1rem',
       }}>
         <a
-          href="https://www.linkedin.com"
+          href="https://www.linkedin.com/in/nikolas-stojak-335177285/"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -43,7 +43,7 @@ export default function Footer() {
         </a>
 
         <a
-          href="https://github.com"
+          href="https://github.com/Nikostojak"
           target="_blank"
           rel="noopener noreferrer"
           style={{
