@@ -12,7 +12,7 @@ import Footer from '../components/Footer';
 
 export default function BlogPage() {
   return (
-    <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#f9f9f9', fontFamily: "'Poppins', Arial, sans-serif" }}>
+    <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#e0e0e0', color: 'white', fontFamily: "'Poppins', Arial, sans-serif" }}>
       <Navbar />
 
       <section style={{ flex: 1, padding: '3rem 1.5rem', maxWidth: '800px', margin: '0 auto', color: '#333' }}>

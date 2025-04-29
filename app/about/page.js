@@ -16,7 +16,8 @@ export default function AboutPage() {
         display: 'flex',
         flexDirection: 'column',
         fontFamily: "'Poppins', Arial, sans-serif",
-        backgroundColor: '#f9f9f9',
+        backgroundColor: '#e0e0e0',
+        color: 'white'
       }}
     >
       <Navbar />
