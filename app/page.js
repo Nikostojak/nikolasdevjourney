@@ -1,7 +1,4 @@
-export const metadata = {
-  title: 'Nikolas Dev Journey | Home',
-  description: 'Welcome to my developer blog. Follow my journey in Python, Web Development, and Software Engineering.',
-};
+'use client';
 
 
 import Navbar from './components/Navbar';
