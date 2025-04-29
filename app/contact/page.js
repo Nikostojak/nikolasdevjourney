@@ -1,3 +1,10 @@
+export const metadata = {
+  title: 'Nikolas Dev Journey | Contact',
+  description: 'Get in touch with me directly via LinkedIn or GitHub.',
+};
+
+
+
 'use client';
 
 import Navbar from '../components/Navbar';
