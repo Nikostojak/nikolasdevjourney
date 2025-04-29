@@ -1,9 +1,12 @@
+'use client';
+
+
 export const metadata = {
   title: 'Nikolas Dev Journey | About',
   description: 'Learn about my background, from studying Thomistic philosophy in seminary to becoming a self-taught developer',
 };
 
-'use client';
+
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
