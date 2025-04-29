@@ -34,6 +34,21 @@ export default function AboutPage() {
         }}
       >
         <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>🛤️ My Journey</h1>
+
+        <img
+  src="/profile.jpg"
+  alt="Nikolas Stojak"
+  style={{
+    width: '180px',
+    height: '180px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    marginBottom: '1.5rem',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
+  }}
+/>
+
+
         <p>
           Before I ever wrote a single line of code, I was on a very different path — the priesthood.
           I entered the seminary of the <strong>Priestly Fraternity of St. Peter</strong>, where I began
