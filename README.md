@@ -20,18 +20,7 @@ I'm building this site to document my learning path in **Python**, **Web Develop
 ## 🥅 My Goal
 > To share my progress, tutorials, and experiences as I grow into a full-stack developer.
 ---
-## 📁 Setup Instructions
-```bash
-git clone https://github.com/Nikostojak/nikolasdevjourney.git
-cd nikolasdevjourney
-npm install
-npm run dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
----
 ## 📚 About the Project
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
