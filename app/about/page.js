@@ -37,7 +37,7 @@ export default function AboutPage() {
         <p>
           After three years of formation, however, I came to realize that I was not called to this vocation. I returned
           to my homeland, <strong>Croatia</strong>, unsure of what the next chapter would look like. In the midst of this
-          transition, a friend of mine suggested I try learning to program — he saw something in me I hadn't yet seen
+          transition, a friend of mine suggested I try learning to program — he saw something in me I hadn&rsquo;t yet seen
           in myself. That was in <strong>late August 2024</strong>.
         </p>
         <p>
@@ -46,13 +46,13 @@ export default function AboutPage() {
           me the most is how a simple idea can be turned into something real, functional, and even beautiful — all through code.
         </p>
         <p>
-          Now, in <strong>April 2025</strong>, I’ve launched this blog to document my developer journey. I’m preparing
-          to build my first real project soon and look forward to everything I’ll learn along the way.
+          Now, in <strong>April 2025</strong>, I&rsquo;ve launched this blog to document my developer journey. I&rsquo;m preparing
+          to build my first real project soon and look forward to everything I&rsquo;ll learn along the way.
         </p>
 
         <h2 style={{ marginTop: '2rem' }}>💬 Final Thought</h2>
         <p>
-          From metaphysics to machine code — it’s been a surprising journey, but I’m just getting started.
+          From metaphysics to machine code — it&rsquo;s been a surprising journey, but I&rsquo;m just getting started.
         </p>
       </section>
 
