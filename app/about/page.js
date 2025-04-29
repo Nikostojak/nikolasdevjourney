@@ -23,30 +23,33 @@ export default function AboutPage() {
       <Navbar />
 
       <section
-        style={{
-          flex: 1,
-          padding: '3rem 1.5rem',
-          maxWidth: '800px',
-          margin: '0 auto',
-          lineHeight: '1.8',
-          fontSize: '1.1rem',
-          color: '#333',
-        }}
-      >
+    style={{
+    position: 'relative',
+    flex: 1,
+    padding: '3rem 1.5rem',
+    maxWidth: '800px',
+    margin: '0 auto',
+    textAlign: 'center',
+  }}
+>
+
         <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>🛤️ My Journey</h1>
 
         <img
   src="/profile.jpg"
   alt="Nikolas Stojak"
   style={{
-    width: '180px',
-    height: '180px',
+    position: 'absolute',
+    top: '2rem',
+    right: '0',
+    width: '150px',
+    height: '150px',
     borderRadius: '50%',
     objectFit: 'cover',
-    marginBottom: '1.5rem',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
   }}
 />
+
 
 
         <p>
