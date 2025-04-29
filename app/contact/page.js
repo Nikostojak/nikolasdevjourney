@@ -20,8 +20,8 @@ export default function ContactPage() {
           I&rsquo;d love to hear from you! You can connect with me directly via:
         </p>
         <ul style={{ fontSize: '1.1rem', lineHeight: '2', paddingLeft: '1.2rem' }}>
-          <li>💼 <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li>💻 <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li>💼 <a href="https://www.linkedin.com/in/nikolas-stojak-335177285/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li>💻 <a href="https://github.com/Nikostojak" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </section>
 
