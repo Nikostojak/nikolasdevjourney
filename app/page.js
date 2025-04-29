@@ -1,12 +1,7 @@
-'use client';
-
-
 export const metadata = {
   title: 'Nikolas Dev Journey | Home',
-  description: 'Welcome to my personal developer blog! Explore my journey through Python, Web Development, and Software Engineering.',
+  description: 'Welcome to my developer blog. Follow my journey in Python, Web Development, and Software Engineering.',
 };
-
-
 
 
 import Navbar from './components/Navbar';

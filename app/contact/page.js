@@ -1,6 +1,3 @@
-'use client';
-
-
 export const metadata = {
   title: 'Nikolas Dev Journey | Contact',
   description: 'Get in touch with me directly via LinkedIn or GitHub.',

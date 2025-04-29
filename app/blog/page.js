@@ -1,6 +1,3 @@
-'use client';
-
-
 export const metadata = {
   title: 'Nikolas Dev Journey | Blog',
   description: 'Read tutorials, reflections, and updates from my journey as a self-taught developer.',
