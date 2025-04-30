@@ -96,7 +96,7 @@ page.js`}
           <li>Starting simple and iterating is more productive than chasing perfection.</li>
         </ul>
 
-        <h2>✅ What's Next?</h2>
+        <h2>✅ What&rsquo;s Next?</h2>
         <p>
           This is just the beginning of the journey. I&rsquo;ll be writing about:
         </p>
