@@ -3,7 +3,7 @@
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
@@ -53,10 +53,7 @@ export default function HomePage() {
         >
           Join me as I explore and study Python, Web Development, and the world of Software Engineering.
         </p>
-
-        import Link from 'next/link';
-
-// ...
+        
         <Link href="/blog">
         <button
           style={{
