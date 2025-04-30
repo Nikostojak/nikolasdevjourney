@@ -38,8 +38,8 @@ export default function AboutPage() {
     src="/profile.jpg"
     alt="Nikolas"
     style={{
-      width: '48px',
-      height: '48px',
+      width: '56px',
+      height: '56px',
       borderRadius: '50%',
       objectFit: 'cover',
       boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
