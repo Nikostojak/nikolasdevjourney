@@ -33,18 +33,22 @@ export default function AboutPage() {
           color: '#333',
         }}
       >
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>🛤️ My Journey</h1>
-        <img
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+  <h1 style={{ fontSize: '2.5rem', margin: 0 }}>🛤️ My Journey</h1>
+  <img
     src="/profile.jpg"
     alt="Nikolas"
     style={{
-      width: '56px',
-      height: '56px',
+      width: '66px',
+      height: '66px',
       borderRadius: '50%',
       objectFit: 'cover',
       boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+      marginLeft: '1rem'
     }}
   />
+</div>
+
         <p>
           Before I ever wrote a single line of code, I was on a very different path — the priesthood.
           I entered the seminary of the <strong>Priestly Fraternity of St. Peter</strong>, where I began
