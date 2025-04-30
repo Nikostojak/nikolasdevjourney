@@ -11,7 +11,7 @@ export const metadata = {
 
 const posts = [
   {
-    title: 'How I Built This Blog',
+    title: 'How I Created My Developer Blog',
     date: 'April 30, 2025',
     description: 'This post explains how I created my personal blog using Next.js, Vercel, and GitHub.',
     slug: 'how-i-built-this-blog',
