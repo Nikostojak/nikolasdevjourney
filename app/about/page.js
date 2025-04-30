@@ -23,17 +23,27 @@ export default function AboutPage() {
       <Navbar />
 
       <section
-        style={{
-          flex: 1,
-          padding: '3rem 1.5rem',
-          maxWidth: '800px',
-          margin: '0 auto',
-          lineHeight: '1.8',
-          fontSize: '1.1rem',
-          color: '#333',
-        }}
-      >
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>🛤️ My Journey</h1>
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+    justifyContent: 'center',
+    marginTop: '3rem',
+    marginBottom: '2rem',
+  }}
+>
+         <h1 style={{ fontSize: '2.5rem' }}>⛰️ My Journey</h1>
+         <img
+    src="/profile.jpg"
+    alt="Nikolas"
+    style={{
+      width: '48px',
+      height: '48px',
+      borderRadius: '50%',
+      objectFit: 'cover',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    }}
+  />
         <p>
           Before I ever wrote a single line of code, I was on a very different path — the priesthood.
           I entered the seminary of the <strong>Priestly Fraternity of St. Peter</strong>, where I began
