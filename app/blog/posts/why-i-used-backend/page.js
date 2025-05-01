@@ -58,7 +58,7 @@ export default function BlogPost() {
 
         <h2>🔌 Connecting API + Frontend</h2>
         <p>
-          On the <code>/blog</code> page, I fetch all blog posts using <code>fetch('/api/blog')</code>. This lets me render new posts automatically
+          On the <code>/blog</code> page, I fetch all blog posts using <code>fetch(&apos;/api/blog&apos;)</code>. This lets me render new posts automatically
           just by updating the backend response — no need to manually edit the page.
         </p>
 
