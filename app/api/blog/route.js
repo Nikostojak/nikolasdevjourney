@@ -1,6 +1,12 @@
 export async function GET() {
     const posts = [
-      {
+        {
+            title: "🐍 My First Steps in Python: Up to if/else/elif",
+            slug: "learning-python-basics",
+            excerpt: "What I learned in my first weeks of Python — from variables to if/elif/else logic.",
+          },
+      
+        {
         title: "Why I Used Backend",
         slug: "why-i-used-backend",
         date: "2025-05-01",
