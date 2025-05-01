@@ -3,6 +3,7 @@ export async function GET() {
         {
             title: "🐍 My First Steps in Python: Up to if/else/elif",
             slug: "learning-python-basics",
+            date: "2025-05-01",
             excerpt: "What I learned in my first weeks of Python — from variables to if/elif/else logic.",
           },
       
