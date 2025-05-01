@@ -41,7 +41,7 @@ export default function BlogPost() {
 
         <ul>
           <li><strong>Printing:</strong> <code>print(&quot;Hello, world!&quot;)</code></li>
-          <li><strong>Variables:</strong> <code>x = 10</code>, <code>name = "Nikolas"</code></li>
+          <li><strong>Variables:</strong> <code>x = 10</code>, <code>name = &quot;Nikolas&quot;</code></li>
           <li><strong>Types:</strong> Strings, integers, booleans</li>
           <li><strong>Operators:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>==</code>, <code>!=</code></li>
           <li><strong>User input:</strong> <code>input()</code> for dynamic data</li>
