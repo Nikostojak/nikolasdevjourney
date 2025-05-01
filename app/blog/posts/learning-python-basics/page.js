@@ -60,8 +60,6 @@ export default function BlogPost() {
     overflowX: 'auto',
     whiteSpace: 'pre',
     fontFamily: 'monospace',
-    maxWidth: '100%',
-    boxSizing: 'border-box',
   }}
 >
 {`age = 18
