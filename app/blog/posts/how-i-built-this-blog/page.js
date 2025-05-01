@@ -11,7 +11,7 @@ export default function BlogPost() {
         display: 'flex',
         flexDirection: 'column',
         fontFamily: "'Poppins', Arial, sans-serif",
-        backgroundColor: '#f9f9f9',
+        backgroundColor: '#e0e0e0',
         color: '#333',
       }}
     >
