@@ -40,7 +40,7 @@ export default function BlogPost() {
         </p>
 
         <ul>
-          <li><strong>Printing:</strong> <code>print("Hello, world!")</code></li>
+          <li><strong>Printing:</strong> <code>print(&quot;Hello, world!&quot;)</code></li>
           <li><strong>Variables:</strong> <code>x = 10</code>, <code>name = "Nikolas"</code></li>
           <li><strong>Types:</strong> Strings, integers, booleans</li>
           <li><strong>Operators:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>==</code>, <code>!=</code></li>
@@ -49,7 +49,7 @@ export default function BlogPost() {
 
         <h2>🔄 Controlling Logic with Conditions</h2>
         <p>
-          One of the biggest breakthroughs for me was learning how to make the computer "decide" something based on conditions. This is where <code>if</code>, <code>elif</code>, and <code>else</code> come into play.
+          One of the biggest breakthroughs for me was learning how to make the computer &quot;decide&quot; something based on conditions. This is where <code>if</code>, <code>elif</code>, and <code>else</code> come into play.
         </p>
 
         <div
@@ -68,7 +68,7 @@ if age >= 18:
 elif age >= 13:
     print("You are a teenager.")
 else:
-    print("You are a child.")`}
+    print("You are a child")`}
         </div>
 
         <p>
@@ -92,7 +92,7 @@ else:
         </p>
 
         <blockquote style={{ fontStyle: 'italic', marginTop: '2rem' }}>
-          "Programming in Python is like learning a new language — the more I practice, the more fluent I become."
+        “Programming in Python is like learning a new language — the more I practice, the more fluent I become.”
         </blockquote>
       </article>
 
