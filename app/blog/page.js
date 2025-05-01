@@ -22,7 +22,7 @@ export default function BlogPage() {
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
-      backgroundColor: '#f9f9f9',
+      backgroundColor: '#e0e0e0',
       fontFamily: "'Poppins', Arial, sans-serif"
     }}>
       <Navbar />
