@@ -87,6 +87,20 @@ page.js`}
           <li>Each commit triggers a build & deployment.</li>
           <li>Custom domain set up: <a href="https://nikolasdevjourney.com" target="_blank" rel="noopener noreferrer">nikolasdevjourney.com</a></li>
         </ol>
+        <h2>🔗 Connecting Frontend and Backend</h2>
+<p>
+  After successfully deploying the blog to Vercel, I integrated a simple backend using Next.js API routes.
+  Instead of hardcoding posts directly into the frontend, I created a <code>/app/api/blog/route.js</code> file
+  that returns blog post data in JSON format.
+</p>
+<p>
+  On the frontend, the blog list page fetches this data dynamically using <code>fetch('/api/blog')</code> and renders it.
+  This approach keeps the code organized, flexible, and easy to scale when I start adding more posts in the future.
+</p>
+<p>
+  Since everything is still within the same Next.js app, deployment to Vercel remains seamless. API routes are treated as serverless functions and work automatically.
+</p>
+
 
         <h2>📌 Lessons Learned</h2>
         <ul>

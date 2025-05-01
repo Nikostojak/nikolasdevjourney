@@ -1,44 +1,55 @@
-// app/blog/page.js
+'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-
-export const metadata = {
-  title: 'Nikolas Dev Journey | Blog',
-  description: 'My latest posts on programming, projects, and learning web development',
-};
-
-const posts = [
-  {
-    title: 'How I Created My Developer Blog',
-    date: 'April 30, 2025',
-    description: 'This post explains how I created my personal blog using Next.js, Vercel, and GitHub.',
-    slug: 'how-i-built-this-blog',
-  },
-];
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 export default function BlogPage() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const res = await fetch('/api/blog');
+      const data = await res.json();
+      setPosts(data);
+    }
+    fetchPosts();
+  }, []);
+
   return (
-    <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'Poppins, sans-serif', backgroundColor: '#f2f2f2' }}>
+    <main style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: '#f9f9f9',
+      fontFamily: "'Poppins', Arial, sans-serif"
+    }}>
       <Navbar />
 
-      <section style={{ flex: 1, maxWidth: '800px', margin: '0 auto', padding: '3rem 1.5rem', color: '#333' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📝 Blog</h1>
-        <p style={{ fontSize: '1.1rem', marginBottom: '2rem' }}>
-          Welcome to my developer blog! Here I share tutorials, lessons, and thoughts from my coding journey.
-        </p>
+      <section style={{
+        flex: 1,
+        padding: '3rem 1.5rem',
+        maxWidth: '800px',
+        margin: '0 auto',
+        color: '#333'
+      }}>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>📝 Blog Posts</h1>
 
-        {posts.map((post) => (
-          <div key={post.slug} style={{ marginBottom: '2.5rem', paddingBottom: '2rem', borderBottom: '1px solid #ccc' }}>
-            <p style={{ fontSize: '0.9rem', color: '#666' }}>{post.date}</p>
-            <h2 style={{ fontSize: '1.5rem', margin: '0.5rem 0' }}>{post.title}</h2>
-            <p style={{ fontSize: '1rem', color: '#444' }}>{post.description}</p>
-            <Link href={`/blog/posts/${post.slug}`} style={{ color: '#0070f3', fontWeight: 'bold', marginTop: '0.5rem', display: 'inline-block' }}>
-              Read more →
-            </Link>
-          </div>
-        ))}
+        {posts.length === 0 ? (
+          <p>Loading...</p>
+        ) : (
+          posts.map((post, index) => (
+            <div key={index} style={{ marginBottom: '2rem' }}>
+              <h2>{post.title}</h2>
+              <p><strong>{post.date}</strong></p>
+              <p>{post.excerpt}</p>
+              <Link href={`/blog/posts/${post.slug}`} style={{ color: '#0070f3' }}>
+                Read more →
+              </Link>
+            </div>
+          ))
+        )}
       </section>
 
       <Footer />
