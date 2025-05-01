@@ -53,7 +53,16 @@ export default function BlogPost() {
         </ul>
 
         <h2>🗂️ Folder Structure</h2>
-        <pre style={{ background: '#eee', padding: '1rem', borderRadius: '8px' }}>
+        <div
+  style={{
+    background: '#eee',
+    padding: '1rem',
+    borderRadius: '8px',
+    overflowX: 'auto',
+    whiteSpace: 'pre',
+    fontFamily: 'monospace',
+  }}
+>
 {`/app
   /about
     page.js
@@ -70,7 +79,7 @@ export default function BlogPost() {
 globals.css
 layout.js
 page.js`}
-        </pre>
+        </div>
 
         <h2>🎨 Styling & Design</h2>
         <p>

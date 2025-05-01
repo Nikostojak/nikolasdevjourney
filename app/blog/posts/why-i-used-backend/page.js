@@ -49,7 +49,16 @@ export default function BlogPost() {
         </ul>
 
         <h2>🧱 Folder Structure Update</h2>
-        <pre style={{ background: '#eee', padding: '1rem', borderRadius: '8px' }}>
+        <div
+  style={{
+    background: '#eee',
+    padding: '1rem',
+    borderRadius: '8px',
+    overflowX: 'auto',
+    whiteSpace: 'pre',
+    fontFamily: 'monospace',
+  }}
+>
 {`/app
   /api
     /blog
@@ -59,7 +68,8 @@ export default function BlogPost() {
     /posts
       /why-i-used-backend
         page.js`}
-        </pre>
+</div>
+
 
         <h2>🔌 Connecting API + Frontend</h2>
         <p>
