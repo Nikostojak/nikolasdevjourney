@@ -1,23 +1,17 @@
-'use client';
-
-import { useEffect, useState } from 'react';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import Container from '../../components/Container';
 import Link from 'next/link';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import Container from '../components/Container';
 
+async function getPosts() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog`, {
+    cache: 'no-store'
+  });
+  return res.json();
+}
 
-export default function BlogPage() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    async function fetchPosts() {
-      const res = await fetch('/api/blog');
-      const data = await res.json();
-      setPosts(data);
-    }
-    fetchPosts();
-  }, []);
+export default async function BlogPage() {
+  const posts = await getPosts();
 
   return (
     <main style={{
@@ -29,32 +23,31 @@ export default function BlogPage() {
     }}>
       <Navbar />
 
-      <section style={{
-        flex: 1,
-        padding: '3rem 1.5rem',
-        maxWidth: '800px',
-        margin: '0 auto',
-        color: '#333'
-      }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>📝 Blog Posts</h1>
+      <Container>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>📝 Blog</h1>
 
         {posts.length === 0 ? (
-          <p>Loading...</p>
+          <p>No blog posts found.</p>
         ) : (
-          posts.map((post, index) => (
-            <div key={index} style={{ marginBottom: '2rem' }}>
-              <h2>{post.title}</h2>
-              <p><strong>{post.date}</strong></p>
-              <p>{post.excerpt}</p>
+          posts.map(post => (
+            <div key={post.slug} style={{ marginBottom: '2.5rem' }}>
+              <h2 style={{ fontSize: '1.6rem' }}>
+                <Link href={`/blog/posts/${post.slug}`} style={{ textDecoration: 'none', color: '#0070f3' }}>
+                  {post.title}
+                </Link>
+              </h2>
+              <p style={{ color: '#666' }}>{post.date}</p>
+              <p style={{ marginTop: '0.5rem' }}>{post.excerpt}</p>
               <Link href={`/blog/posts/${post.slug}`} style={{ color: '#0070f3' }}>
                 Read more →
               </Link>
             </div>
           ))
         )}
-      </section>
+      </Container>
 
       <Footer />
     </main>
   );
 }
+
