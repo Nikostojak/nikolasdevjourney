@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Container from '../components/container';
+import Container from '../components/Container';
 
 
 export default function BlogPage() {
