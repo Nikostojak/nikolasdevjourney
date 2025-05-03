@@ -11,7 +11,7 @@ export async function GET() {
         title: "Why I Used Backend",
         slug: "why-i-used-backend",
         date: "2025-05-01",
-        expcerpt: "A breakdown of why I structured my blog using both frontend and backend — and how it helps with scalability."
+        excerpt: "A breakdown of why I structured my blog using both frontend and backend — and how it helps with scalability."
       },
       {
         title: "How I Built This Blog",
