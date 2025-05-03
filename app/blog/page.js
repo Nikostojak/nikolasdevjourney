@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Container from '../../components/Container'; // prilagodi putanju
+
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);

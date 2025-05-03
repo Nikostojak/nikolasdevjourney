@@ -7,6 +7,7 @@ export const metadata = {
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Container from '../../components/Container'; // prilagodi putanju
 
 
 export default function ContactPage() {

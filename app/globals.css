@@ -24,3 +24,25 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+  }
+
+  a {
+    color: #4ea8ff;
+  }
+
+  nav, footer, section {
+    background-color: #1a1a1a;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #f9f9f9;
+    color: #333;
+  }
+}
