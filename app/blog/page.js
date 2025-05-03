@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Container from '../../components/Container'; // prilagodi putanju
+import Container from '../components/container';
 
 
 export default function BlogPage() {
