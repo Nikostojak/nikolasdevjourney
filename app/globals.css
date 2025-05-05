@@ -14,7 +14,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* Sprječava horizontalni scrollbar */
+  overflow-x: hidden;
 }
 
 a {
@@ -63,7 +63,7 @@ h1, h2, h3 {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 0.5rem; /* Smanji padding na mobilnim uređajima */
+    padding: 0 0.5rem;
   }
 }
 
@@ -261,7 +261,7 @@ h1, h2, h3 {
 }
 
 .hamburger {
-  display: none;
+  display: flex; /* Uvijek prikazuj hamburger */
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
@@ -292,9 +292,25 @@ h1, h2, h3 {
 }
 
 .navbar-menu {
-  display: flex;
-  gap: 2rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #2d3748;
+  flex-direction: column;
   align-items: center;
+  padding: 1rem 0;
+  display: none;
+  animation: slideOut 0.3s ease-in-out forwards;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 9;
+}
+
+.navbar-menu.open {
+  display: flex !important;
+  animation: slideInMenu 0.3s ease-in-out forwards;
 }
 
 .navbar-link {
@@ -302,45 +318,15 @@ h1, h2, h3 {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease, transform 0.2s ease;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+  width: 100%;
+  text-align: center;
 }
 
 .navbar-link:hover {
   color: #63b3ed;
   transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .navbar-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #2d3748;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-    display: none;
-    animation: slideOut 0.3s ease-in-out forwards;
-    width: 100%;
-    box-sizing: border-box;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-
-  .navbar-menu.open {
-    display: flex !important;
-    animation: slideInMenu 0.3s ease-in-out forwards;
-  }
-
-  .navbar-link {
-    font-size: 1.2rem;
-    padding: 0.5rem 0;
-    width: 100%;
-    text-align: center;
-  }
 }
 
 /* Stilovi za Footer */
