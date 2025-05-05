@@ -1,13 +1,21 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import Container from '../components/Container';
+import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/Footer';
+import Container from '../../../components/Container';
 import Link from 'next/link';
 
 async function getPosts() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog`, {
-    cache: 'no-store'
-  });
-  return res.json();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog`, {
+      cache: 'no-store'
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
+    }
+    return res.json();
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    return []; // Vraćamo prazan niz ako dođe do greške
+  }
 }
 
 export default async function BlogPage() {
@@ -35,27 +43,31 @@ export default async function BlogPage() {
         </h1>
 
         {posts.length === 0 ? (
-          <p style={{ color: '#a0aec0' }}>No blog posts found.</p>
+          <p style={{ color: '#a0aec0' }}>No blog posts found. There may be an issue with fetching posts.</p>
         ) : (
           posts.map(post => (
             <div 
               key={post.slug} 
-              className="post-card"
               style={{ 
                 marginBottom: '2.5rem',
                 backgroundColor: '#2d3748',
                 padding: '1.5rem',
                 borderRadius: '8px',
-                transition: 'transform 0.2s ease'
+                transition: 'transform 0.2s ease',
+                ':hover': {
+                  transform: 'translateY(-4px)'
+                }
               }}
             >
               <h2 style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>
                 <Link 
                   href={`/blog/posts/${post.slug}`} 
-                  className="post-title"
                   style={{ 
                     textDecoration: 'none', 
-                    color: '#63b3ed'
+                    color: '#63b3ed',
+                    ':hover': {
+                      color: '#90cdf4'
+                    }
                   }}
                 >
                   {post.title}
@@ -67,13 +79,15 @@ export default async function BlogPage() {
               <p style={{ color: '#e2e8f0', lineHeight: '1.6' }}>{post.excerpt}</p>
               <Link 
                 href={`/blog/posts/${post.slug}`} 
-                className="read-more"
                 style={{ 
                   color: '#63b3ed',
                   textDecoration: 'none',
                   fontWeight: 500,
                   display: 'inline-block',
-                  marginTop: '1rem'
+                  marginTop: '1rem',
+                  ':hover': {
+                    color: '#90cdf4'
+                  }
                 }}
               >
                 Read more →
