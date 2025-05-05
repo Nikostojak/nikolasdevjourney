@@ -3,9 +3,9 @@ export const metadata = {
   description: 'Learn about my background, from studying Thomistic philosophy in seminary to becoming a self-taught developer',
 };
 
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
-import Container from '../../components/Container';
+import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/Footer';
+import Container from '../../../components/Container';
 
 export default function AboutPage() {
   return (
