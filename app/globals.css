@@ -50,3 +50,15 @@ h1, h2, h3 {
   color: #edf2f7;
   font-weight: 700;
 }
+
+.post-card:hover {
+  transform: translateY(-4px);
+}
+
+.post-title:hover {
+  color: #90cdf4;
+}
+
+.read-more:hover {
+  color: #90cdf4;
+}
