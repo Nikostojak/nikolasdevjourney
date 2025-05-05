@@ -112,7 +112,7 @@ page.js`}
               that returns blog post data in JSON format.
             </p>
             <p style={{ marginBottom: '1rem' }}>
-              On the frontend, the blog list page fetches this data dynamically using <code>fetch('/api/blog')</code> and renders it.
+              On the frontend, the blog list page fetches this data dynamically using <code>fetch(&lsquo;/api/blog&lsquo;)</code> and renders it.
               This approach keeps the code organized, flexible, and easy to scale when I start adding more posts in the future.
             </p>
             <p style={{ marginBottom: '1rem' }}>

@@ -48,8 +48,8 @@ export default function BlogPost() {
             </p>
 
             <ul style={{ paddingLeft: '1.5rem', marginBottom: '1rem' }}>
-              <li><strong>Printing:</strong> <code>print("Hello, world!")</code></li>
-              <li><strong>Variables:</strong> <code>x = 10</code>, <code>name = "Nikolas"</code></li>
+              <li><strong>Printing:</strong> <code>print(&lsquo;Hello, world!&lsquo;)</code></li>
+              <li><strong>Variables:</strong> <code>x = 10</code>, <code>name = &lsquo;Nikolas&lsquo;</code></li>
               <li><strong>Types:</strong> Strings, integers, booleans</li>
               <li><strong>Operators:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>==</code>, <code>!=</code></li>
               <li><strong>User input:</strong> <code>input()</code> for dynamic data</li>
@@ -57,7 +57,7 @@ export default function BlogPost() {
 
             <h2 style={{ fontSize: '1.8rem', margin: '1.5rem 0 1rem', color: '#edf2f7' }}>🔄 Controlling Logic with Conditions</h2>
             <p style={{ marginBottom: '1rem' }}>
-              One of the biggest breakthroughs for me was learning how to make the computer "decide" something based on conditions. This is where <code>if</code>, <code>elif</code>, and <code>else</code> come into play.
+              One of the biggest breakthroughs for me was learning how to make the computer &lsquo;decide&lsquo; something based on conditions. This is where <code>if</code>, <code>elif</code>, and <code>else</code> come into play.
             </p>
 
             <div
