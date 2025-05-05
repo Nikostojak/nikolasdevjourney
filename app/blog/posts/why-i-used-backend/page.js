@@ -77,7 +77,7 @@ export default function BlogPost() {
 
             <h2 style={{ fontSize: '1.8rem', margin: '1.5rem 0 1rem', color: '#edf2f7' }}>🔌 Connecting API + Frontend</h2>
             <p style={{ marginBottom: '1rem' }}>
-              On the <code>/blog</code> page, I fetch all blog posts using <code>fetch('/api/blog')</code>. This lets me render new posts automatically
+              On the <code>/blog</code> page, I fetch all blog posts using <code>fetch(&lsquo;/api/blog&lsquo;)</code>. This lets me render new posts automatically
               just by updating the backend response — no need to manually edit the page.
             </p>
 

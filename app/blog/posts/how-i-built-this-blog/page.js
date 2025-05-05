@@ -38,10 +38,10 @@ export default function BlogPost() {
 
           <div style={{ backgroundColor: '#2d3748', padding: '1.5rem', borderRadius: '8px' }}>
             <p style={{ marginBottom: '1rem' }}>
-              Creating this blog wasn’t just a coding project — it was a meaningful step in documenting
+              Creating this blog wasn&lsquo;t just a coding project — it was a meaningful step in documenting
               my transition from philosophical studies to the world of software development. I built <strong>Nikolas Dev Journey</strong> to
               serve as both a personal journal and a professional platform, showcasing what I learn as I grow as a self-taught developer.
-              In this first post, I’ll walk you through how I structured, styled, and deployed this blog using modern technologies.
+              In this first post, I&lsquo;ll walk you through how I structured, styled, and deployed this blog using modern technologies.
             </p>
 
             <h2 style={{ fontSize: '1.8rem', margin: '1.5rem 0 1rem', color: '#edf2f7' }}>⚙️ Technologies I Used</h2>
@@ -127,18 +127,18 @@ page.js`}
               <li>Starting simple and iterating is more productive than chasing perfection.</li>
             </ul>
 
-            <h2 style={{ fontSize: '1.8rem', margin: '1.5rem 0 1rem', color: '#edf2f7' }}>✅ What’s Next?</h2>
+            <h2 style={{ fontSize: '1.8rem', margin: '1.5rem 0 1rem', color: '#edf2f7' }}>✅ What&lsquo;s Next?</h2>
             <p style={{ marginBottom: '1rem' }}>
-              This is just the beginning of the journey. I’ll be writing about:
+              This is just the beginning of the journey. I&lsquo;ll be writing about:
             </p>
             <ul style={{ paddingLeft: '1.5rem', marginBottom: '1rem' }}>
-              <li>What I’m learning in Python & JavaScript</li>
+              <li>What I&lsquo;m learning in Python & JavaScript</li>
               <li>Web development tips and tutorials</li>
               <li>Project breakdowns and reflections</li>
             </ul>
 
             <blockquote style={{ fontStyle: 'italic', marginTop: '2rem', color: '#a0aec0', borderLeft: '4px solid #63b3ed', paddingLeft: '1rem' }}>
-              “From metaphysics to machine code — it’s been a surprising journey, but I’m just getting started.”
+              “From metaphysics to machine code — It&lsquo;s been a surprising journey, but I&lsquo;m just getting started.”
             </blockquote>
           </div>
         </article>

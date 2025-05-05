@@ -92,9 +92,9 @@ else:
               <li>Learning the difference between <code>=</code> and <code>==</code> was crucial!</li>
             </ul>
 
-            <h2 style={{ fontSize: '1.8rem', margin: '1.5rem 0 1rem', color: '#edf2f7' }}>🔜 What I‘m Looking Forward To</h2>
+            <h2 style={{ fontSize: '1.8rem', margin: '1.5rem 0 1rem', color: '#edf2f7' }}>🔜 What I&lsquo;m Looking Forward To</h2>
             <p style={{ marginBottom: '1rem' }}>
-              With conditions mastered, I‘m excited to dive into loops (<code>for</code>, <code>while</code>), which will allow me to automate tasks and repeat actions efficiently. I‘ll also start exploring data structures like lists and dictionaries to manage collections of data.
+              With conditions mastered, I&lsquo;m excited to dive into loops (<code>for</code>, <code>while</code>), which will allow me to automate tasks and repeat actions efficiently. I&lsquo;ll also start exploring data structures like lists and dictionaries to manage collections of data.
             </p>
 
             <p style={{ marginBottom: '1rem' }}>
