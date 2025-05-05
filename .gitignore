@@ -50,6 +50,7 @@ out/
 
 # Environment variables
 .env
+.env.produciton
 .env.local
 .env.development.local
 .env.test.local
