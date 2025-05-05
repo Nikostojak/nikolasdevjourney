@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 async function getPosts() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog`, {
+    const res = await fetch(`/api/blog`, {
       cache: 'no-store'
     });
     if (!res.ok) {
@@ -14,7 +14,7 @@ async function getPosts() {
     return res.json();
   } catch (error) {
     console.error('Error fetching posts:', error);
-    return []; // Vraćamo prazan niz ako dođe do greške
+    return [];
   }
 }
 
