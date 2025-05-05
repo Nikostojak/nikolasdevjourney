@@ -1,3 +1,4 @@
+"use client"
 export const metadata = {
   title: 'Nikolas Dev Journey | About',
   description: 'Learn about my background, from studying Thomistic philosophy in seminary to becoming a self-taught developer',
@@ -51,7 +52,6 @@ export default function AboutPage() {
             <img
               src="/profile.jpg"
               alt="Nikolas"
-              className="profile-img"
               style={{
                 width: '100px',
                 height: '100px',
@@ -59,6 +59,10 @@ export default function AboutPage() {
                 objectFit: 'cover',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
                 marginLeft: '1rem',
+                transition: 'transform 0.3s ease',
+                ':hover': {
+                  transform: 'scale(1.05)'
+                }
               }}
             />
           </div>
@@ -123,12 +127,6 @@ export default function AboutPage() {
             opacity: 1;
             transform: translateY(0);
           }
-        }
-        .profile-img {
-          transition: transform 0.3s ease;
-        }
-        .profile-img:hover {
-          transform: scale(1.05);
         }
       `}</style>
     </main>
