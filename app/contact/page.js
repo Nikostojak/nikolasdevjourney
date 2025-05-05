@@ -3,9 +3,9 @@ export const metadata = {
   description: 'Get in touch with me directly via LinkedIn or GitHub.',
 };
 
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
-import Container from '../../components/Container';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import Container from '../components/Container';
 
 export default function ContactPage() {
   return (
