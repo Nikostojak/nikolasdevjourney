@@ -11,13 +11,17 @@ import Link from 'next/link';
 
 async function getPosts() {
   try {
+    console.log('Fetching posts from /api/blog');
     const res = await fetch(`/api/blog`, {
       cache: 'no-store',
     });
+    console.log('Fetch response status:', res.status, res.statusText);
     if (!res.ok) {
       throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
     }
-    return res.json();
+    const data = await res.json();
+    console.log('Fetched posts:', data);
+    return data;
   } catch (error) {
     console.error('Error fetching posts:', error);
     return [];
