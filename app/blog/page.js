@@ -3,7 +3,38 @@ import Footer from '../components/Footer';
 import Container from '../components/Container';
 import Link from 'next/link';
 
+async function getPosts() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog`, {
+    cache: 'no-store'
+  });
+  return res.json();
+}
 
+export default async function BlogPage() {
+  const posts = await getPosts();
+
+  return (
+    <main style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: '#1a202c',
+      color: '#e2e8f0',
+      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+    }}>
+      <Navbar />
+
+      <Container>
+        <h1 style={{ 
+          fontSize: '2.5rem', 
+          marginBottom: '2.5rem',
+          fontWeight: 700,
+          color: '#edf2f7'
+        }}>
+          📝 Developer Blog
+        </h1>
+
+        {posts.length === 0 ? (
           <p style={{ color: '#a0aec0' }}>No blog posts found.</p>
         ) : (
           posts.map(post => (
@@ -55,35 +86,4 @@ import Link from 'next/link';
       <Footer />
     </main>
   );
-}async function getPosts() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog`, {
-    cache: 'no-store'
-  });
-  return res.json();
 }
-
-export default async function BlogPage() {
-  const posts = await getPosts();
-
-  return (
-    <main style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: '#1a202c',
-      color: '#e2e8f0',
-      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
-    }}>
-      <Navbar />
-
-      <Container>
-        <h1 style={{ 
-          fontSize: '2.5rem', 
-          marginBottom: '2.5rem',
-          fontWeight: 700,
-          color: '#edf2f7'
-        }}>
-          📝 Developer Blog
-        </h1>
-
-        {posts.length === 0 ? (
