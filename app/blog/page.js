@@ -1,36 +1,39 @@
-export const metadata = {
-  title: 'Nikolas Dev Journey | Blog',
-  description: 'Explore my blog posts on Python, web development, and my journey as a self-taught developer.',
-};
+'use client';
 
-
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import Link from 'next/link';
 
-async function getPosts() {
-  try {
-    console.log('Fetching posts from /api/blog');
-    const res = await fetch(`/api/blog`, {
-      cache: 'no-store',
-    });
-    console.log('Fetch response status:', res.status, res.statusText);
-    if (!res.ok) {
-      throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
-    }
-    const data = await res.json();
-    console.log('Fetched posts:', data);
-    return data;
-  } catch (error) {
-    console.error('Error fetching posts:', error);
-    return [];
-  }
-}
+export default function BlogPage() {
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-export default async function BlogPage() {
-  console.log('Rendering BlogPage');
-  const posts = await getPosts();
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        console.log('Fetching posts from /api/blog');
+        const res = await fetch('/api/blog', {
+          cache: 'no-store',
+        });
+        console.log('Fetch response status:', res.status, res.statusText);
+        if (!res.ok) {
+          throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
+        }
+        const data = await res.json();
+        console.log('Fetched posts:', data);
+        setPosts(data);
+      } catch (err) {
+        console.error('Error fetching posts:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPosts();
+  }, []);
 
   return (
     <main style={{
@@ -48,9 +51,17 @@ export default async function BlogPage() {
           📝 Developer Blog
         </h1>
 
-        {posts.length === 0 ? (
+        {error ? (
           <p className="blog-list-error">
-            No blog posts found. There may be an issue with fetching posts.
+            Error: {error}
+          </p>
+        ) : loading ? (
+          <p className="blog-list-error loading">
+            Loading posts...
+          </p>
+        ) : posts.length === 0 ? (
+          <p className="blog-list-error">
+            No blog posts found.
           </p>
         ) : (
           <div className="blog-list-grid">
