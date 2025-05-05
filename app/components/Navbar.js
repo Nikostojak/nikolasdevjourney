@@ -8,6 +8,12 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    console.log('Menu toggled, isOpen:', !isOpen);
+  };
+
+  const handleLinkClick = (page) => {
+    console.log(`Navigating to: ${page === 'Home' ? '/' : `/${page.toLowerCase()}`}`);
+    toggleMenu();
   };
 
   return (
@@ -30,7 +36,7 @@ export default function Navbar() {
             key={page}
             href={page === 'Home' ? '/' : `/${page.toLowerCase()}`} 
             className="navbar-link"
-            onClick={toggleMenu}
+            onClick={() => handleLinkClick(page)}
           >
             {page}
           </Link>

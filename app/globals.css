@@ -14,6 +14,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Sprječava horizontalni scrollbar */
 }
 
 a {
@@ -49,6 +50,21 @@ pre {
 h1, h2, h3 {
   color: #edf2f7;
   font-weight: 700;
+}
+
+/* Stilovi za Container */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem; /* Smanji padding na mobilnim uređajima */
+  }
 }
 
 /* Stilovi za About stranicu */
@@ -183,7 +199,9 @@ h1, h2, h3 {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 0 1rem;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .blog-list-item {
@@ -193,6 +211,8 @@ h1, h2, h3 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeInUp 0.5s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .blog-list-item:hover {
@@ -228,6 +248,7 @@ h1, h2, h3 {
   top: 0;
   z-index: 10;
   animation: slideIn 0.8s ease-in-out;
+  box-sizing: border-box;
 }
 
 .navbar-brand {
@@ -270,15 +291,10 @@ h1, h2, h3 {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-.navbar-links {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
 .navbar-menu {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .navbar-link {
@@ -309,11 +325,21 @@ h1, h2, h3 {
     padding: 1rem 0;
     display: none;
     animation: slideOut 0.3s ease-in-out forwards;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
   .navbar-menu.open {
-    display: flex;
+    display: flex !important;
     animation: slideInMenu 0.3s ease-in-out forwards;
+  }
+
+  .navbar-link {
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -327,6 +353,7 @@ h1, h2, h3 {
   color: #a0aec0;
   font-size: 0.9rem;
   animation: fadeIn 1s ease-in-out;
+  box-sizing: border-box;
 }
 
 .footer-text {
@@ -352,12 +379,14 @@ h1, h2, h3 {
 /* Stilovi za Homepage */
 .hero-section {
   flex: 1;
-  padding: 4rem 1rem;
+  padding: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-title {
