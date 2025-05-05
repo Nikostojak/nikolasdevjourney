@@ -1,4 +1,4 @@
-"use client"
+
 export const metadata = {
   title: 'Nikolas Dev Journey | About',
   description: 'Learn about my background, from studying Thomistic philosophy in seminary to becoming a self-taught developer',
@@ -33,13 +33,7 @@ export default function AboutPage() {
             fontSize: '1.1rem',
           }}
         >
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'space-between', 
-            marginBottom: '2.5rem',
-            animation: 'fadeIn 1s ease-in-out'
-          }}>
+          <div className="about-header">
             <h1 style={{ 
               fontSize: 'clamp(2rem, 5vw, 2.5rem)', 
               margin: 0, 
@@ -64,13 +58,7 @@ export default function AboutPage() {
             />
           </div>
 
-          <div style={{ 
-            backgroundColor: '#2d3748', 
-            padding: '2rem', 
-            borderRadius: '12px', 
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-            animation: 'fadeInUp 0.8s ease-in-out'
-          }}>
+          <div className="about-content">
             <p style={{ marginBottom: '1.5rem', fontSize: '1.05rem' }}>
               Before I ever wrote a single line of code, I was on a very different path — the priesthood.
               I entered the seminary of the <strong>Priestly Fraternity of St. Peter</strong>, where I began
@@ -110,28 +98,6 @@ export default function AboutPage() {
       </Container>
 
       <Footer />
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .profile-img {
-          transition: transform 0.3s ease;
-        }
-        .profile-img:hover {
-          transform: scale(1.05);
-        }
-      `}</style>
     </main>
   );
 }
