@@ -1,25 +1,32 @@
+'use client';
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import Link from 'next/link';
 
-async function getPosts() {
-  try {
-    const res = await fetch(`/api/blog`, {
-      cache: 'no-store'
-    });
-    if (!res.ok) {
-      throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
-    }
-    return res.json();
-  } catch (error) {
-    console.error('Error fetching posts:', error);
-    return [];
-  }
-}
+export default function BlogPage() {
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
 
-export default async function BlogPage() {
-  const posts = await getPosts();
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const res = await fetch('/api/blog', {
+          cache: 'no-store'
+        });
+        if (!res.ok) {
+          throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
+        }
+        const data = await res.json();
+        setPosts(data);
+      } catch (err) {
+        console.error('Error fetching posts:', err);
+        setError(err.message);
+      }
+    }
+    fetchPosts();
+  }, []);
 
   return (
     <main style={{
@@ -42,8 +49,10 @@ export default async function BlogPage() {
           📝 Developer Blog
         </h1>
 
-        {posts.length === 0 ? (
-          <p style={{ color: '#a0aec0' }}>No blog posts found. There may be an issue with fetching posts.</p>
+        {error ? (
+          <p style={{ color: '#a0aec0' }}>Error: {error}</p>
+        ) : posts.length === 0 ? (
+          <p style={{ color: '#a0aec0' }}>Loading posts...</p>
         ) : (
           posts.map(post => (
             <div 
