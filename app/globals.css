@@ -1,48 +1,52 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #1a202c;
+  --foreground: #e2e8f0;
+  --accent: #63b3ed;
+  --font-sans: var(--font-inter);
+  --font-mono: "Fira Code", monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  margin: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1a1a1a;
-    color: #f0f0f0;
-  }
-
-  a {
-    color: #4ea8ff;
-  }
-
-  nav, footer, section {
-    background-color: #1a1a1a;
-  }
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: #f9f9f9;
-    color: #333;
-  }
+a:hover {
+  color: #90cdf4;
+}
+
+nav, footer, section {
+  background-color: var(--background);
+}
+
+code {
+  font-family: var(--font-mono);
+  background-color: #2d3748;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+pre {
+  background-color: #1a202c;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  color: var(--foreground);
+}
+
+h1, h2, h3 {
+  color: #edf2f7;
+  font-weight: 700;
 }
