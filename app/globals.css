@@ -18,7 +18,7 @@ body {
 
 a {
   color: var(--accent);
-  textDecoration: none;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
@@ -76,6 +76,325 @@ h1, h2, h3 {
   transform: scale(1.05);
 }
 
+/* Stilovi za Contact stranicu */
+.contact-title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: 2rem;
+  font-weight: 800;
+  color: #edf2f7;
+  text-align: center;
+  letter-spacing: -0.025em;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.contact-content {
+  background-color: #2d3748;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.contact-links {
+  font-size: 1.1rem;
+  line-height: 2;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-link-item {
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.contact-link {
+  color: #63b3ed;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-link:hover {
+  color: #90cdf4;
+  transform: translateX(5px);
+}
+
+/* Stilovi za Blog Post stranice */
+.blog-post-title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: 2rem;
+  font-weight: 800;
+  color: #edf2f7;
+  letter-spacing: -0.025em;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.blog-post-content {
+  background-color: #2d3748;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.blog-post-content a {
+  color: #63b3ed;
+  text-decoration: none;
+}
+
+.blog-post-content a:hover {
+  color: #90cdf4;
+}
+
+.blog-post-content blockquote {
+  font-style: italic;
+  margin-top: 2.5rem;
+  color: #a0aec0;
+  border-left: 4px solid #63b3ed;
+  padding-left: 1.5rem;
+  font-size: 1.1rem;
+}
+
+/* Stilovi za Blog List stranicu */
+.blog-list-title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: 3rem;
+  font-weight: 800;
+  color: #edf2f7;
+  text-align: center;
+  letter-spacing: -0.025em;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.blog-list-error {
+  color: #a0aec0;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 2rem 0;
+}
+
+.blog-list-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 0 1rem;
+}
+
+.blog-list-item {
+  background-color: #2d3748;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.blog-list-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.blog-list-read-more {
+  color: #63b3ed;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.blog-list-read-more:hover {
+  color: #90cdf4;
+}
+
+/* Stilovi za Navbar */
+.navbar {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #2d3748;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  animation: slideIn 0.8s ease-in-out;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  color: #edf2f7;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar-link {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.navbar-link:hover {
+  color: #63b3ed;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #2d3748;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    display: none;
+    animation: slideOut 0.3s ease-in-out forwards;
+  }
+
+  .navbar-menu.open {
+    display: flex;
+    animation: slideInMenu 0.3s ease-in-out forwards;
+  }
+}
+
+/* Stilovi za Footer */
+.footer {
+  margin-top: auto;
+  padding: 2rem 1rem;
+  width: 100%;
+  text-align: center;
+  background-color: #2d3748;
+  color: #a0aec0;
+  font-size: 0.9rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.footer-text {
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer-link {
+  display: inline-block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-link:hover {
+  transform: scale(1.2);
+  filter: brightness(1.5);
+}
+
+/* Stilovi za Homepage */
+.hero-section {
+  flex: 1;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: #edf2f7;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero-description {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #e2e8f0;
+  max-width: 800px;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  animation: fadeIn 1s ease-in-out 0.3s both;
+}
+
+.hero-button {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  background-color: #63b3ed;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  animation: fadeIn 1s ease-in-out 0.6s both;
+}
+
+.hero-button:hover {
+  background-color: #90cdf4;
+  transform: scale(1.05);
+}
+
 /* Animacije */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -90,5 +409,38 @@ h1, h2, h3 {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }
