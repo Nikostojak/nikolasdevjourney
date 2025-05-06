@@ -266,13 +266,43 @@ h1, h2, h3 {
 }
 
 .navbar-brand {
-  font-size: 1.8rem;
-  color: #edf2f7;
-  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+
+.navbar-logo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #63b3ed;
+  background: linear-gradient(45deg, #63b3ed, #90cdf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rotateLogo 3s ease-in-out infinite;
+}
+
+.navbar-symbols {
+  display: inline-block;
+  font-family: var(--font-mono);
+}
+
+.symbol {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #a0aec0;
+  animation: fadeInSymbols 0.3s ease-in-out forwards;
+}
+
+.symbol-1 { animation-delay: 0s; }
+.symbol-2 { animation-delay: 0.15s; }
+.symbol-3 { animation-delay: 0.3s; }
+.symbol-4 { animation-delay: 0.45s; }
+.symbol-5 { animation-delay: 0.6s; }
+.symbol-6 { animation-delay: 0.75s; }
+.symbol-7 { animation-delay: 0.9s; }
+.symbol-8 { animation-delay: 1.05s; }
+.symbol-9 { animation-delay: 1.2s; }
+.symbol-10 { animation-delay: 1.35s; }
 
 .hamburger {
   display: flex;
@@ -405,11 +435,11 @@ h1, h2, h3 {
 }
 
 .hero-title-nikolas {
-  color: #edf2f7; /* Bijela boja za "Nikolas" */
+  color: #edf2f7;
 }
 
 .hero-title-journey {
-  color: #63b3ed; /* Plava boja za "DEVJOURNEY" */
+  color: #63b3ed;
 }
 
 .typing-cursor {
@@ -507,4 +537,15 @@ h1, h2, h3 {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+@keyframes rotateLogo {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes fadeInSymbols {
+  from { opacity: 0; transform: translateX(5px); }
+  to { opacity: 1; transform: translateX(0); }
 }
