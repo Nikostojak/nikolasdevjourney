@@ -289,20 +289,19 @@ h1, h2, h3 {
 .symbol {
   display: inline-block;
   font-size: 1.2rem;
-  color: #a0aec0;
   animation: fadeInSymbols 0.3s ease-in-out forwards;
 }
 
-.symbol-1 { animation-delay: 0s; }
-.symbol-2 { animation-delay: 0.15s; }
-.symbol-3 { animation-delay: 0.3s; }
-.symbol-4 { animation-delay: 0.45s; }
-.symbol-5 { animation-delay: 0.6s; }
-.symbol-6 { animation-delay: 0.75s; }
-.symbol-7 { animation-delay: 0.9s; }
-.symbol-8 { animation-delay: 1.05s; }
-.symbol-9 { animation-delay: 1.2s; }
-.symbol-10 { animation-delay: 1.35s; }
+.symbol-1 { color: #63b3ed; animation-delay: 0s; } /* Plava */
+.symbol-2 { color: #90cdf4; animation-delay: 0.15s; } /* Svjetlija plava */
+.symbol-3 { color: #a0aec0; animation-delay: 0.3s; } /* Siva */
+.symbol-4 { color: #f687b3; animation-delay: 0.45s; } /* Ružičasta */
+.symbol-5 { color: #68d391; animation-delay: 0.6s; } /* Zelena */
+.symbol-6 { color: #ed8936; animation-delay: 0.75s; } /* Narančasta */
+.symbol-7 { color: #b794f4; animation-delay: 0.9s; } /* Ljubičasta */
+.symbol-8 { color: #f6e05e; animation-delay: 1.05s; } /* Žuta */
+.symbol-9 { color: #f56565; animation-delay: 1.2s; } /* Crvena */
+.symbol-10 { color: #b2f5ea; animation-delay: 1.35s; } /* Tirkizna */
 
 .hamburger {
   display: flex;
