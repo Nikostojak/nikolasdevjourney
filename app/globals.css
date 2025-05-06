@@ -292,6 +292,12 @@ h1, h2, h3 {
   animation: fadeInSymbols 0.3s ease-in-out forwards;
 }
 
+@media (min-width: 768px) {
+  .symbol {
+    font-size: 1.5rem; /* Veća veličina na ekranima širine 768px i više */
+  }
+}
+
 .symbol-1 { color: #63b3ed; animation-delay: 0s; } /* Plava */
 .symbol-2 { color: #90cdf4; animation-delay: 0.15s; } /* Svjetlija plava */
 .symbol-3 { color: #a0aec0; animation-delay: 0.3s; } /* Siva */
@@ -425,15 +431,15 @@ h1, h2, h3 {
   animation: fadeIn 1s ease-in-out;
   display: inline-block;
   line-height: 1;
-  overflow-wrap: break-word; /* Omogućava prelamanje teksta */
-  word-break: break-word; /* Omogućava prelamanje unutar riječi */
-  max-width: 100%; /* Osigurava da ne prelazi granice ekrana */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Smanjujemo font na mobitelima */
-    max-width: 90%; /* Osigurava prostor unutar ekrana */
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    max-width: 90%;
   }
 }
 
