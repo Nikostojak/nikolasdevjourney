@@ -391,10 +391,35 @@ h1, h2, h3 {
 
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 4rem);
-  color: #edf2f7;
   margin-bottom: 1.5rem;
   font-weight: 800;
   animation: fadeIn 1s ease-in-out;
+  display: inline-block;
+  line-height: 1;
+}
+
+.hero-title-typed {
+  display: inline-block;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.hero-title-nikolas {
+  color: #edf2f7; /* Bijela boja za "Nikolas" */
+}
+
+.hero-title-journey {
+  color: #63b3ed; /* Plava boja za "DEVJOURNEY" */
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: #63b3ed;
+  animation: blink 0.7s step-end infinite;
+  margin-left: 2px;
+  vertical-align: middle;
 }
 
 .hero-description {
@@ -477,4 +502,9 @@ h1, h2, h3 {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
