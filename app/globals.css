@@ -425,6 +425,16 @@ h1, h2, h3 {
   animation: fadeIn 1s ease-in-out;
   display: inline-block;
   line-height: 1;
+  overflow-wrap: break-word; /* Omogućava prelamanje teksta */
+  word-break: break-word; /* Omogućava prelamanje unutar riječi */
+  max-width: 100%; /* Osigurava da ne prelazi granice ekrana */
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Smanjujemo font na mobitelima */
+    max-width: 90%; /* Osigurava prostor unutar ekrana */
+  }
 }
 
 .hero-title-typed {
