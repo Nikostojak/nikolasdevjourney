@@ -22,16 +22,20 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    // Prvo tipkanje pri učitavanju
+    console.log('Navbar loaded | Nikolas Dev Journey v1.0');
     typeSymbols();
-
-    // Ponavljanje tipkanja svakih 10 sekundi
     const repeatInterval = setInterval(() => {
       typeSymbols();
-    }, 10000); // 10 sekundi
-
+    }, 10000); // Ponovi svakih 10 sekundi
     return () => clearInterval(repeatInterval);
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      const firstLink = document.querySelector('.navbar-menu.open .navbar-link');
+      firstLink?.focus();
+    }
+  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -44,10 +48,10 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="navbar-brand">
         <div className="navbar-logo">NS</div>
-        <span className="navbar-symbols">
+        <span className="navbar-symbols" aria-hidden="true">
           {displayedSymbols.map((symbol, index) => (
             <span key={index} className={`symbol symbol-${index + 1}`}>
               {symbol}
@@ -55,22 +59,28 @@ export default function Navbar() {
           ))}
         </span>
       </div>
-      <button 
-        className={`hamburger ${isOpen ? 'open' : ''}`} 
+      <button
+        className={`hamburger ${isOpen ? 'open' : ''}`}
         onClick={toggleMenu}
-        aria-label="Toggle menu"
+        aria-label="Toggle navigation menu"
+        aria-expanded={isOpen}
       >
         <span className="hamburger-line"></span>
         <span className="hamburger-line"></span>
         <span className="hamburger-line"></span>
       </button>
       <div className={`navbar-menu ${isOpen ? 'open' : ''}`}>
-        {['Home', 'Blog', 'About', 'Contact'].map(page => (
-          <Link 
+        {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
+          <Link
             key={page}
-            href={page === 'Home' ? '/' : `/${page.toLowerCase()}`} 
+            href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
             className="navbar-link"
             onClick={() => handleLinkClick(page)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleLinkClick(page);
+              }
+            }}
           >
             {page}
           </Link>

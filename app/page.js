@@ -38,8 +38,8 @@ export default function HomePage() {
       <Navbar />
 
       <Container>
-        <section className="hero-section">
-          <h1 className="hero-title">
+        <section className="hero-section" role="region" aria-labelledby="hero-title">
+          <h1 className="hero-title" id="hero-title" aria-live="polite">
             <span className="hero-title-typed">
               {displayedText.split('').map((char, index) => (
                 <span
@@ -52,19 +52,25 @@ export default function HomePage() {
                 </span>
               ))}
               {displayedText.length < fullText.length && (
-                <span className="typing-cursor">|</span>
+                <span className="typing-cursor" aria-hidden="true">|</span>
               )}
             </span>
           </h1>
           <p className="hero-description">
             Join me as I explore and study Python, Web Development, and the world of Software Engineering.
           </p>
-          
-          <Link href="/blog">
-            <button className="hero-button">
-              Read My Blog
-            </button>
-          </Link>
+          <div className="hero-buttons">
+            <Link href="/blog">
+              <button className="hero-button" role="button" aria-label="Go to blog page">
+                Read My Blog
+              </button>
+            </Link>
+            <Link href="/projects">
+              <button className="hero-button" role="button" aria-label="View my projects">
+                View My Projects
+              </button>
+            </Link>
+          </div>
         </section>
       </Container>
 

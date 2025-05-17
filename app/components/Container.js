@@ -1,6 +1,8 @@
-export default function Container({ children }) {
+'use client';
+
+export default function container({ children }) {
   return (
-    <div className="container">
+    <div className="container" role="main">
       {children}
     </div>
   );

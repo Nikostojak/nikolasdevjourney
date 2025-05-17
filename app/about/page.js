@@ -1,4 +1,3 @@
-
 export const metadata = {
   title: 'Nikolas Dev Journey | About',
   description: 'Learn about my background, from studying Thomistic philosophy in seminary to becoming a self-taught developer',
@@ -23,75 +22,52 @@ export default function AboutPage() {
       <Navbar />
 
       <Container>
-        <section
-          style={{
-            flex: 1,
-            padding: '3rem 0',
-            maxWidth: '900px',
-            margin: '0 auto',
-            lineHeight: '1.8',
-            fontSize: '1.1rem',
-          }}
-        >
+        <section className="about-section" role="region" aria-labelledby="about-title">
           <div className="about-header">
-            <h1 style={{ 
-              fontSize: 'clamp(2rem, 5vw, 2.5rem)', 
-              margin: 0, 
-              fontWeight: 800, 
-              color: '#edf2f7',
-              letterSpacing: '-0.025em'
-            }}>
-              🛤️ My Journey
-            </h1>
             <img
               src="/profile.jpg"
-              alt="Nikolas"
+              alt="Nikolas Stojak, self-taught developer"
               className="profile-img"
-              style={{
-                width: '100px',
-                height: '100px',
-                borderRadius: '50%',
-                objectFit: 'cover',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-                marginLeft: '1rem',
-              }}
             />
+            <h1 className="about-title" id="about-title">
+              🛤️ My Journey
+            </h1>
           </div>
 
           <div className="about-content">
-            <p style={{ marginBottom: '1.5rem', fontSize: '1.05rem' }}>
+            <p>
               Before I ever wrote a single line of code, I was on a very different path — the priesthood.
               I entered the seminary of the <strong>Priestly Fraternity of St. Peter</strong>, where I began
               studying classical <strong>Thomistic philosophy</strong>. It was a time of deep intellectual and spiritual formation,
               shaped by the teachings of St. Thomas Aquinas and a desire to dedicate my life to a greater calling.
             </p>
-            <p style={{ marginBottom: '1.5rem', fontSize: '1.05rem' }}>
+            <p>
               After three years of formation, however, I came to realize that I was not called to this vocation. I returned
               to my homeland, <strong>Croatia</strong>, unsure of what the next chapter would look like. In the midst of this
-              transition, a friend of mine suggested I try learning to program — he saw something in me I hadn&ldquo;t yet seen
+              transition, a friend of mine suggested I try learning to program — he saw something in me I hadn&apos;t yet seen
               in myself. That was in <strong>late August 2024</strong>.
             </p>
-            <p style={{ marginBottom: '1.5rem', fontSize: '1.05rem' }}>
+            <p>
               It took some time to truly find motivation, but once I began, I discovered something incredible. Programming
               opened a whole new world — a place where logic, creativity, and problem-solving come together. What fascinates
               me the most is how a simple idea can be turned into something real, functional, and even beautiful — all through code.
             </p>
-            <p style={{ marginBottom: '1.5rem', fontSize: '1.05rem' }}>
-              Now, in <strong>April 2025</strong>, I&ldquo;ve launched this blog to document my developer journey. I&ldquo;m preparing
-              to build my first real project soon and look forward to everything I&ldquo;ll learn along the way.
+            <p>
+              Now, in <strong>April 2025</strong>, I&apos;ve launched this blog to document my developer journey. I&apos;m preparing
+              to build my first real project soon and look forward to everything I&apos;ll learn along the way.
             </p>
 
-            <h2 style={{ 
-              marginTop: '2.5rem', 
-              fontSize: '1.8rem', 
-              color: '#edf2f7',
-              fontWeight: 700,
-              marginBottom: '1rem'
-            }}>
-              💬 Final Thought
-            </h2>
-            <p style={{ fontStyle: 'italic', color: '#a0aec0' }}>
-              From metaphysics to machine code — it&ldquo;s been a surprising journey, but I&ldquo;m just getting started.
+            <h2 className="about-subtitle">🛠️ My Skills</h2>
+            <ul className="skills-list">
+              <li>Python: Learning Flask and Pandas for web and data projects</li>
+              <li>JavaScript: Building interactive UIs with React and Next.js</li>
+              <li>HTML/CSS: Crafting responsive, accessible web designs</li>
+              <li>Git: Version control for collaborative development</li>
+            </ul>
+
+            <h2 className="about-subtitle">💬 Final Thought</h2>
+            <p className="final-thought">
+              From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started.
             </p>
           </div>
         </section>

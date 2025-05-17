@@ -3,7 +3,7 @@
   --foreground: #e2e8f0;
   --accent: #63b3ed;
   --font-sans: var(--font-inter);
-  --font-mono: "Fira Code", monospace;
+  --font-mono: 'Fira Code', monospace;
 }
 
 body {
@@ -27,6 +27,11 @@ a:hover {
   color: #90cdf4;
 }
 
+a:focus, button:focus {
+  outline: 2px solid #63b3ed;
+  outline-offset: 2px;
+}
+
 nav, footer, section {
   background-color: var(--background);
 }
@@ -39,7 +44,7 @@ code {
 }
 
 pre {
-  background-color: #1a202c;
+  background-color: #2d3748;
   padding: 1rem;
   border-radius: 8px;
   overflow-x: auto;
@@ -59,194 +64,13 @@ h1, h2, h3 {
   margin: 0 auto;
   padding: 0 1rem;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
   .container {
     padding: 0 0.5rem;
   }
-}
-
-/* Stilovi za About stranicu */
-.about-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2.5rem;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.about-content {
-  background-color: #2d3748;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.8s ease-in-out;
-}
-
-.profile-img {
-  transition: transform 0.3s ease;
-}
-
-.profile-img:hover {
-  transform: scale(1.05);
-}
-
-/* Stilovi za Contact stranicu */
-.contact-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  margin-bottom: 2rem;
-  font-weight: 800;
-  color: #edf2f7;
-  text-align: center;
-  letter-spacing: -0.025em;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.contact-content {
-  background-color: #2d3748;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.8s ease-in-out;
-}
-
-.contact-links {
-  font-size: 1.1rem;
-  line-height: 2;
-  padding-left: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.contact-link-item {
-  animation: fadeInUp 0.5s ease-in-out;
-}
-
-.contact-link {
-  color: #63b3ed;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.contact-link:hover {
-  color: #90cdf4;
-  transform: translateX(5px);
-}
-
-/* Stilovi za Blog Post stranice */
-.blog-post-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  margin-bottom: 2rem;
-  font-weight: 800;
-  color: #edf2f7;
-  letter-spacing: -0.025em;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.blog-post-content {
-  background-color: #2d3748;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.8s ease-in-out;
-}
-
-.blog-post-content a {
-  color: #63b3ed;
-  text-decoration: none;
-}
-
-.blog-post-content a:hover {
-  color: #90cdf4;
-}
-
-.blog-post-content blockquote {
-  font-style: italic;
-  margin-top: 2.5rem;
-  color: #a0aec0;
-  border-left: 4px solid #63b3ed;
-  padding-left: 1.5rem;
-  font-size: 1.1rem;
-}
-
-/* Stilovi za Blog List stranicu */
-.blog-list-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  margin-bottom: 3rem;
-  font-weight: 800;
-  color: #edf2f7;
-  text-align: center;
-  letter-spacing: -0.025em;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.blog-list-error {
-  color: #a0aec0;
-  text-align: center;
-  font-size: 1.1rem;
-  margin: 2rem 0;
-  position: relative;
-}
-
-.blog-list-error.loading::before {
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 3px solid #63b3ed;
-  border-top: 3px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-right: 0.5rem;
-  vertical-align: middle;
-}
-
-.blog-list-grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.blog-list-item {
-  background-color: #2d3748;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 0.5s ease-in-out;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.blog-list-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.blog-list-read-more {
-  color: #63b3ed;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color 0.2s ease;
-}
-
-.blog-list-read-more:hover {
-  color: #90cdf4;
 }
 
 /* Stilovi za Navbar */
@@ -278,7 +102,6 @@ h1, h2, h3 {
   background: linear-gradient(45deg, #63b3ed, #90cdf4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: rotateLogo 3s ease-in-out infinite;
 }
 
 .navbar-symbols {
@@ -294,20 +117,20 @@ h1, h2, h3 {
 
 @media (min-width: 768px) {
   .symbol {
-    font-size: 1.5rem; /* Veća veličina na ekranima širine 768px i više */
+    font-size: 1.5rem;
   }
 }
 
-.symbol-1 { color: #63b3ed; animation-delay: 0s; } /* Plava */
-.symbol-2 { color: #90cdf4; animation-delay: 0.15s; } /* Svjetlija plava */
-.symbol-3 { color: #a0aec0; animation-delay: 0.3s; } /* Siva */
-.symbol-4 { color: #f687b3; animation-delay: 0.45s; } /* Ružičasta */
-.symbol-5 { color: #68d391; animation-delay: 0.6s; } /* Zelena */
-.symbol-6 { color: #ed8936; animation-delay: 0.75s; } /* Narančasta */
-.symbol-7 { color: #b794f4; animation-delay: 0.9s; } /* Ljubičasta */
-.symbol-8 { color: #f6e05e; animation-delay: 1.05s; } /* Žuta */
-.symbol-9 { color: #f56565; animation-delay: 1.2s; } /* Crvena */
-.symbol-10 { color: #b2f5ea; animation-delay: 1.35s; } /* Tirkizna */
+.symbol-1 { color: #63b3ed; animation-delay: 0s; }
+.symbol-2 { color: #90cdf4; animation-delay: 0.15s; }
+.symbol-3 { color: #a0aec0; animation-delay: 0.3s; }
+.symbol-4 { color: #f687b3; animation-delay: 0.45s; }
+.symbol-5 { color: #68d391; animation-delay: 0.6s; }
+.symbol-6 { color: #ed8936; animation-delay: 0.75s; }
+.symbol-7 { color: #b794f4; animation-delay: 0.9s; }
+.symbol-8 { color: #f6e05e; animation-delay: 1.05s; }
+.symbol-9 { color: #f56565; animation-delay: 1.2s; }
+.symbol-10 { color: #b2f5ea; animation-delay: 1.35s; }
 
 .hamburger {
   display: flex;
@@ -385,7 +208,7 @@ h1, h2, h3 {
   width: 100%;
   text-align: center;
   background-color: #2d3748;
-  color: #a0aec0;
+  color: #e2e8f0;
   font-size: 0.9rem;
   animation: fadeIn 1s ease-in-out;
   box-sizing: border-box;
@@ -393,6 +216,7 @@ h1, h2, h3 {
 
 .footer-text {
   margin-bottom: 1rem;
+  font-family: var(--font-mono);
 }
 
 .footer-links {
@@ -434,6 +258,11 @@ h1, h2, h3 {
   overflow-wrap: break-word;
   word-break: break-word;
   max-width: 100%;
+  font-family: var(--font-mono);
+}
+
+.hero-title:hover {
+  animation: glitch 0.3s linear infinite;
 }
 
 @media (max-width: 768px) {
@@ -445,7 +274,6 @@ h1, h2, h3 {
 
 .hero-title-typed {
   display: inline-block;
-  font-family: var(--font-mono);
   letter-spacing: 0.05em;
 }
 
@@ -476,6 +304,13 @@ h1, h2, h3 {
   animation: fadeIn 1s ease-in-out 0.3s both;
 }
 
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .hero-button {
   padding: 0.75rem 2rem;
   font-size: 1.1rem;
@@ -492,6 +327,104 @@ h1, h2, h3 {
 .hero-button:hover {
   background-color: #90cdf4;
   transform: scale(1.05);
+}
+
+/* Stilovi za About stranicu */
+.about-section {
+  flex: 1;
+  padding: 3rem 0;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.about-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .about-header {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+.about-title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 800;
+  color: #edf2f7;
+  letter-spacing: -0.025em;
+  font-family: var(--font-mono);
+  margin: 0;
+}
+
+.about-content {
+  background-color: #2d3748;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.about-subtitle {
+  margin-top: 2.5rem;
+  font-size: 1.8rem;
+  color: #edf2f7;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  margin-bottom: 1rem;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+.skills-list li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.skills-list li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: #63b3ed;
+}
+
+.final-thought {
+  font-style: italic;
+  color: #a0aec0;
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* Animacije */
@@ -544,23 +477,30 @@ h1, h2, h3 {
   }
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
 
-@keyframes rotateLogo {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(10deg); }
-  100% { transform: rotate(0deg); }
-}
-
 @keyframes fadeInSymbols {
   from { opacity: 0; transform: translateX(5px); }
   to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, 0); }
+  80% { transform: translate(2px, 0); }
+  100% { transform: translate(0); }
+}
+
+/* Podrška za smanjeno kretanje */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title, .navbar-logo, .typing-cursor, .hamburger-line, .symbol,
+  .about-header, .about-content, .profile-img, .final-thought {
+    animation: none;
+    transition: none;
+  }
 }
