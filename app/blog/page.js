@@ -10,6 +10,7 @@ export default function BlogPage() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('All');
 
   useEffect(() => {
     async function fetchPosts() {
@@ -35,21 +36,20 @@ export default function BlogPage() {
     fetchPosts();
   }, []);
 
-  // Grupiranje postova po kategorijama
-  const categories = {};
-  posts.forEach(post => {
-    const category = post.category || 'Uncategorized';
-    if (!categories[category]) {
-      categories[category] = [];
-    }
-    categories[category].push(post);
-  });
+  // Jedinstvene kategorije i "All" opcija
+  const categories = ['All', ...new Set(posts.map(post => post.category || 'Uncategorized'))];
+
+  // Filtrirani postovi prema aktivnom tabu
+  const filteredPosts = activeTab === 'All'
+    ? posts
+    : posts.filter(post => post.category === activeTab);
 
   // Ikone za kategorije
   const categoryIcons = {
     'Blog Development': '🛠️',
     'Python': '🐍',
-    'Uncategorized': '📝'
+    'Uncategorized': '📝',
+    'All': '🌐'
   };
 
   return (
@@ -78,25 +78,42 @@ export default function BlogPage() {
           ) : posts.length === 0 ? (
             <p className="blog-list-error">No blog posts found.</p>
           ) : (
-            <div className="blog-categories">
-              {Object.entries(categories).map(([category, categoryPosts], index) => (
-                <div
-                  key={category}
-                  className="blog-category-section"
-                  role="region"
-                  aria-labelledby={`category-title-${index}`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <h2 className="blog-category-title" id={`category-title-${index}`}>
+            <>
+              <div className="blog-tabs" role="tablist">
+                {categories.map((category, index) => (
+                  <button
+                    key={category}
+                    className={`blog-tab ${activeTab === category ? 'blog-tab-active' : ''}`}
+                    onClick={() => setActiveTab(category)}
+                    role="tab"
+                    aria-selected={activeTab === category}
+                    aria-controls={`tabpanel-${index}`}
+                    id={`tab-${index}`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
                     {categoryIcons[category] || '📝'} {category}
-                  </h2>
-                  <div className="blog-category-grid">
-                    {categoryPosts.map((post, postIndex) => (
+                  </button>
+                ))}
+              </div>
+              <div
+                className="blog-tab-content"
+                id="blog-tab-content"
+                role="tabpanel"
+                aria-labelledby={`tab-${categories.indexOf(activeTab)}`}
+              >
+                <div className="blog-category-grid">
+                  {filteredPosts.length === 0 ? (
+                    <p className="blog-list-error">No posts in this category.</p>
+                  ) : (
+                    filteredPosts.map((post, index) => (
                       <article
                         key={post.slug}
                         className="blog-list-item"
-                        style={{ animationDelay: `${postIndex * 0.1}s` }}
+                        style={{ animationDelay: `${index * 0.1}s` }}
                       >
+                        <div className="blog-post-badge">
+                          {categoryIcons[post.category] || '📝'} {post.category}
+                        </div>
                         <h3 className="blog-post-title">
                           <Link
                             href={`/blog/posts/${post.slug}`}
@@ -127,11 +144,11 @@ export default function BlogPage() {
                           </svg>
                         </Link>
                       </article>
-                    ))}
-                  </div>
+                    ))
+                  )}
                 </div>
-              ))}
-            </div>
+              </div>
+            </>
           )}
         </section>
       </Container>
