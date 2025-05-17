@@ -35,87 +35,105 @@ export default function BlogPage() {
     fetchPosts();
   }, []);
 
+  // Grupiranje postova po kategorijama
+  const categories = {};
+  posts.forEach(post => {
+    const category = post.category || 'Uncategorized';
+    if (!categories[category]) {
+      categories[category] = [];
+    }
+    categories[category].push(post);
+  });
+
+  // Ikone za kategorije
+  const categoryIcons = {
+    'Blog Development': '🛠️',
+    'Python': '🐍',
+    'Uncategorized': '📝'
+  };
+
   return (
-    <main style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: '#1a202c',
-      color: '#e2e8f0',
-      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
-    }}>
+    <main
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: '#1a202c',
+        color: '#e2e8f0',
+        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+      }}
+    >
       <Navbar />
 
       <Container>
-        <h1 className="blog-list-title">
-          📝 Developer Blog
-        </h1>
+        <section className="blog-section" role="region" aria-labelledby="blog-title">
+          <h1 className="blog-list-title" id="blog-title">
+            📝 Developer Blog
+          </h1>
 
-        {error ? (
-          <p className="blog-list-error">
-            Error: {error}
-          </p>
-        ) : loading ? (
-          <p className="blog-list-error loading">
-            Loading posts...
-          </p>
-        ) : posts.length === 0 ? (
-          <p className="blog-list-error">
-            No blog posts found.
-          </p>
-        ) : (
-          <div className="blog-list-grid">
-            {posts.map((post, index) => (
-              <div 
-                key={post.slug} 
-                className="blog-list-item"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <h2 style={{ 
-                  fontSize: '1.6rem',
-                  marginBottom: '0.75rem',
-                  fontWeight: 700,
-                  lineHeight: '1.3'
-                }}>
-                  <Link 
-                    href={`/blog/posts/${post.slug}`} 
-                    style={{ 
-                      textDecoration: 'none', 
-                      color: '#63b3ed',
-                    }}
-                  >
-                    {post.title}
-                  </Link>
-                </h2>
-                <p style={{ 
-                  color: '#a0aec0',
-                  fontSize: '0.9rem',
-                  marginBottom: '0.75rem',
-                  fontStyle: 'italic'
-                }}>
-                  {post.date}
-                </p>
-                <p style={{ 
-                  color: '#e2e8f0',
-                  lineHeight: '1.6',
-                  fontSize: '1rem',
-                  marginBottom: '1rem'
-                }}>
-                  {post.excerpt}
-                </p>
-                <Link 
-                  href={`/blog/posts/${post.slug}`} 
-                  className="blog-list-read-more"
+          {error ? (
+            <p className="blog-list-error">Error: {error}</p>
+          ) : loading ? (
+            <p className="blog-list-error loading">Loading posts...</p>
+          ) : posts.length === 0 ? (
+            <p className="blog-list-error">No blog posts found.</p>
+          ) : (
+            <div className="blog-categories">
+              {Object.entries(categories).map(([category, categoryPosts], index) => (
+                <div
+                  key={category}
+                  className="blog-category-section"
+                  role="region"
+                  aria-labelledby={`category-title-${index}`}
+                  style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  Read more 
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            ))}
-          </div>
-        )}
+                  <h2 className="blog-category-title" id={`category-title-${index}`}>
+                    {categoryIcons[category] || '📝'} {category}
+                  </h2>
+                  <div className="blog-category-grid">
+                    {categoryPosts.map((post, postIndex) => (
+                      <article
+                        key={post.slug}
+                        className="blog-list-item"
+                        style={{ animationDelay: `${postIndex * 0.1}s` }}
+                      >
+                        <h3 className="blog-post-title">
+                          <Link
+                            href={`/blog/posts/${post.slug}`}
+                            className="blog-post-link"
+                            aria-label={`Read blog post: ${post.title}`}
+                          >
+                            {post.title}
+                          </Link>
+                        </h3>
+                        <p className="blog-post-date">{post.date}</p>
+                        <p className="blog-post-excerpt">{post.excerpt}</p>
+                        <Link
+                          href={`/blog/posts/${post.slug}`}
+                          className="blog-list-read-more"
+                          aria-label={`Read more about ${post.title}`}
+                        >
+                          Read more
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
       </Container>
 
       <Footer />

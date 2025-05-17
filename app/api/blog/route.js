@@ -5,19 +5,22 @@ export async function GET() {
         title: "🐍 My First Steps in Python: Up to if/else/elif",
         slug: "learning-python-basics",
         date: "2025-05-01",
-        excerpt: "What I learned in my first weeks of Python — from variables to if/elif/else logic."
+        excerpt: "What I learned in my first weeks of Python — from variables to if/elif/else logic.",
+        category: "Python"
       },
       {
         title: "Why I Added Backend",
         slug: "why-i-added-backend",
         date: "2025-05-01",
-        excerpt: "A breakdown of why I structured my blog using both frontend and backend — and how it helps with scalability."
+        excerpt: "A breakdown of why I structured my blog using both frontend and backend — and how it helps with scalability.",
+        category: "Blog Development"
       },
       {
         title: "How I Built This Blog",
         slug: "how-i-built-this-blog",
         date: "2025-04-30",
-        excerpt: "Step-by-step guide of how I created and deployed my personal dev blog."
+        excerpt: "Step-by-step guide of how I created and deployed my personal dev blog.",
+        category: "Blog Development"
       }
     ];
 
