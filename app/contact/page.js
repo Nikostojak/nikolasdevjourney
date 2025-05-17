@@ -22,25 +22,13 @@ export default function ContactPage() {
       <Navbar />
 
       <Container>
-        <section
-          style={{
-            flex: 1,
-            padding: '3rem 0',
-            maxWidth: '800px',
-            margin: '0 auto',
-          }}
-        >
-          <h1 className="contact-title">
+        <section className="contact-section" role="region" aria-labelledby="contact-title">
+          <h1 className="contact-title" id="contact-title">
             📬 Contact
           </h1>
           <div className="contact-content">
-            <p style={{ 
-              fontSize: '1.1rem', 
-              lineHeight: '1.8', 
-              marginBottom: '1.5rem',
-              textAlign: 'center'
-            }}>
-              I’d love to hear from you! You can connect with me directly via:
+            <p>
+              I&apos;d love to hear from you! You can connect with me directly via:
             </p>
             <ul className="contact-links">
               {[
@@ -53,9 +41,10 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="contact-link"
+                    aria-label={`Visit my ${platform} profile`}
                   >
                     {icon} {platform}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </a>

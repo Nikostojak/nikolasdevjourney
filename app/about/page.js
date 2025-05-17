@@ -57,14 +57,6 @@ export default function AboutPage() {
               to build my first real project soon and look forward to everything I&apos;ll learn along the way.
             </p>
 
-            <h2 className="about-subtitle">🛠️ My Skills</h2>
-            <ul className="skills-list">
-              <li>Python: Learning Flask and Pandas for web and data projects</li>
-              <li>JavaScript: Building interactive UIs with React and Next.js</li>
-              <li>HTML/CSS: Crafting responsive, accessible web designs</li>
-              <li>Git: Version control for collaborative development</li>
-            </ul>
-
             <h2 className="about-subtitle">💬 Final Thought</h2>
             <p className="final-thought">
               From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started.
