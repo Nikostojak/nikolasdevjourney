@@ -11,6 +11,7 @@ export default function BlogPage() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     async function fetchPosts() {
@@ -39,10 +40,16 @@ export default function BlogPage() {
   // Jedinstvene kategorije i "All" opcija
   const categories = ['All', ...new Set(posts.map(post => post.category || 'Uncategorized'))];
 
-  // Filtrirani postovi prema aktivnom tabu
-  const filteredPosts = activeTab === 'All'
-    ? posts
-    : posts.filter(post => post.category === activeTab);
+  // Filtrirani postovi prema tabu i pretraživanju
+  const filteredPosts = posts
+    .filter(post => activeTab === 'All' || post.category === activeTab)
+    .filter(post =>
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+  // Istaknuti post
+  const featuredPost = posts.find(post => post.isFeatured);
 
   // Ikone za kategorije
   const categoryIcons = {
@@ -79,6 +86,54 @@ export default function BlogPage() {
             <p className="blog-list-error">No blog posts found.</p>
           ) : (
             <>
+              {featuredPost && (
+                <div className="blog-featured-post">
+                  <article className="blog-featured-item">
+                    <div className="blog-post-badge">
+                      {categoryIcons[featuredPost.category] || '📝'} {featuredPost.category}
+                    </div>
+                    <h2 className="blog-featured-title">
+                      <Link
+                        href={`/blog/posts/${featuredPost.slug}`}
+                        className="blog-post-link"
+                        aria-label={`Read featured blog post: ${featuredPost.title}`}
+                      >
+                        {featuredPost.title}
+                      </Link>
+                    </h2>
+                    <p className="blog-post-date">{featuredPost.date}</p>
+                    <p className="blog-post-excerpt">{featuredPost.excerpt}</p>
+                    <Link
+                      href={`/blog/posts/${featuredPost.slug}`}
+                      className="blog-list-read-more"
+                      aria-label={`Read more about ${featuredPost.title}`}
+                    >
+                      Read more
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </article>
+                </div>
+              )}
+
+              <input
+                type="text"
+                className="blog-search-input"
+                placeholder="Search posts... (e.g., Python, Next.js)"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                aria-label="Search blog posts"
+              />
+
               <div className="blog-tabs" role="tablist">
                 {categories.map((category, index) => (
                   <button
@@ -95,6 +150,7 @@ export default function BlogPage() {
                   </button>
                 ))}
               </div>
+
               <div
                 className="blog-tab-content"
                 id="blog-tab-content"
@@ -103,7 +159,7 @@ export default function BlogPage() {
               >
                 <div className="blog-category-grid">
                   {filteredPosts.length === 0 ? (
-                    <p className="blog-list-error">No posts in this category.</p>
+                    <p className="blog-list-error">No posts match your search or category.</p>
                   ) : (
                     filteredPosts.map((post, index) => (
                       <article

@@ -6,6 +6,8 @@ export const metadata = {
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import Container from '../../../components/Container';
+import { Prism } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function BlogPost() {
   return (
@@ -42,7 +44,7 @@ export default function BlogPost() {
 
             <ul>
               <li><strong>Printing:</strong> <code>print(&quot;Hello, world!&quot;)</code></li>
-              <li><strong>Variables:</strong> <code>x = 10</code>, <code>name = &quot;Nikolas&quot;</code></li>
+              <li><strong>Variables:</strong> <code>x = 10</code>, <code>name = "Nikolas"</code></li>
               <li><strong>Types:</strong> Strings, integers, booleans</li>
               <li><strong>Operators:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>==</code>, <code>!=</code></li>
               <li><strong>User input:</strong> <code>input()</code> for dynamic data</li>
@@ -53,7 +55,11 @@ export default function BlogPost() {
               One of the biggest breakthroughs for me was learning how to make the computer &quot;decide&quot; something based on conditions. This is where <code>if</code>, <code>elif</code>, and <code>else</code> come into play.
             </p>
 
-            <div className="blog-post-code">
+            <Prism
+              language="python"
+              style={oneDark}
+              className="blog-post-code"
+            >
               {`age = 18
 if age >= 18:
     print("You are an adult.")
@@ -61,7 +67,7 @@ elif age >= 13:
     print("You are a teenager.")
 else:
     print("You are a child")`}
-            </div>
+            </Prism>
 
             <p>
               This structure gave me control over how a program should respond. It felt like having a conversation with the computer — giving it choices and instructing it on what to do next.

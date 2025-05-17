@@ -6,21 +6,27 @@ export async function GET() {
         slug: "learning-python-basics",
         date: "2025-05-01",
         excerpt: "What I learned in my first weeks of Python — from variables to if/elif/else logic.",
-        category: "Python"
+        category: "Python",
+        tags: ["Python", "Beginner"],
+        isFeatured: false
       },
       {
         title: "Why I Added Backend",
         slug: "why-i-added-backend",
         date: "2025-05-01",
         excerpt: "A breakdown of why I structured my blog using both frontend and backend — and how it helps with scalability.",
-        category: "Blog Development"
+        category: "Blog Development",
+        tags: ["Next.js", "Backend", "API"],
+        isFeatured: false
       },
       {
         title: "How I Built This Blog",
         slug: "how-i-built-this-blog",
         date: "2025-04-30",
         excerpt: "Step-by-step guide of how I created and deployed my personal dev blog.",
-        category: "Blog Development"
+        category: "Blog Development",
+        tags: ["Next.js", "React", "Vercel"],
+        isFeatured: true
       }
     ];
 
