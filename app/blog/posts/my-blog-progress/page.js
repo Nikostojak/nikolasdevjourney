@@ -105,7 +105,7 @@ export const metadata = {
               </p>
               <ul>
                 <li><strong>Animations:</strong> Subtle <code>fadeInUp</code> effects for posts and tabs.</li>
-                <li><strong>Accessibility:</strong> ARIA roles like <code>role="tablist"</code> and <code>aria-selected</code> for screen readers.</li>
+                <li><strong>Accessibility:</strong> ARIA roles like <code>role=&quod;tablist&quod;</code> and <code>aria-selected</code> for screen readers.</li>
                 <li><strong>Responsiveness:</strong> Grid layouts adapt to mobile screens seamlessly.</li>
               </ul>
   
