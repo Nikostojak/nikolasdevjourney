@@ -30,7 +30,7 @@ export default function AboutPage() {
               className="profile-img"
             />
             <h1 className="about-title" id="about-title">
-              🛤️ My Journey
+              My Journey
             </h1>
           </div>
 

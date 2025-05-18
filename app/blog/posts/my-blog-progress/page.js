@@ -94,7 +94,7 @@ export const metadata = {
                 To make the blog more engaging, I introduced interactive features. The biggest upgrades were category tabs, a search bar, and a featured post section. These additions made it easier for visitors—especially potential employers—to explore my work.
               </p>
               <ul>
-                <li><strong>Tabs:</strong> Filter posts by categories like &quod;Blog Development&quod; and &quod;Python&quod;.</li>
+                <li><strong>Tabs:</strong> Filter posts by categories like &quot;Blog Development&quot; and &quot;Python&quot;.</li>
                 <li><strong>Search:</strong> A search bar to quickly find posts by title or excerpt.</li>
                 <li><strong>Featured post:</strong> Highlights my best work at the top of the blog page.</li>
               </ul>
@@ -105,7 +105,7 @@ export const metadata = {
               </p>
               <ul>
                 <li><strong>Animations:</strong> Subtle <code>fadeInUp</code> effects for posts and tabs.</li>
-                <li><strong>Accessibility:</strong> ARIA roles like <code>role=&quod;tablist&quod;</code> and <code>aria-selected</code> for screen readers.</li>
+                <li><strong>Accessibility:</strong> ARIA roles like <code>role=&quot;tablist&quot;</code> and <code>aria-selected</code> for screen readers.</li>
                 <li><strong>Responsiveness:</strong> Grid layouts adapt to mobile screens seamlessly.</li>
               </ul>
   

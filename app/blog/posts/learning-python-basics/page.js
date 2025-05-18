@@ -26,7 +26,7 @@ export default function BlogPost() {
       <Container>
         <article className="blog-post-section" role="article" aria-labelledby="blog-post-title">
           <h1 className="blog-post-title" id="blog-post-title">
-            🐍 My First Steps in Python: From Hello World to if/else/elif
+            My First Steps in Python: From Hello World to if/else/elif
           </h1>
 
           <div className="blog-post-content">
