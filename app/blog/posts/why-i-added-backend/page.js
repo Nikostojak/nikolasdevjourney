@@ -6,8 +6,6 @@ export const metadata = {
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import Container from '../../../components/Container';
-import { Prism } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function BlogPost() {
   return (
@@ -47,11 +45,7 @@ export default function BlogPost() {
             </ul>
 
             <h2 className="blog-post-subtitle">🧱 Folder Structure Update</h2>
-            <Prism
-              language="plaintext"
-              style={oneDark}
-              className="blog-post-code"
-            >
+            <div className="blog-post-code">
               {`/app
   /api
     /blog
@@ -61,7 +55,7 @@ export default function BlogPost() {
     /posts
       /why-i-added-backend
         page.js`}
-            </Prism>
+            </div>
 
             <h2 className="blog-post-subtitle">🔌 Connecting API + Frontend</h2>
             <p>
