@@ -2,6 +2,15 @@ export async function GET() {
   try {
     const posts = [
       {
+        title: "My Python Journey: From Beginner to Advanced",
+        slug: "my-python-journey",
+        date: "2025-05-18",
+        excerpt: "From beginner to advanced Python developer, mastering data processing, automation, and more.",
+        category: "Python",
+        tags: ["Python", "Data Analysis", "Web Development"],
+        isFeatured: false
+      },
+      {
         title: "My Blog Progress: From Simple Beginnings to an Advanced Portfolio",
         slug: "my-blog-progress",
         date: "2025-05-18",
@@ -11,7 +20,7 @@ export async function GET() {
         isFeatured: false
       },
       {
-        title: "My First Steps in Python: Up to if/else/elif",
+        title: "🐍 My First Steps in Python: Up to if/else/elif",
         slug: "learning-python-basics",
         date: "2025-05-01",
         excerpt: "What I learned in my first weeks of Python — from variables to if/elif/else logic.",
