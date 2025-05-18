@@ -26,7 +26,7 @@ export const metadata = {
         <Container>
           <article className="blog-post-section" role="article" aria-labelledby="blog-post-title">
             <h1 className="blog-post-title" id="blog-post-title">
-              My Python Journey: From Beginner to Advanced
+            My Python Journey: From Beginner to Advanced
             </h1>
   
             <div className="blog-post-content">
