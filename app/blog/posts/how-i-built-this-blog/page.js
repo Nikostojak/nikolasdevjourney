@@ -6,6 +6,8 @@ export const metadata = {
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import Container from '../../../components/Container';
+import { Prism } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function BlogPost() {
   return (
@@ -47,7 +49,11 @@ export default function BlogPost() {
             </ul>
 
             <h2 className="blog-post-subtitle">🗂️ Folder Structure</h2>
-            <div className="blog-post-code">
+            <Prism
+              language="plaintext"
+              style={oneDark}
+              className="blog-post-code"
+            >
               {`/app
   /about
     page.js
@@ -64,7 +70,7 @@ export default function BlogPost() {
 globals.css
 layout.js
 page.js`}
-            </div>
+            </Prism>
 
             <h2 className="blog-post-subtitle">🎨 Styling & Design</h2>
             <p>

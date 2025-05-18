@@ -6,6 +6,8 @@ export const metadata = {
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import Container from '../../../components/Container';
+import { Prism } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function BlogPost() {
   return (
@@ -45,7 +47,11 @@ export default function BlogPost() {
             </ul>
 
             <h2 className="blog-post-subtitle">🧱 Folder Structure Update</h2>
-            <div className="blog-post-code">
+            <Prism
+              language="plaintext"
+              style={oneDark}
+              className="blog-post-code"
+            >
               {`/app
   /api
     /blog
@@ -55,11 +61,11 @@ export default function BlogPost() {
     /posts
       /why-i-added-backend
         page.js`}
-            </div>
+            </Prism>
 
             <h2 className="blog-post-subtitle">🔌 Connecting API + Frontend</h2>
             <p>
-              On the <code>/blog</code> page, I fetch all blog posts using <code>fetch(&apos;/api/blog&apos;)</code>. This lets me render new posts automatically
+              On the <code>/blog</code> page, I fetch all blog posts using <code>fetch(&quot;/api/blog&quot;)</code>. This lets me render new posts automatically
               just by updating the backend response — no need to manually edit the page.
             </p>
 
