@@ -17,6 +17,8 @@ export default function ProjectsPage() {
         fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
         backgroundColor: '#1a202c',
         color: '#e2e8f0',
+        width: '100%',
+        boxSizing: 'border-box',
       }}
     >
       <Navbar />
@@ -25,9 +27,11 @@ export default function ProjectsPage() {
           <h1 className="projects-title" id="projects-title">
             My Projects
           </h1>
-          <p className="projects-description">
-            Coming soon... Stay tuned for a showcase of my projects in Python, JavaScript, and web development!
-          </p>
+          <div className="projects-content">
+            <p className="projects-description">
+              Coming soon... Stay tuned for a showcase of my projects in Python, JavaScript, and web development!
+            </p>
+          </div>
         </section>
       </Container>
       <Footer />
