@@ -11,10 +11,9 @@ export default function BlogPage() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('All');
-  const [activeTag, setActiveTag] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 3;
+  const postsPerPage = 9;
 
   useEffect(() => {
     async function fetchPosts() {
@@ -40,14 +39,12 @@ export default function BlogPage() {
     fetchPosts();
   }, []);
 
-  // Jedinstvene kategorije i tagovi
+  // Jedinstvene kategorije
   const categories = ['All', ...new Set(posts.map(post => post.category || 'Uncategorized'))];
-  const tags = ['All', ...new Set(posts.flatMap(post => post.tags || []))];
 
-  // Filtrirani postovi prema tabu, tagu i pretraživanju
+  // Filtrirani postovi prema tabu i pretraživanju
   const filteredPosts = posts
     .filter(post => activeTab === 'All' || post.category === activeTab)
-    .filter(post => activeTag === 'All' || (post.tags && post.tags.includes(activeTag)))
     .filter(post =>
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
@@ -146,9 +143,9 @@ export default function BlogPage() {
               <input
                 type="text"
                 className="blog-search-input"
-                placeholder="Search posts... (e.g., Python, Next.js)"
+                placeholder="Search posts... (e.g., Python, Progress)"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
                 aria-label="Search blog posts"
               />
 
@@ -169,23 +166,6 @@ export default function BlogPage() {
                 ))}
               </div>
 
-              <div className="blog-tags" role="tablist">
-                {tags.map((tag, index) => (
-                  <button
-                    key={tag}
-                    className={`blog-tag ${activeTag === tag ? 'blog-tag-active' : ''}`}
-                    onClick={() => { setActiveTag(tag); setCurrentPage(1); }}
-                    role="tab"
-                    aria-selected={activeTag === tag}
-                    aria-controls={`tagpanel-${index}`}
-                    id={`tag-${index}`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-
               <div
                 className="blog-tab-content"
                 id="blog-tab-content"
@@ -194,7 +174,7 @@ export default function BlogPage() {
               >
                 <div className="blog-category-grid">
                   {paginatedPosts.length === 0 ? (
-                    <p className="blog-list-error">No posts match your search, category, or tag.</p>
+                    <p className="blog-list-error">No posts match your search or category.</p>
                   ) : (
                     paginatedPosts.map((post, index) => (
                       <article
