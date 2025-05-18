@@ -5,7 +5,7 @@ export async function GET() {
         title: "My First Project: A Chess Openings Web App",
         slug: "my-first-project",
         date: "2025-05-19",
-        excerpt: "Announcing my first portfolio project: a web app for tracking chess openings, with a detailed development plan.",
+        excerpt: "Announcing my first project: a web app for tracking chess openings, with a detailed development plan.",
         category: "Projects",
         tags: ["Chess", "Web Development", "Projects"],
         isFeatured: false
