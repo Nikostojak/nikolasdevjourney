@@ -11,7 +11,10 @@ export default function BlogPage() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('All');
+  const [activeTag, setActiveTag] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 3;
 
   useEffect(() => {
     async function fetchPosts() {
@@ -37,19 +40,25 @@ export default function BlogPage() {
     fetchPosts();
   }, []);
 
-  // Jedinstvene kategorije i "All" opcija
+  // Jedinstvene kategorije i tagovi
   const categories = ['All', ...new Set(posts.map(post => post.category || 'Uncategorized'))];
+  const tags = ['All', ...new Set(posts.flatMap(post => post.tags || []))];
 
-  // Filtrirani postovi prema tabu i pretraživanju
+  // Filtrirani postovi prema tabu, tagu i pretraživanju
   const filteredPosts = posts
     .filter(post => activeTab === 'All' || post.category === activeTab)
+    .filter(post => activeTag === 'All' || (post.tags && post.tags.includes(activeTag)))
     .filter(post =>
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-  // Istaknuti post
-  const featuredPost = posts.find(post => post.isFeatured);
+  // Paginacija
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage
+  );
 
   // Ikone za kategorije
   const categoryIcons = {
@@ -57,6 +66,15 @@ export default function BlogPage() {
     'Python': '🐍',
     'Uncategorized': '📝',
     'All': '🌐'
+  };
+
+  // Navigacija paginacije
+  const handlePrevious = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
   return (
@@ -86,27 +104,27 @@ export default function BlogPage() {
             <p className="blog-list-error">No blog posts found.</p>
           ) : (
             <>
-              {featuredPost && (
+              {posts.find(post => post.isFeatured) && (
                 <div className="blog-featured-post">
                   <article className="blog-featured-item">
                     <div className="blog-post-badge">
-                      {categoryIcons[featuredPost.category] || '📝'} {featuredPost.category}
+                      {categoryIcons[posts.find(post => post.isFeatured).category] || '📝'} {posts.find(post => post.isFeatured).category}
                     </div>
                     <h2 className="blog-featured-title">
                       <Link
-                        href={`/blog/posts/${featuredPost.slug}`}
+                        href={`/blog/posts/${posts.find(post => post.isFeatured).slug}`}
                         className="blog-post-link"
-                        aria-label={`Read featured blog post: ${featuredPost.title}`}
+                        aria-label={`Read featured blog post: ${posts.find(post => post.isFeatured).title}`}
                       >
-                        {featuredPost.title}
+                        {posts.find(post => post.isFeatured).title}
                       </Link>
                     </h2>
-                    <p className="blog-post-date">{featuredPost.date}</p>
-                    <p className="blog-post-excerpt">{featuredPost.excerpt}</p>
+                    <p className="blog-post-date">{posts.find(post => post.isFeatured).date}</p>
+                    <p className="blog-post-excerpt">{posts.find(post => post.isFeatured).excerpt}</p>
                     <Link
-                      href={`/blog/posts/${featuredPost.slug}`}
+                      href={`/blog/posts/${posts.find(post => post.isFeatured).slug}`}
                       className="blog-list-read-more"
-                      aria-label={`Read more about ${featuredPost.title}`}
+                      aria-label={`Read more about ${posts.find(post => post.isFeatured).title}`}
                     >
                       Read more
                       <svg
@@ -139,7 +157,7 @@ export default function BlogPage() {
                   <button
                     key={category}
                     className={`blog-tab ${activeTab === category ? 'blog-tab-active' : ''}`}
-                    onClick={() => setActiveTab(category)}
+                    onClick={() => { setActiveTab(category); setCurrentPage(1); }}
                     role="tab"
                     aria-selected={activeTab === category}
                     aria-controls={`tabpanel-${index}`}
@@ -151,6 +169,23 @@ export default function BlogPage() {
                 ))}
               </div>
 
+              <div className="blog-tags" role="tablist">
+                {tags.map((tag, index) => (
+                  <button
+                    key={tag}
+                    className={`blog-tag ${activeTag === tag ? 'blog-tag-active' : ''}`}
+                    onClick={() => { setActiveTag(tag); setCurrentPage(1); }}
+                    role="tab"
+                    aria-selected={activeTag === tag}
+                    aria-controls={`tagpanel-${index}`}
+                    id={`tag-${index}`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+
               <div
                 className="blog-tab-content"
                 id="blog-tab-content"
@@ -158,10 +193,10 @@ export default function BlogPage() {
                 aria-labelledby={`tab-${categories.indexOf(activeTab)}`}
               >
                 <div className="blog-category-grid">
-                  {filteredPosts.length === 0 ? (
-                    <p className="blog-list-error">No posts match your search or category.</p>
+                  {paginatedPosts.length === 0 ? (
+                    <p className="blog-list-error">No posts match your search, category, or tag.</p>
                   ) : (
-                    filteredPosts.map((post, index) => (
+                    paginatedPosts.map((post, index) => (
                       <article
                         key={post.slug}
                         className="blog-list-item"
@@ -203,6 +238,30 @@ export default function BlogPage() {
                     ))
                   )}
                 </div>
+
+                {totalPages > 1 && (
+                  <div className="blog-pagination">
+                    <button
+                      className={`blog-pagination-button ${currentPage === 1 ? 'disabled' : ''}`}
+                      onClick={handlePrevious}
+                      disabled={currentPage === 1}
+                      aria-label="Go to previous page"
+                    >
+                      Previous
+                    </button>
+                    <span className="blog-pagination-info">
+                      Page {currentPage} of {totalPages}
+                    </span>
+                    <button
+                      className={`blog-pagination-button ${currentPage === totalPages ? 'disabled' : ''}`}
+                      onClick={handleNext}
+                      disabled={currentPage === totalPages}
+                      aria-label="Go to next page"
+                    >
+                      Next
+                    </button>
+                  </div>
+                )}
               </div>
             </>
           )}

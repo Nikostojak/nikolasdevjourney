@@ -564,7 +564,7 @@ h1, h2, h3 {
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   background-color: #2d3748;
   padding: 0.5rem;
   border-radius: 8px;
@@ -605,6 +605,57 @@ h1, h2, h3 {
 }
 
 .blog-tab-active {
+  background-color: #63b3ed;
+  color: #ffffff;
+  border-color: #63b3ed;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  background-color: #2d3748;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .blog-tags {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.blog-tag {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: #e2e8f0;
+  background-color: #1a202c;
+  border: 1px solid #4a5568;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.blog-tag:hover {
+  background-color: #4a5568;
+  color: #90cdf4;
+  transform: translateY(-2px);
+}
+
+.blog-tag:focus {
+  outline: 2px solid #63b3ed;
+  outline-offset: 2px;
+}
+
+.blog-tag-active {
   background-color: #63b3ed;
   color: #ffffff;
   border-color: #63b3ed;
@@ -706,6 +757,52 @@ h1, h2, h3 {
 
 .blog-list-read-more:hover svg {
   transform: translateX(3px);
+}
+
+.blog-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.blog-pagination-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  color: #e2e8f0;
+  background-color: #1a202c;
+  border: 1px solid #63b3ed;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.blog-pagination-button:hover {
+  background-color: #63b3ed;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.blog-pagination-button:focus {
+  outline: 2px solid #63b3ed;
+  outline-offset: 2px;
+}
+
+.blog-pagination-button.disabled {
+  background-color: #4a5568;
+  border-color: #4a5568;
+  color: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.blog-pagination-info {
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  color: #e2e8f0;
 }
 
 /* Stilovi za Blog post stranice */
@@ -855,8 +952,9 @@ h1, h2, h3 {
   .about-header, .about-content, .profile-img, .final-thought,
   .contact-section, .contact-title, .contact-content, .contact-link-item,
   .blog-section, .blog-list-title, .blog-featured-post, .blog-featured-item,
-  .blog-search-input, .blog-tabs, .blog-tab, .blog-tab-content,
-  .blog-category-grid, .blog-list-item, .blog-post-badge,
+  .blog-search-input, .blog-tabs, .blog-tab, .blog-tags, .blog-tag,
+  .blog-tab-content, .blog-category-grid, .blog-list-item, .blog-post-badge,
+  .blog-pagination, .blog-pagination-button,
   .blog-post-section, .blog-post-title, .blog-post-content, .blog-post-quote {
     animation: none;
     transition: none;

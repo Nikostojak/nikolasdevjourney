@@ -2,6 +2,15 @@ export async function GET() {
   try {
     const posts = [
       {
+        title: "My Blog Progress: From Simple Beginnings to an Advanced Portfolio",
+        slug: "my-blog-progress",
+        date: "2025-05-18",
+        excerpt: "Reflecting on the journey from a simple blog to an advanced developer portfolio with modern features.",
+        category: "Blog Development",
+        tags: ["Next.js", "React", "Web Development"],
+        isFeatured: false
+      },
+      {
         title: "🐍 My First Steps in Python: Up to if/else/elif",
         slug: "learning-python-basics",
         date: "2025-05-01",
