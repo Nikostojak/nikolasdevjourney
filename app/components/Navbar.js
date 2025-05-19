@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 export default function Navbar() {
@@ -9,6 +9,7 @@ export default function Navbar() {
   const [displayedSymbols, setDisplayedSymbols] = useState([]);
   const fullSymbols = ['{', '}', '</>', '=>', '&&', '>', '!=', '||', '#', ';'];
   const router = useRouter();
+  const pathname = usePathname();
 
   const typeSymbols = () => {
     setDisplayedSymbols([]); // Resetiraj simbole
@@ -47,6 +48,13 @@ export default function Navbar() {
   const handleLinkClick = (e, page) => {
     e.preventDefault(); // Sprječava trenutnu navigaciju
     const href = page === 'Home' ? '/' : `/${page.toLowerCase()}`;
+    
+    // Ako je trenutna ruta ista kao ciljna, ne radi ništa
+    if (pathname === href) {
+      setIsOpen(false); // Zatvori meni ako je otvoren
+      return;
+    }
+
     console.log(`Navigating to: ${href}`);
     // Pokreni fade-out animaciju
     document.querySelector('main').classList.add('page-transition-exit');
