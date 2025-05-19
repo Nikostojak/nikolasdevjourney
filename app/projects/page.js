@@ -11,6 +11,7 @@ export const metadata = {
 export default function ProjectsPage() {
   return (
     <main
+      className="page-transition"
       style={{
         minHeight: '100vh',
         display: 'flex',

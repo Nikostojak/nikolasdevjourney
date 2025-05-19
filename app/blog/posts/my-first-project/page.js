@@ -10,6 +10,7 @@ export const metadata = {
   export default function BlogPost() {
     return (
       <main
+        className="page-transition"
         style={{
           minHeight: '100vh',
           display: 'flex',

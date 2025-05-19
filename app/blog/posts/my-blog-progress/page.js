@@ -10,6 +10,7 @@ export const metadata = {
   export default function BlogPost() {
     return (
       <main
+        className="page-transition"
         style={{
           minHeight: '100vh',
           display: 'flex',
@@ -26,7 +27,7 @@ export const metadata = {
         <Container>
           <article className="blog-post-section" role="article" aria-labelledby="blog-post-title">
             <h1 className="blog-post-title" id="blog-post-title">
-              📈 My Blog Progress: From Simple Beginnings to an Advanced Portfolio
+            My Blog Progress: From Simple Beginnings to an Advanced Portfolio
             </h1>
   
             <div className="blog-post-content">

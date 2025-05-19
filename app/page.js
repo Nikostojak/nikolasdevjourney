@@ -26,6 +26,7 @@ export default function HomePage() {
 
   return (
     <main
+      className="page-transition"
       style={{
         minHeight: '100vh',
         display: 'flex',

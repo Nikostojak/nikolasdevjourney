@@ -10,6 +10,7 @@ import Container from '../components/Container';
 export default function AboutPage() {
   return (
     <main
+      className="page-transition"
       style={{
         minHeight: '100vh',
         display: 'flex',

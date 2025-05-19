@@ -10,6 +10,7 @@ import Container from '../../../components/Container';
 export default function BlogPost() {
   return (
     <main
+      className="page-transition"
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -26,7 +27,7 @@ export default function BlogPost() {
       <Container>
         <article className="blog-post-section" role="article" aria-labelledby="blog-post-title">
           <h1 className="blog-post-title" id="blog-post-title">
-            🔌 Why I Added Backend to My Developer Blog
+          Why I Added Backend to My Developer Blog
           </h1>
 
           <div className="blog-post-content">
