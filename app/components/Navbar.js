@@ -22,15 +22,37 @@ export default function Navbar() {
         clearInterval(interval);
       }
     }, 150); // Brzina tipkanja (150ms po simbolu)
+    return () => clearInterval(interval); // Vraća funkciju za čišćenje
   };
 
   useEffect(() => {
     console.log('Navbar loaded | Nikolas Dev Journey v1.0');
-    typeSymbols();
-    const repeatInterval = setInterval(() => {
+    // Pokreni animaciju samo ako je tab vidljiv
+    if (document.visibilityState === 'visible') {
       typeSymbols();
+    }
+
+    // Postavi interval za ponavljanje animacije
+    const repeatInterval = setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        typeSymbols();
+      }
     }, 10000); // Ponovi svakih 10 sekundi
-    return () => clearInterval(repeatInterval);
+
+    // Slušač za promjenu vidljivosti taba
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        typeSymbols();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Čišćenje intervala i slušatelja pri unmountu
+    return () => {
+      clearInterval(repeatInterval);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -74,7 +96,7 @@ export default function Navbar() {
         </Link>
         <span className="navbar-symbols" aria-hidden="true">
           {displayedSymbols.map((symbol, index) => (
-            <span key={index} className={`symbol symbol-${index + 1}`}>
+            <span key={index} className={`symbol symbol-${Math.min(index + 1, 10)}`}>
               {symbol}
             </span>
           ))}
