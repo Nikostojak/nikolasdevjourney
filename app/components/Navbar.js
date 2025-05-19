@@ -1,17 +1,53 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [displayedSymbols, setDisplayedSymbols] = useState([]);
+  const fullSymbols = ['{', '}', '</>', '=>', '&&', '>', '!=', '||', '#', ';'];
   const router = useRouter();
+
+  const typeSymbols = () => {
+    setDisplayedSymbols([]); // Resetiraj simbole
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < fullSymbols.length) {
+        setDisplayedSymbols((prev) => [...prev, fullSymbols[index]]);
+        index++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 150); // Brzina tipkanja (150ms po simbolu)
+  };
+
+  useEffect(() => {
+    console.log('Navbar loaded | Nikolas Dev Journey v1.0');
+    typeSymbols();
+    const repeatInterval = setInterval(() => {
+      typeSymbols();
+    }, 10000); // Ponovi svakih 10 sekundi
+    return () => clearInterval(repeatInterval);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      const firstLink = document.querySelector('.navbar-menu.open .navbar-link');
+      firstLink?.focus();
+    }
+  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    console.log('Menu toggled, isOpen:', !isOpen);
   };
 
-  const handleLinkClick = (href) => {
+  const handleLinkClick = (e, page) => {
+    e.preventDefault(); // Sprječava trenutnu navigaciju
+    const href = page === 'Home' ? '/' : `/${page.toLowerCase()}`;
+    console.log(`Navigating to: ${href}`);
     // Pokreni fade-out animaciju
     document.querySelector('main').classList.add('page-transition-exit');
     
@@ -23,23 +59,46 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="navbar-brand">
-        <a href="/" className="navbar-logo" onClick={() => handleLinkClick('/')}>
-          Nikolas Dev
-        </a>
+        <Link href="/" className="navbar-logo" onClick={(e) => handleLinkClick(e, 'Home')} aria-label="Go to Home page">
+          NS
+        </Link>
+        <span className="navbar-symbols" aria-hidden="true">
+          {displayedSymbols.map((symbol, index) => (
+            <span key={index} className={`symbol symbol-${index + 1}`}>
+              {symbol}
+            </span>
+          ))}
+        </span>
       </div>
-      <button className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleMenu} aria-label={isOpen ? 'Close menu' : 'Open menu'}>
+      <button
+        className={`hamburger ${isOpen ? 'open' : ''}`}
+        onClick={toggleMenu}
+        aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={isOpen}
+      >
         <span className="hamburger-line"></span>
         <span className="hamburger-line"></span>
         <span className="hamburger-line"></span>
       </button>
       <div className={`navbar-menu ${isOpen ? 'open' : ''}`}>
-        <a href="/" className="navbar-link" onClick={() => handleLinkClick('/')} aria-label="Go to Home page">Home</a>
-        <a href="/blog" className="navbar-link" onClick={() => handleLinkClick('/blog')} aria-label="Go to Blog page">Blog</a>
-        <a href="/about" className="navbar-link" onClick={() => handleLinkClick('/about')} aria-label="Go to About page">About</a>
-        <a href="/contact" className="navbar-link" onClick={() => handleLinkClick('/contact')} aria-label="Go to Contact page">Contact</a>
-        <a href="/projects" className="navbar-link" onClick={() => handleLinkClick('/projects')} aria-label="Go to Projects page">Projects</a>
+        {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
+          <Link
+            key={page}
+            href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
+            className="navbar-link"
+            onClick={(e) => handleLinkClick(e, page)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleLinkClick(e, page);
+              }
+            }}
+            aria-label={`Go to ${page} page`}
+          >
+            {page}
+          </Link>
+        ))}
       </div>
     </nav>
   );
