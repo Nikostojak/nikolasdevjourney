@@ -62,7 +62,7 @@ export async function GET() {
         excerpt: "Step-by-step guide of how I created and deployed my personal dev blog.",
         category: "Blog Development",
         tags: ["Next.js", "React", "Vercel"],
-        isFeatured: true
+        isFeatured: false
       }
     ];
 
