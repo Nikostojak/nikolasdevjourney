@@ -31,7 +31,7 @@ export default function ProjectsPage() {
           </h1>
           <div className="projects-content">
             <p className="projects-description">
-              I&apos;m excited to announce my first portfolio project: a web application for tracking chess openings! This app will let me log past chess games, including opening moves like the Sicilian Defense or Queen&apos;s Gambit, using JavaScript for the front-end and Python for the back-end. It&apos;s designed to showcase my skills in building responsive, accessible web apps.{' '}
+              I&apos;m excited to announce my first project: a web application for tracking chess openings! This app will let me log past chess games, including opening moves like the Sicilian Defense or Queen&apos;s Gambit, using JavaScript for the front-end and Python for the back-end. It&apos;s designed to showcase my skills in building responsive, accessible web apps.{' '}
               <Link href="/blog/posts/my-first-project" aria-label="Read more about my chess openings project">
                 Read the full plan in my blog post
               </Link> to learn about the features and development roadmap!
