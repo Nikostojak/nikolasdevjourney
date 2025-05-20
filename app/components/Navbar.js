@@ -9,7 +9,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const menuRef = useRef(null);
 
-  // Fokusiranje na prvi link kada se meni otvori
   useEffect(() => {
     if (isOpen) {
       const firstLink = document.querySelector('.navbar-menu.open .navbar-link');
@@ -17,7 +16,6 @@ export default function Navbar() {
     }
   }, [isOpen]);
 
-  // Zatvaranje menija klikom izvan ili Escape tipkom
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
