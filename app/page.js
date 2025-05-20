@@ -3,25 +3,26 @@ import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Container from './components/Container';
-import CodeRain from './components/CodeRain';
 import Link from 'next/link';
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
-  const [displayedText, setDisplayedText] = useState('');
-  const fullText = 'NIKOLASDEVJOURNEY';
+  const [displayedTitle, setDisplayedTitle] = useState('');
+  const [showSubtitle, setShowSubtitle] = useState(false);
+  const fullTitle = 'NIKOLASDEVJOURNEY';
 
   useEffect(() => {
     // Tipkajući efekt za naslov
     let index = 0;
     const interval = setInterval(() => {
-      if (index < fullText.length) {
-        setDisplayedText(fullText.slice(0, index + 1));
+      if (index < fullTitle.length) {
+        setDisplayedTitle(fullTitle.slice(0, index + 1));
         index++;
       } else {
         clearInterval(interval);
+        setTimeout(() => setShowSubtitle(true), 500); // Pokreni podnaslov nakon pauze
       }
-    }, 150);
+    }, 200); // Sporiji ispis (200ms po slovu)
     return () => clearInterval(interval);
   }, []);
 
@@ -50,21 +51,19 @@ export default function HomePage() {
     <main className="page-transition" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1a202c', color: '#e2e8f0' }}>
       <Navbar />
       <Container>
-        {/* Hero sekcija s CodeRain pozadinom */}
-        <section className="hero-section" role="region" aria-labelledby="hero-title" style={{ position: 'relative' }}>
-          <CodeRain />
+        <section className="hero-section" role="region" aria-labelledby="hero-title">
           <h1 className="hero-title" id="hero-title" aria-live="polite">
             <span className="hero-title-typed">
-              {displayedText.split('').map((char, index) => (
+              {displayedTitle.split('').map((char, index) => (
                 <span key={index} className={index < 7 ? 'hero-title-nikolas' : 'hero-title-journey'}>
                   {char}
                 </span>
               ))}
-              {displayedText.length < fullText.length && <span className="typing-cursor" aria-hidden="true">|</span>}
+              {displayedTitle.length < fullTitle.length && <span className="typing-cursor" aria-hidden="true">|</span>}
             </span>
           </h1>
-          <p className="hero-description">
-            Join me as I explore and study Python, Web Development, and the world of Software Engineering.
+          <p className={`hero-description ${showSubtitle ? 'visible' : ''}`}>
+            Exploring Python, Web Development, and Software Engineering with passion.
           </p>
           <div className="hero-buttons">
             <Link href="/blog">
@@ -76,7 +75,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Istaknuti post */}
         {featuredPost && (
           <section className="featured-post-section" role="region" aria-labelledby="featured-post-title">
             <h2 className="section-title" id="featured-post-title">Featured Post</h2>
@@ -99,7 +97,6 @@ export default function HomePage() {
           </section>
         )}
 
-        {/* Najnoviji postovi */}
         {recentPosts.length > 0 && (
           <section className="recent-posts-section" role="region" aria-labelledby="recent-posts-title">
             <h2 className="section-title" id="recent-posts-title">Recent Posts</h2>
@@ -131,7 +128,6 @@ export default function HomePage() {
           </section>
         )}
 
-        {/* Projekti */}
         <section className="projects-section" role="region" aria-labelledby="projects-title">
           <h2 className="section-title" id="projects-title">My Projects</h2>
           <div className="projects-content">
@@ -142,7 +138,7 @@ export default function HomePage() {
                 </Link>
               </h3>
               <p className="blog-post-excerpt">
-                A web app for tracking chess openings, built with JavaScript (React, Next.js) and Python (FastAPI/Flask). Features include game logging, filtering, and interactive chessboard visualization.
+                A web app for tracking chess openings, built with JavaScript (React, Next.js) and Python (FastAPI/Flask).
               </p>
               <p className="blog-post-badge">JavaScript, Python, Next.js, FastAPI</p>
               <Link href="/blog/posts/my-first-project" className="blog-list-read-more" aria-label="Read more about the chess openings project">

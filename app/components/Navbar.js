@@ -1,59 +1,12 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [displayedSymbols, setDisplayedSymbols] = useState([]);
-  const fullSymbols = ['{', '}', '</>', '=>', '&&', '>', '!=', '||', '#', ';'];
   const router = useRouter();
   const pathname = usePathname();
-
-  const typeSymbols = () => {
-    setDisplayedSymbols([]); // Resetiraj simbole
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index < fullSymbols.length) {
-        setDisplayedSymbols((prev) => [...prev, fullSymbols[index]]);
-        index++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 150); // Brzina tipkanja (150ms po simbolu)
-    return () => clearInterval(interval); // Vraća funkciju za čišćenje
-  };
-
-  useEffect(() => {
-    console.log('Navbar loaded | Nikolas Dev Journey v1.0');
-    // Pokreni animaciju samo ako je tab vidljiv
-    if (document.visibilityState === 'visible') {
-      typeSymbols();
-    }
-
-    // Postavi interval za ponavljanje animacije
-    const repeatInterval = setInterval(() => {
-      if (document.visibilityState === 'visible') {
-        typeSymbols();
-      }
-    }, 10000); // Ponovi svakih 10 sekundi
-
-    // Slušač za promjenu vidljivosti taba
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        typeSymbols();
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    // Čišćenje intervala i slušatelja pri unmountu
-    return () => {
-      clearInterval(repeatInterval);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -68,40 +21,28 @@ export default function Navbar() {
   };
 
   const handleLinkClick = (e, page) => {
-    e.preventDefault(); // Sprječava trenutnu navigaciju
+    e.preventDefault();
     const href = page === 'Home' ? '/' : `/${page.toLowerCase()}`;
     
-    // Ako je trenutna ruta ista kao ciljna, ne radi ništa
     if (pathname === href) {
-      setIsOpen(false); // Zatvori meni ako je otvoren
+      setIsOpen(false);
       return;
     }
 
     console.log(`Navigating to: ${href}`);
-    // Pokreni fade-out animaciju
     document.querySelector('main').classList.add('page-transition-exit');
     
-    // Pričekaj kraj animacije (300ms) prije navigacije
     setTimeout(() => {
       router.push(href);
-      setIsOpen(false); // Zatvori meni nakon klika
+      setIsOpen(false);
     }, 300);
   };
 
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
-      <div className="navbar-brand">
-        <Link href="/" className="navbar-logo" onClick={(e) => handleLinkClick(e, 'Home')} aria-label="Go to Home page">
-          NS
-        </Link>
-        <span className="navbar-symbols" aria-hidden="true">
-          {displayedSymbols.map((symbol, index) => (
-            <span key={index} className={`symbol symbol-${Math.min(index + 1, 10)}`}>
-              {symbol}
-            </span>
-          ))}
-        </span>
-      </div>
+      <Link href="/" className="navbar-logo" onClick={(e) => handleLinkClick(e, 'Home')} aria-label="Go to Home page">
+        NS
+      </Link>
       <button
         className={`hamburger ${isOpen ? 'open' : ''}`}
         onClick={toggleMenu}
