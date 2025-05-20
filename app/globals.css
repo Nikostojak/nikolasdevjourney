@@ -2,14 +2,13 @@
   --background: #1a202c;
   --foreground: #e2e8f0;
   --accent: #63b3ed;
-  --font-sans: var(--font-inter);
-  --font-mono: 'Fira Code', monospace;
+  --font-mono: 'Fira Code', monospace; /* Jedini font */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   margin: 0;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -36,7 +35,7 @@ nav, footer, section, article {
   background-color: var(--background);
 }
 
-code {
+code, pre {
   font-family: var(--font-mono);
   background-color: #2d3748;
   padding: 0.2rem 0.4rem;
@@ -44,20 +43,19 @@ code {
 }
 
 pre {
-  background-color: #2d3748;
   padding: 1rem;
   border-radius: 8px;
   overflow-x: auto;
-  font-family: var(--font-mono);
   color: var(--foreground);
 }
 
 h1, h2, h3 {
   color: #edf2f7;
   font-weight: 700;
+  font-family: var(--font-mono);
 }
 
-/* Stilovi za Container */
+/* Container */
 .container {
   max-width: 1200px;
   width: 100%;
@@ -73,7 +71,7 @@ h1, h2, h3 {
   }
 }
 
-/* Stilovi za Navbar */
+/* Navbar */
 .navbar {
   width: 100%;
   padding: 1rem 2rem;
@@ -96,7 +94,7 @@ h1, h2, h3 {
 }
 
 .navbar-logo {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 1.8rem); /* Smanjen font */
   font-weight: 800;
   color: #63b3ed;
   background: linear-gradient(45deg, #63b3ed, #90cdf4);
@@ -111,13 +109,13 @@ h1, h2, h3 {
 
 .symbol {
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1rem; /* Smanjen font */
   animation: fadeInSymbols 0.3s ease-in-out forwards;
 }
 
 @media (min-width: 768px) {
   .symbol {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -190,7 +188,7 @@ h1, h2, h3 {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease, transform 0.2s ease;
-  font-size: 1.2rem;
+  font-size: 1rem; /* Smanjen font */
   padding: 0.5rem 0;
   width: 100%;
   text-align: center;
@@ -201,7 +199,7 @@ h1, h2, h3 {
   transform: translateY(-2px);
 }
 
-/* Stilovi za Footer */
+/* Footer */
 .footer {
   margin-top: auto;
   padding: 2rem 1rem;
@@ -209,7 +207,7 @@ h1, h2, h3 {
   text-align: center;
   background-color: #2d3748;
   color: #e2e8f0;
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Smanjen font */
   animation: fadeIn 1s ease-in-out;
   box-sizing: border-box;
 }
@@ -235,7 +233,7 @@ h1, h2, h3 {
   filter: brightness(1.5);
 }
 
-/* Stilovi za Homepage */
+/* Homepage */
 .hero-section {
   flex: 1;
   padding: 4rem 0;
@@ -246,10 +244,11 @@ h1, h2, h3 {
   text-align: center;
   width: 100%;
   box-sizing: border-box;
+  position: relative; /* Za CodeRain */
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2rem, 5vw, 3rem); /* Smanjen font */
   margin-bottom: 1.5rem;
   font-weight: 800;
   animation: fadeIn 1s ease-in-out;
@@ -267,7 +266,7 @@ h1, h2, h3 {
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1.2rem, 4vw, 2rem);
     max-width: 90%;
   }
 }
@@ -296,7 +295,7 @@ h1, h2, h3 {
 }
 
 .hero-description {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-size: clamp(0.9rem, 2vw, 1rem); /* Smanjen font */
   color: #e2e8f0;
   max-width: 800px;
   margin-bottom: 2.5rem;
@@ -313,7 +312,7 @@ h1, h2, h3 {
 
 .hero-button {
   padding: 0.75rem 1rem;
-  font-size: 1.1rem;
+  font-size: 0.9rem; /* Smanjen font */
   background-color: #63b3ed;
   color: #ffffff;
   border: none;
@@ -332,14 +331,14 @@ h1, h2, h3 {
   transform: scale(1.05);
 }
 
-/* Stilovi za About stranicu */
+/* About stranica */
 .about-section {
   flex: 1;
   padding: 3rem 0;
   max-width: 900px;
   margin: 0 auto;
   line-height: 1.8;
-  font-size: 1.1rem;
+  font-size: 0.95rem; /* Smanjen font */
 }
 
 .about-header {
@@ -372,7 +371,7 @@ h1, h2, h3 {
 }
 
 .about-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2rem); /* Smanjen font */
   font-weight: 800;
   color: #edf2f7;
   letter-spacing: -0.025em;
@@ -390,12 +389,12 @@ h1, h2, h3 {
 
 .about-content p {
   margin-bottom: 1.5rem;
-  font-size: 1.05rem;
+  font-size: 0.95rem; /* Smanjen font */
 }
 
 .about-subtitle {
   margin-top: 2.5rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem; /* Smanjen font */
   color: #edf2f7;
   font-weight: 700;
   font-family: var(--font-mono);
@@ -408,11 +407,11 @@ h1, h2, h3 {
   border-left: 4px solid #63b3ed;
   padding-left: 1.5rem;
   margin: 2rem 0;
-  font-size: 1.1rem;
+  font-size: 0.95rem; /* Smanjen font */
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Stilovi za Contact stranicu */
+/* Contact stranica */
 .contact-section {
   flex: 1;
   padding: 3rem 0;
@@ -422,7 +421,7 @@ h1, h2, h3 {
 }
 
 .contact-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2rem); /* Smanjen font */
   font-weight: 800;
   color: #edf2f7;
   letter-spacing: -0.025em;
@@ -442,7 +441,7 @@ h1, h2, h3 {
 }
 
 .contact-content p {
-  font-size: 1.1rem;
+  font-size: 0.95rem; /* Smanjen font */
   line-height: 1.8;
   margin-bottom: 1.5rem;
 }
@@ -463,7 +462,7 @@ h1, h2, h3 {
 .contact-link {
   color: #63b3ed;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.95rem; /* Smanjen font */
   font-family: var(--font-mono);
   display: inline-flex;
   align-items: center;
@@ -484,7 +483,7 @@ h1, h2, h3 {
   transform: translateX(3px);
 }
 
-/* Stilovi za Blog stranicu */
+/* Blog stranica */
 .blog-section {
   flex: 1;
   padding: 3rem 0;
@@ -494,7 +493,7 @@ h1, h2, h3 {
 }
 
 .blog-list-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2rem); /* Smanjen font */
   font-weight: 800;
   color: #edf2f7;
   letter-spacing: -0.025em;
@@ -505,7 +504,7 @@ h1, h2, h3 {
 }
 
 .blog-list-error {
-  font-size: 1.1rem;
+  font-size: 0.95rem; /* Smanjen font */
   color: #f56565;
   text-align: center;
   margin: 2rem 0;
@@ -535,7 +534,7 @@ h1, h2, h3 {
 }
 
 .blog-featured-title {
-  font-size: 2rem;
+  font-size: 1.5rem; /* Smanjen font */
   font-weight: 800;
   line-height: 1.3;
   margin-bottom: 0.75rem;
@@ -547,7 +546,7 @@ h1, h2, h3 {
   max-width: 500px;
   margin: 0 auto 1.5rem;
   padding: 0.75rem 1rem;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Smanjen font */
   font-family: var(--font-mono);
   color: #e2e8f0;
   background-color: #2d3748;
@@ -597,7 +596,7 @@ h1, h2, h3 {
 
 .blog-tab {
   padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Smanjen font */
   font-weight: 600;
   font-family: var(--font-mono);
   color: #e2e8f0;
@@ -644,7 +643,7 @@ h1, h2, h3 {
 
 .blog-list-item {
   background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-  padding: 1.5rem;
+  padding: 1.5rem Berenica;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -660,7 +659,7 @@ h1, h2, h3 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.85rem;
+  font-size: 0.8rem; /* Smanjen font */
   font-family: var(--font-mono);
   color: #a0aec0;
   background-color: #1a202c;
@@ -670,7 +669,7 @@ h1, h2, h3 {
 }
 
 .blog-post-title {
-  font-size: 1.8rem;
+  font-size: 1.5rem; /* Smanjen font */
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 0.75rem;
@@ -689,14 +688,14 @@ h1, h2, h3 {
 
 .blog-post-date {
   color: #a0aec0;
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Smanjen font */
   font-style: italic;
   margin-bottom: 0.75rem;
 }
 
 .blog-post-excerpt {
   color: #e2e8f0;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Smanjen font */
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -704,7 +703,7 @@ h1, h2, h3 {
 .blog-list-read-more {
   color: #63b3ed;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Smanjen font */
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -735,7 +734,7 @@ h1, h2, h3 {
 
 .blog-pagination-button {
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Smanjen font */
   font-family: var(--font-mono);
   color: #e2e8f0;
   background-color: #1a202c;
@@ -765,12 +764,12 @@ h1, h2, h3 {
 }
 
 .blog-pagination-info {
-  font-size: 1rem;
+  font-size: 0.9rem; /* Smanjen font */
   font-family: var(--font-mono);
   color: #e2e8f0;
 }
 
-/* Stilovi za Blog post stranice */
+/* Blog post stranice */
 .blog-post-section {
   flex: 1;
   padding: 3rem 0;
@@ -778,12 +777,12 @@ h1, h2, h3 {
   width: 100%;
   margin: 0 auto;
   line-height: 1.8;
-  font-size: 1.1rem;
+  font-size: 0.95rem; /* Smanjen font */
   animation: fadeIn 1s ease-in-out;
 }
 
 .blog-post-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2rem); /* Smanjen font */
   font-weight: 800;
   color: #edf2f7;
   letter-spacing: -0.025em;
@@ -802,18 +801,18 @@ h1, h2, h3 {
 
 .blog-post-content p {
   margin-bottom: 1.5rem;
-  font-size: 1.05rem;
+  font-size: 0.95rem; /* Smanjen font */
 }
 
 .blog-post-content ul,
 .blog-post-content ol {
   padding-left: 1.5rem;
   margin-bottom: 1.5rem;
-  font-size: 1.05rem;
+  font-size: 0.95rem; /* Smanjen font */
 }
 
 .blog-post-subtitle {
-  font-size: 1.8rem;
+  font-size: 1.5rem; /* Smanjen font */
   margin: 2rem 0 1rem;
   color: #edf2f7;
   font-weight: 700;
@@ -838,8 +837,87 @@ h1, h2, h3 {
   color: #a0aec0;
   border-left: 4px solid #63b3ed;
   padding-left: 1.5rem;
-  font-size: 1.1rem;
+  font-size: 0.95rem; /* Smanjen font */
   animation: fadeIn 1s ease-in-out;
+}
+
+/* Sekcije na homepageu */
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2rem); /* Smanjen font */
+  font-weight: 800;
+  color: #edf2f7;
+  letter-spacing: -0.025em;
+  font-family: var(--font-mono);
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.featured-post-section,
+.recent-posts-section,
+.projects-section {
+  padding: 3rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.view-all-posts {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: clamp(1.5rem, 3.5vw, 1.8rem);
+  }
+
+  .featured-post-section,
+  .recent-posts-section,
+  .projects-section {
+    padding: 2rem 0;
+  }
+}
+
+/* Projects stranica */
+.projects-section {
+  flex: 1;
+  padding: 3rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.projects-title {
+  font-size: clamp(1.8rem, 4vw, 2rem); /* Smanjen font */
+  font-weight: 800;
+  color: #edf2f7;
+  letter-spacing: -0.025em;
+  font-family: var(--font-mono);
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .projects-title {
+    font-size: clamp(1.5rem, 3.5vw, 1.8rem);
+  }
+}
+
+.projects-content {
+  background-color: #2d3748;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.projects-description {
+  font-size: clamp(0.9rem, 2vw, 1rem); /* Smanjen font */
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 /* Animacije */
@@ -849,47 +927,23 @@ h1, h2, h3 {
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInMenu {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
 }
 
 @keyframes blink {
@@ -920,52 +974,11 @@ h1, h2, h3 {
   .blog-search-input, .blog-tabs, .blog-tab,
   .blog-tab-content, .blog-category-grid, .blog-list-item, .blog-post-badge,
   .blog-pagination, .blog-pagination-button,
-  .blog-post-section, .blog-post-title, .blog-post-content, .blog-post-quote {
+  .blog-post-section, .blog-post-title, .blog-post-content, .blog-post-quote,
+  .section-title, .featured-post-section, .recent-posts-section, .projects-section {
     animation: none;
     transition: none;
   }
-}
-
-/* Stilovi za Projects stranicu */
-.projects-section {
-  flex: 1;
-  padding: 3rem 0;
-  max-width: 1000px;
-  margin: 0 auto;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.projects-title {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  font-weight: 800;
-  color: #edf2f7;
-  letter-spacing: -0.025em;
-  font-family: var(--font-mono);
-  text-align: center;
-  margin-bottom: 2rem;
-  animation: fadeIn 1s ease-in-out;
-}
-
-@media (max-width: 768px) {
-  .projects-title {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-  }
-}
-
-.projects-content {
-  background-color: #2d3748;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.8s ease-in-out;
-}
-
-.projects-description {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: #e2e8f0;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  text-align: center;
 }
 
 /* Tranzicije za stranice */
@@ -978,10 +991,6 @@ h1, h2, h3 {
 }
 
 @keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }

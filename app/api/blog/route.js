@@ -8,7 +8,7 @@ export async function GET() {
         excerpt: "Announcing my first project: a web app for tracking chess openings, with a detailed development plan.",
         category: "Projects",
         tags: ["Chess", "Web Development", "Projects"],
-        isFeatured: false
+        isFeatured: true // Označi kao istaknuti
       },
       {
         title: "My CSS Journey: From Basics to Advanced Styling",
