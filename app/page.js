@@ -12,7 +12,6 @@ export default function HomePage() {
   const fullTitle = 'NIKOLASDEVJOURNEY';
 
   useEffect(() => {
-    // Tipkajući efekt za naslov
     let index = 0;
     const interval = setInterval(() => {
       if (index < fullTitle.length) {
@@ -20,14 +19,13 @@ export default function HomePage() {
         index++;
       } else {
         clearInterval(interval);
-        setTimeout(() => setShowSubtitle(true), 500); // Pokreni podnaslov nakon pauze
+        setTimeout(() => setShowSubtitle(true), 500);
       }
-    }, 200); // Sporiji ispis (200ms po slovu)
+    }, 200);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    // Dohvati blog postove
     async function fetchPosts() {
       try {
         const res = await fetch('/api/blog', { cache: 'no-store' });

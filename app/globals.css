@@ -47,56 +47,35 @@ a:focus, button:focus, input:focus {
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Samo desno za hamburger */
   align-items: center;
   padding: 1.5rem 2rem;
   background-color: transparent;
   z-index: 10;
 }
 
-.navbar-logo {
-  font-size: clamp(1.8rem, 3.5vw, 2rem);
-  font-weight: 800;
-  color: #63b3ed;
-  background: linear-gradient(45deg, #63b3ed, #90cdf4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 24px;
-  height: 18px;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
-  transition: transform 0.3s ease;
+  padding: 0.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .hamburger:hover {
   transform: scale(1.1);
+  background-color: rgba(99, 179, 237, 0.1); /* Suptilna pozadina na hover */
+  border-radius: 50%;
 }
 
-.hamburger-line {
-  width: 100%;
-  height: 2px;
-  background-color: #e2e8f0;
-  transition: all 0.3s ease;
+.hamburger-icon {
+  width: 28px;
+  height: 28px;
+  transition: stroke 0.3s ease;
 }
 
-.hamburger.open .hamburger-line:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.open .hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.open .hamburger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+.hamburger-icon path {
+  transition: d 0.3s ease; /* Glatka promjena iz linija u X */
 }
 
 .navbar-menu {
@@ -396,6 +375,14 @@ a:focus, button:focus, input:focus {
 @media (max-width: 768px) {
   .blog-category-grid {
     grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 1rem;
+  }
+
+  .hamburger {
+    padding: 0.3rem;
   }
 }
 
@@ -824,7 +811,7 @@ a:focus, button:focus, input:focus {
 
 /* Podrška za smanjeno kretanje */
 @media (prefers-reduced-motion: reduce) {
-  .hero-title, .navbar-logo, .typing-cursor, .hamburger-line,
+  .hero-title, .hamburger, .typing-cursor, .hamburger-icon,
   .hero-description, .about-header, .about-content, .profile-img, .final-thought,
   .contact-section, .contact-title, .contact-content, .contact-link-item,
   .blog-section, .blog-list-title, .blog-featured-post, .blog-featured-item,
