@@ -161,13 +161,14 @@ a:focus, button:focus, input:focus {
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-size: clamp(3rem, 8vw, 4.5rem); /* Povećan font za naslov */
   margin-bottom: 1.5rem;
-  font-weight: 800;
+  font-weight: 900; /* Maksimalna debljina za snažan dojam */
   animation: fadeIn 1s ease-in-out;
   line-height: 1.2;
   max-width: 90%;
-  font-family: var(--font-mono);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Promijenjeno u Inter */
+  letter-spacing: -0.02em; /* Suptilno smanjen razmak između slova */
 }
 
 .hero-title:hover {
@@ -176,7 +177,7 @@ a:focus, button:focus, input:focus {
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-size: clamp(2rem, 6vw, 3rem); /* Povećan font i za mobilne uređaje */
   }
 }
 
@@ -204,13 +205,14 @@ a:focus, button:focus, input:focus {
 }
 
 .hero-description {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: clamp(1.2rem, 3vw, 1.5rem); /* Povećan font za podnaslov */
   color: #e2e8f0;
   max-width: 700px;
   margin-bottom: 2.5rem;
   line-height: 1.6;
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Osiguravamo Inter font */
 }
 
 .hero-description.visible {
@@ -774,6 +776,18 @@ a:focus, button:focus, input:focus {
   text-align: center;
 }
 
+/* Scroll reveal animation for homepage only */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Animacije */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -819,9 +833,12 @@ a:focus, button:focus, input:focus {
   .blog-tab-content, .blog-category-grid, .blog-list-item, .blog-post-badge,
   .blog-pagination, .blog-pagination-button,
   .blog-post-section, .blog-post-title, .blog-post-content, .blog-post-quote,
-  .section-title, .featured-post-section, .recent-posts-section, .projects-section {
+  .section-title, .featured-post-section, .recent-posts-section, .projects-section,
+  .scroll-reveal {
     animation: none;
     transition: none;
+    opacity: 1; /* Osigurava vidljivost bez animacija */
+    transform: none;
   }
 }
 

@@ -11,11 +11,6 @@ export default function HomePage() {
   const [error, setError] = useState(null);
   const [displayedTitle, setDisplayedTitle] = useState('');
   const [showSubtitle, setShowSubtitle] = useState(false);
-  const [visibleSections, setVisibleSections] = useState({
-    featured: false,
-    recent: false,
-    projects: false,
-  });
   const fullTitle = 'NIKOLASDEVJOURNEY';
 
   const featuredRef = useRef(null);
@@ -67,7 +62,7 @@ export default function HomePage() {
     fetchPosts();
   }, []);
 
-  // Intersection Observer za sekcije i blog kartice
+  // Intersection Observer za sekcije i elemente unutar njih
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -78,19 +73,13 @@ export default function HomePage() {
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          if (entry.target.classList.contains('blog-list-item')) {
-            // Stagger animacija za blog kartice
-            const items = Array.from(document.querySelectorAll('.blog-list-item:not(.visible)'));
-            items.forEach((item, index) => {
-              setTimeout(() => {
-                item.classList.add('visible');
-              }, index * 150); // 150ms razmak između kartica
-            });
-          } else {
-            // Animacija za sekcije
-            const sectionName = entry.target.dataset.section;
-            setVisibleSections((prev) => ({ ...prev, [sectionName]: true }));
-          }
+          // Za sekcije i njihove pod-elemente
+          const elements = entry.target.querySelectorAll('.scroll-reveal');
+          elements.forEach((el, index) => {
+            setTimeout(() => {
+              el.classList.add('visible');
+            }, index * 150); // Postupna animacija s razmakom od 150ms
+          });
         }
       });
     };
@@ -103,24 +92,18 @@ export default function HomePage() {
       { ref: projectsRef, name: 'projects' },
     ];
 
-    sections.forEach(({ ref, name }) => {
+    sections.forEach(({ ref }) => {
       if (ref.current) {
-        ref.current.dataset.section = name;
         observer.observe(ref.current);
       } else {
-        console.warn(`Reference for section ${name} is null`);
+        console.warn(`Reference for section is null`);
       }
     });
-
-    // Dodavanje observera za blog kartice
-    const blogItems = document.querySelectorAll('.blog-list-item');
-    blogItems.forEach((item) => observer.observe(item));
 
     return () => {
       sections.forEach(({ ref }) => {
         if (ref.current) observer.unobserve(ref.current);
       });
-      blogItems.forEach((item) => observer.unobserve(item));
     };
   }, [isLoading, posts]);
 
@@ -159,21 +142,20 @@ export default function HomePage() {
         </section>
 
         {isLoading ? (
-          <div className="loading-message">Loading posts...</div>
+          <div className="loading-message scroll-reveal">Loading posts...</div>
         ) : error ? (
-          <div className="error-message">Error: {error}</div>
+          <div className="error-message scroll-reveal">Error: {error}</div>
         ) : (
           <>
             {featuredPost ? (
               <section
                 ref={featuredRef}
-                className={`featured-post-section ${visibleSections.featured ? 'visible' : ''}`}
+                className="featured-post-section"
                 role="region"
                 aria-labelledby="featured-post-title"
-                data-section="featured"
               >
-                <h2 className="section-title" id="featured-post-title">Featured Post</h2>
-                <article className="blog-featured-item">
+                <h2 className="section-title scroll-reveal" id="featured-post-title">Featured Post</h2>
+                <article className="blog-featured-item scroll-reveal">
                   <div className="blog-post-badge">{featuredPost.category}</div>
                   <h3 className="blog-featured-title">
                     <Link href={`/blog/posts/${featuredPost.slug}`} className="blog-post-link" aria-label={`Read featured blog post: ${featuredPost.title}`}>
@@ -191,21 +173,20 @@ export default function HomePage() {
                 </article>
               </section>
             ) : (
-              <div className="no-posts-message">No featured post available.</div>
+              <div className="no-posts-message scroll-reveal">No featured post available.</div>
             )}
 
             {recentPosts.length > 0 ? (
               <section
                 ref={recentRef}
-                className={`recent-posts-section ${visibleSections.recent ? 'visible' : ''}`}
+                className="recent-posts-section"
                 role="region"
                 aria-labelledby="recent-posts-title"
-                data-section="recent"
               >
-                <h2 className="section-title" id="recent-posts-title">Recent Posts</h2>
+                <h2 className="section-title scroll-reveal" id="recent-posts-title">Recent Posts</h2>
                 <div className="blog-category-grid">
                   {recentPosts.map((post, index) => (
-                    <article key={post.slug} className="blog-list-item">
+                    <article key={post.slug} className="blog-list-item scroll-reveal">
                       <div className="blog-post-badge">{post.category}</div>
                       <h3 className="blog-post-title">
                         <Link href={`/blog/posts/${post.slug}`} className="blog-post-link" aria-label={`Read blog post: ${post.title}`}>
@@ -223,28 +204,27 @@ export default function HomePage() {
                     </article>
                   ))}
                 </div>
-                <div className="view-all-posts">
+                <div className="view-all-posts scroll-reveal">
                   <Link href="/blog" className="hero-button" aria-label="View all blog posts">
                     View All Posts
                   </Link>
                 </div>
               </section>
             ) : (
-              !featuredPost && <div className="no-posts-message">No recent posts available.</div>
+              !featuredPost && <div className="no-posts-message scroll-reveal">No recent posts available.</div>
             )}
           </>
         )}
 
         <section
           ref={projectsRef}
-          className={`projects-section ${visibleSections.projects ? 'visible' : ''}`}
+          className="projects-section"
           role="region"
           aria-labelledby="projects-title"
-          data-section="projects"
         >
-          <h2 className="section-title" id="projects-title">My Projects</h2>
+          <h2 className="section-title scroll-reveal" id="projects-title">My Projects</h2>
           <div className="projects-content">
-            <article className="blog-list-item">
+            <article className="blog-list-item scroll-reveal">
               <h3 className="blog-post-title">
                 <Link href="/blog/posts/my-first-project" className="blog-post-link" aria-label="Read about my chess openings project">
                   Chess Openings Web App
@@ -261,7 +241,7 @@ export default function HomePage() {
                 </svg>
               </Link>
             </article>
-            <div className="view-all-posts">
+            <div className="view-all-posts scroll-reveal">
               <Link href="/projects" className="hero-button" aria-label="View all projects">
                 View All Projects
               </Link>
