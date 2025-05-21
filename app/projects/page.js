@@ -13,7 +13,7 @@ export default function ProjectsPage() {
           <h1 className="projects-title" id="projects-title">My Projects</h1>
           <div className="projects-content">
             <p className="projects-description">
-              Here are some of the projects I've been working on, showcasing my skills in Python, JavaScript, and web development.
+              Here are some of the projects I&apos;ve been working on, showcasing my skills in Python, JavaScript, and web development.
             </p>
             <article className="blog-list-item">
               <h2 className="blog-post-title">
