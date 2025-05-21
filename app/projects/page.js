@@ -5,9 +5,6 @@ import Container from '../components/Container';
 import Link from 'next/link';
 
 export default function ProjectsPage() {
-  // Dijagnostika: Provjeri da li se komponenta renderira
-  console.log('ProjectsPage rendered');
-
   return (
     <main className="page-transition" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1a202c', color: '#e2e8f0' }}>
       <Navbar />

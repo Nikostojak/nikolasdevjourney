@@ -67,19 +67,30 @@ export default function HomePage() {
     fetchPosts();
   }, []);
 
-  // Intersection Observer za otkrivanje sekcija
+  // Intersection Observer za sekcije i blog kartice
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-50px 0px',
+      rootMargin: '0px 0px -10% 0px', // Povećana margina za ranije otkrivanje
       threshold: 0.1,
     };
 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
-        const sectionName = entry.target.dataset.section;
         if (entry.isIntersecting) {
-          setVisibleSections((prev) => ({ ...prev, [sectionName]: true }));
+          if (entry.target.classList.contains('blog-list-item')) {
+            // Stagger animacija za blog kartice
+            const items = Array.from(document.querySelectorAll('.blog-list-item:not(.visible)'));
+            items.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add('visible');
+              }, index * 150); // 150ms razmak između kartica
+            });
+          } else {
+            // Animacija za sekcije
+            const sectionName = entry.target.dataset.section;
+            setVisibleSections((prev) => ({ ...prev, [sectionName]: true }));
+          }
         }
       });
     };
@@ -94,16 +105,22 @@ export default function HomePage() {
 
     sections.forEach(({ ref, name }) => {
       if (ref.current) {
+        ref.current.dataset.section = name;
         observer.observe(ref.current);
       } else {
         console.warn(`Reference for section ${name} is null`);
       }
     });
 
+    // Dodavanje observera za blog kartice
+    const blogItems = document.querySelectorAll('.blog-list-item');
+    blogItems.forEach((item) => observer.observe(item));
+
     return () => {
       sections.forEach(({ ref }) => {
         if (ref.current) observer.unobserve(ref.current);
       });
+      blogItems.forEach((item) => observer.unobserve(item));
     };
   }, [isLoading, posts]);
 
