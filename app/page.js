@@ -10,16 +10,14 @@ export default function HomePage() {
   const [error, setError] = useState(null);
   const [displayedTitle, setDisplayedTitle] = useState('');
   const [showSubtitle, setShowSubtitle] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for hamburger menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const fullTitle = 'NIKOLASDEVJOURNEY';
-  const menuRef = useRef(null); // Reference for mobile menu
+  const menuRef = useRef(null);
 
-  // // Skrolaj na vrh stranice prilikom učitavanja
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // // Tipkajući efekt za naslov
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
@@ -34,7 +32,6 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
-  // // Dohvat blog postova
   useEffect(() => {
     async function fetchPosts() {
       try {
@@ -59,7 +56,6 @@ export default function HomePage() {
     fetchPosts();
   }, []);
 
-  // // Intersection Observer za sekcije i elemente unutar njih
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -103,7 +99,6 @@ export default function HomePage() {
     };
   }, [isLoading, posts]);
 
-  // // Fokusiranje na prvi link kada se meni otvori
   useEffect(() => {
     if (isMenuOpen) {
       const firstLink = menuRef.current?.querySelector('.navbar-link');
@@ -111,10 +106,9 @@ export default function HomePage() {
     }
   }, [isMenuOpen]);
 
-  // // Zatvaranje menija klikom izvan ili Escape tipkom
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      if (menuRef.current && !menuRef.current.contains(event.target) && !event.target.closest('.hamburger')) {
         setIsMenuOpen(false);
       }
     };
@@ -136,9 +130,12 @@ export default function HomePage() {
     };
   }, [isMenuOpen]);
 
-  // // Funkcija za otvaranje/zatvaranje menija
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLinkClick = (page) => {
+    setIsMenuOpen(false);
   };
 
   const featuredRef = useRef(null);
@@ -154,7 +151,6 @@ export default function HomePage() {
   return (
     <main className="page-transition" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1a202c', color: '#e2e8f0' }}>
       <nav className="homepage-nav" role="navigation" aria-label="Main navigation">
-        {/* // Hamburger gumb za mobilne uređaje */}
         <button
           className={`hamburger ${isMenuOpen ? 'open' : ''}`}
           onClick={toggleMenu}
@@ -179,7 +175,6 @@ export default function HomePage() {
           </svg>
         </button>
 
-        {/* // Desktop navigacija */}
         <div className="navbar-desktop">
           {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
             <Link
@@ -193,22 +188,13 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* // Mobilni meni */}
         <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`} ref={menuRef}>
-          <Link
-            href="/"
-            className="navbar-link home-button"
-            onClick={() => setIsMenuOpen(false)}
-            aria-label="Go to Home page"
-          >
-            Home
-          </Link>
-          {['Blog', 'Projects', 'About', 'Contact'].map((page) => (
+          {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
             <Link
               key={page}
-              href={`/${page.toLowerCase()}`}
+              href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
               className="navbar-link"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => handleLinkClick(page)}
               aria-label={`Go to ${page} page`}
             >
               {page}

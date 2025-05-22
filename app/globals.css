@@ -83,7 +83,7 @@ a:focus, button:focus, input:focus {
   padding: 0.5rem;
   transition: transform 0.3s ease, background-color 0.3s ease;
   display: none;
-  z-index: 1001; /* // Osigurava da je iznad menija */
+  z-index: 1001;
 }
 
 .hamburger:hover {
@@ -112,20 +112,21 @@ a:focus, button:focus, input:focus {
 .navbar-menu {
   position: fixed;
   top: 0;
-  left: 0; /* // Cijela širina ekrana */
+  right: 0;
   bottom: 0;
-  background-color: #1a202c; /* // Nepprozirna tamna pozadina */
-  backdrop-filter: blur(10px); /* // Efekt zamućenja */
+  background-color: rgba(26, 32, 44, 0.95);
+  backdrop-filter: blur(10px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   display: none;
-  width: 100%; /* // Puni ekran za bolju vidljivost */
+  width: 70%;
+  max-width: 300px;
   z-index: 1000;
   opacity: 0;
   transform: translateX(100%);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* // Glatka animacija */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .navbar-menu.open {
@@ -163,7 +164,7 @@ a:focus, button:focus, input:focus {
   border-radius: 10px;
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-bottom: 1rem; /* // Razmak od ostalih linkova */
+  margin-bottom: 1rem;
 }
 
 .home-button:hover {
@@ -609,7 +610,7 @@ a:focus, button:focus, input:focus {
   padding: 0.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 1s facilidad de entrada-salida;
 }
 
 @media (max-width: 768px) {
@@ -999,7 +1000,8 @@ a:focus, button:focus, input:focus {
   .contact-section, .contact-title, .contact-content, .contact-link-item,
   .blog-section, .blog-list-title, .blog-featured-post, .blog-featured-item,
   .blog-search-input, .blog-tabs, .blog-tab,
-  .blog-tab-content, .blog-category-grid, .blog-list-item, .blog-post-badge,
+  .blog-tab-content, .blog-category-grid, .blog-list looping-item,
+  .blog-post-badge,
   .blog-pagination, .blog-pagination-button,
   .blog-post-section, .blog-post-title, .blog-post-content, .blog-post-quote,
   .section-title, .featured-post-section, .recent-posts-section, .projects-section,

@@ -5,23 +5,21 @@ import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false); // Default to hidden
+  const [isVisible, setIsVisible] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
   const menuRef = useRef(null);
 
-  // Fokusiranje na prvi link kada se meni otvori (za mobilni meni)
   useEffect(() => {
     if (isOpen) {
-      const firstLink = document.querySelector('.navbar-menu.open .navbar-link');
+      const firstLink = menuRef.current?.querySelector('.navbar-link');
       firstLink?.focus();
     }
   }, [isOpen]);
 
-  // Zatvaranje menija klikom izvan ili Escape tipkom (za mobilni meni)
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      if (menuRef.current && !menuRef.current.contains(event.target) && !event.target.closest('.hamburger')) {
         setIsOpen(false);
       }
     };
@@ -43,14 +41,12 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  // Hover detekcija za sve stranice
   useEffect(() => {
     const handleMouseMove = (event) => {
-      const isNearTop = event.clientY < 50; // Detekcija vrha (50px zona)
+      const isNearTop = event.clientY < 50;
       setIsVisible(isNearTop);
     };
 
-    // Početno sakrivanje nakon 2 sekunde
     const timeout = setTimeout(() => {
       setIsVisible(false);
     }, 2000);
@@ -65,7 +61,6 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    console.log('Menu toggled, isOpen:', !isOpen);
   };
 
   const handleLinkClick = (e, page) => {
@@ -77,7 +72,6 @@ export default function Navbar() {
       return;
     }
 
-    console.log(`Navigating to: ${href}`);
     document.querySelector('main').classList.add('page-transition-exit');
     
     setTimeout(() => {
@@ -88,7 +82,6 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'}`} role="navigation" aria-label="Main navigation">
-      {/* Hamburger gumb za mobilne uređaje */}
       <button
         className={`hamburger ${isOpen ? 'open' : ''}`}
         onClick={toggleMenu}
@@ -113,7 +106,6 @@ export default function Navbar() {
         </svg>
       </button>
 
-      {/* Desktop navigacija (vidljiva na velikim ekranima) */}
       <div className="navbar-desktop">
         {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
           <Link
@@ -133,7 +125,6 @@ export default function Navbar() {
         ))}
       </div>
 
-      {/* Mobilni meni (vidljiv kada je hamburger otvoren) */}
       <div className={`navbar-menu ${isOpen ? 'open' : ''}`} ref={menuRef}>
         {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
           <Link
