@@ -5,11 +5,12 @@ import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // Default to hidden
   const router = useRouter();
   const pathname = usePathname();
   const menuRef = useRef(null);
 
-  // Fokusiranje na prvi link kada se meni otvori
+  // Fokusiranje na prvi link kada se meni otvori (za mobilni meni)
   useEffect(() => {
     if (isOpen) {
       const firstLink = document.querySelector('.navbar-menu.open .navbar-link');
@@ -17,7 +18,7 @@ export default function Navbar() {
     }
   }, [isOpen]);
 
-  // Zatvaranje menija klikom izvan ili Escape tipkom
+  // Zatvaranje menija klikom izvan ili Escape tipkom (za mobilni meni)
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -41,6 +42,26 @@ export default function Navbar() {
       document.removeEventListener('keydown', handleEscape);
     };
   }, [isOpen]);
+
+  // Hover detekcija za sve stranice
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      const isNearTop = event.clientY < 50; // Detekcija vrha (50px zona)
+      setIsVisible(isNearTop);
+    };
+
+    // Početno sakrivanje nakon 2 sekunde
+    const timeout = setTimeout(() => {
+      setIsVisible(false);
+    }, 2000);
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -66,7 +87,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar" role="navigation" aria-label="Main navigation">
+    <nav className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'}`} role="navigation" aria-label="Main navigation">
+      {/* Hamburger gumb za mobilne uređaje */}
       <button
         className={`hamburger ${isOpen ? 'open' : ''}`}
         onClick={toggleMenu}
@@ -90,6 +112,28 @@ export default function Navbar() {
           )}
         </svg>
       </button>
+
+      {/* Desktop navigacija (vidljiva na velikim ekranima) */}
+      <div className="navbar-desktop">
+        {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
+          <Link
+            key={page}
+            href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
+            className="navbar-link"
+            onClick={(e) => handleLinkClick(e, page)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleLinkClick(e, page);
+              }
+            }}
+            aria-label={`Go to ${page} page`}
+          >
+            {page}
+          </Link>
+        ))}
+      </div>
+
+      {/* Mobilni meni (vidljiv kada je hamburger otvoren) */}
       <div className={`navbar-menu ${isOpen ? 'open' : ''}`} ref={menuRef}>
         {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
           <Link

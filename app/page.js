@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Container from './components/Container';
 import Link from 'next/link';
@@ -19,7 +18,7 @@ export default function HomePage() {
 
   // Skrolaj na vrh stranice prilikom učitavanja
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll for better UX
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   // Tipkajući efekt za naslov
@@ -114,7 +113,20 @@ export default function HomePage() {
 
   return (
     <main className="page-transition" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1a202c', color: '#e2e8f0' }}>
-      <Navbar />
+      <nav className="homepage-nav" role="navigation" aria-label="Main navigation">
+        <div className="navbar-desktop">
+          {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
+            <Link
+              key={page}
+              href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
+              className="navbar-link"
+              aria-label={`Go to ${page} page`}
+            >
+              {page}
+            </Link>
+          ))}
+        </div>
+      </nav>
       <Container>
         <section className="hero-section" role="region" aria-labelledby="hero-title">
           <h1 className="hero-title" id="hero-title" aria-live="polite">

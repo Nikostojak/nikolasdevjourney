@@ -6,7 +6,7 @@ export const metadata = {
   import Navbar from '../../../components/Navbar';
   import Footer from '../../../components/Footer';
   import Container from '../../../components/Container';
-  
+
   export default function BlogPost() {
     return (
       <main
@@ -35,7 +35,7 @@ export const metadata = {
                 When I started building <strong>Nikolas Dev Journey</strong>, my CSS knowledge was minimal—basic colors and margins were all I knew. With guidance from Grok, I began styling my blog, learning CSS hands-on. From those first steps, I&apos;ve grown into an advanced CSS developer, creating a responsive, polished portfolio. This post shares my journey, highlighting skills that make me a strong candidate for web development roles.
               </p>
   
-              <h2 className="blog-post-subtitle">🌱 The Beginning: CSS Basics</h2>
+              <h2 className="blog-post-subtitle">The Beginning: CSS Basics</h2>
               <p>
                 I kicked off with the essentials: selectors, properties, and values. I learned to style my blog&apos;s elements using colors, fonts, margins, and padding. My first task was styling the navigation bar, applying a dark background and blue accents to match the blog&apos;s aesthetic.
               </p>
@@ -45,7 +45,7 @@ export const metadata = {
                 <li><strong>First win:</strong> Styling the navbar with <code>#2d3748</code> and <code>#63b3ed</code>.</li>
               </ul>
   
-              <h2 className="blog-post-subtitle">📈 Intermediate Steps: Layout and Positioning</h2>
+              <h2 className="blog-post-subtitle">Intermediate Steps: Layout and Positioning</h2>
               <p>
                 Next, I explored layouts with Flexbox and positioning. Flexbox helped me align buttons and blog cards, while positioning enabled a sticky navbar that stays at the top. I also used pseudo-classes like <code>:hover</code> to add interactivity, such as hover effects on links and buttons.
               </p>
@@ -58,7 +58,7 @@ export const metadata = {
                 Styling the blog&apos;s card grid was a milestone, using Flexbox to ensure even spacing and adaptability across screen sizes.
               </p>
   
-              <h2 className="blog-post-subtitle">🚀 Advanced CSS: Animations and Responsiveness</h2>
+              <h2 className="blog-post-subtitle">Advanced CSS: Animations and Responsiveness</h2>
               <p>
                 To elevate my blog&apos;s look, I dove into animations, CSS Grid, and responsive design. I created <code>fadeInUp</code> animations for blog cards and smooth transitions for buttons. Grid helped structure complex layouts, and media queries ensured my blog looked great on mobiles. I also focused on accessibility, adding focus styles and ARIA attributes.
               </p>
@@ -94,7 +94,7 @@ export const metadata = {
                 This code reflects my ability to create interactive, accessible UI elements.
               </p>
   
-              <h2 className="blog-post-subtitle">💼 Practical Applications on My Blog</h2>
+              <h2 className="blog-post-subtitle">Practical Applications on My Blog</h2>
               <p>
                 My blog became a canvas for CSS experimentation. Key features I styled include:
               </p>
@@ -108,7 +108,7 @@ export const metadata = {
                 These elements demonstrate my skills in creating user-friendly, visually appealing interfaces, essential for front-end development.
               </p>
   
-              <h2 className="blog-post-subtitle">🏆 Skills That Attract Employers</h2>
+              <h2 className="blog-post-subtitle">Skills That Attract Employers</h2>
               <p>
                 My CSS skills are now a strong asset:
               </p>
@@ -123,7 +123,7 @@ export const metadata = {
                 These skills, honed through building my blog, prepare me to contribute to professional web development teams.
               </p>
   
-              <h2 className="blog-post-subtitle">📚 Lessons Learned and Future Plans</h2>
+              <h2 className="blog-post-subtitle">Lessons Learned and Future Plans</h2>
               <p>
                 CSS presented challenges, like debugging Flexbox layouts and ensuring consistency across browsers. Each hurdle taught me the value of planning layouts and prioritizing user experience. Writing clean, accessible code became my focus.
               </p>

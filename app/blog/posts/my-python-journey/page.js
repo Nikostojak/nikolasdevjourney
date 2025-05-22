@@ -6,7 +6,7 @@ export const metadata = {
   import Navbar from '../../../components/Navbar';
   import Footer from '../../../components/Footer';
   import Container from '../../../components/Container';
-  
+
   export default function BlogPost() {
     return (
       <main
@@ -35,7 +35,7 @@ export const metadata = {
                 My Python adventure began with simple scripts, as I shared in <a href="/blog/posts/learning-python-basics">my beginner post</a>, where I explored variables, conditionals, and basic logic. Since then, I&apos;ve grown into an advanced Python developer, tackling data processing, automation, and more. This post dives into my progress, showcasing skills that make me a strong candidate for tech roles while highlighting my eagerness to keep learning.
               </p>
   
-              <h2 className="blog-post-subtitle">🌱 The Beginning: Python Basics</h2>
+              <h2 className="blog-post-subtitle">The Beginning: Python Basics</h2>
               <p>
                 I started with the essentials: using <code>print()</code> to output text, defining variables, and writing <code>if/elif/else</code> statements. These early steps taught me how Python&apos;s clear syntax makes coding accessible. I built small scripts, like one to classify ages, which sparked my curiosity for more complex challenges.
               </p>
@@ -45,7 +45,7 @@ export const metadata = {
                 <li><strong>Takeaway:</strong> Python&apos;s simplicity is perfect for starting out.</li>
               </ul>
   
-              <h2 className="blog-post-subtitle">📈 Intermediate Steps: Loops, Data Structures, and Functions</h2>
+              <h2 className="blog-post-subtitle">Intermediate Steps: Loops, Data Structures, and Functions</h2>
               <p>
                 Next, I explored loops and data structures to make my code more dynamic. <code>for</code> and <code>while</code> loops let me automate tasks, while lists, dictionaries, and sets helped me organize data. Writing functions was a game-changer, allowing me to create reusable, modular code.
               </p>
@@ -58,7 +58,7 @@ export const metadata = {
                 A key project was a budget tracker that used lists and dictionaries to categorize expenses, teaching me how to structure data and write efficient loops.
               </p>
   
-              <h2 className="blog-post-subtitle">🚀 Advanced Steps: Classes and Libraries</h2>
+              <h2 className="blog-post-subtitle">Advanced Steps: Classes and Libraries</h2>
               <p>
                 To reach an advanced level, I learned object-oriented programming (OOP) with classes, which helped me model real-world systems. I also started using powerful libraries like <code>pandas</code> for data analysis, <code>requests</code> for API calls, and <code>BeautifulSoup</code> for web scraping. These tools opened up new possibilities for practical applications.
               </p>
@@ -95,7 +95,7 @@ export const metadata = {
                 This script demonstrates my ability to process and analyze data, a skill highly valued in data-driven roles.
               </p>
   
-              <h2 className="blog-post-subtitle">💼 Projects That Impress Employers</h2>
+              <h2 className="blog-post-subtitle">Projects That Impress Employers</h2>
               <p>
                 To apply my skills, I built projects that showcase my versatility:
               </p>
@@ -108,7 +108,7 @@ export const metadata = {
                 These projects highlight my ability to solve real-world problems, from data analysis to automation, making me a strong fit for roles in data engineering or backend development.
               </p>
   
-              <h2 className="blog-post-subtitle">🏆 Skills That Stand Out</h2>
+              <h2 className="blog-post-subtitle">Skills That Stand Out</h2>
               <p>
                 As an advanced Python developer, I&apos;ve developed skills that employers value:
               </p>
@@ -123,7 +123,7 @@ export const metadata = {
                 My enthusiasm for learning and problem-solving makes me a candidate who can grow with any team.
               </p>
   
-              <h2 className="blog-post-subtitle">📚 Lessons Learned and Next Steps</h2>
+              <h2 className="blog-post-subtitle">Lessons Learned and Next Steps</h2>
               <p>
                 This journey taught me the importance of breaking down complex problems and experimenting with new tools. Debugging data processing scripts and learning library documentation were challenges that sharpened my skills. I&apos;m proud of my progress but know there&apos;s more to explore.
               </p>

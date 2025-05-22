@@ -6,7 +6,7 @@ export const metadata = {
   import Navbar from '../../../components/Navbar';
   import Footer from '../../../components/Footer';
   import Container from '../../../components/Container';
-  
+
   export default function BlogPost() {
     return (
       <main
@@ -35,7 +35,7 @@ export const metadata = {
                 When I started <strong>Nikolas Dev Journey</strong>, it was a basic Next.js project with a few static pages. My goal was to document my learning as a self-taught developer transitioning from philosophy to programming. Over time, through trial, error, and a lot of learning, this blog has evolved into a sophisticated portfolio showcasing my skills. In this post, I&apos;ll reflect on the key milestones of this journey and share what I&apos;ve learned along the way.
               </p>
   
-              <h2 className="blog-post-subtitle">🌱 The Beginning: A Simple Blog</h2>
+              <h2 className="blog-post-subtitle">The Beginning: A Simple Blog</h2>
               <p>
                 My first version was minimal: a homepage, an about page, and a blog with static content. I used Next.js for its simplicity and focused on getting the basics right—routing, components, and a clean layout. There were no fancy features, just a foundation to build upon.
               </p>
@@ -45,7 +45,7 @@ export const metadata = {
                 <li><strong>Goal:</strong> Create a space to share my learning journey.</li>
               </ul>
   
-              <h2 className="blog-post-subtitle">🎨 First Steps in Design</h2>
+              <h2 className="blog-post-subtitle">First Steps in Design</h2>
               <p>
                 Early on, I adopted a dark theme to give the blog a modern, developer-friendly look. I chose the <code>Inter</code> font for readability and introduced <code>Fira Code</code> for headings to add a technical vibe. The color palette—<code>#1a202c</code> for the background and <code>#e2e8f0</code> for text—set the tone for a sleek, professional aesthetic.
               </p>
@@ -55,7 +55,7 @@ export const metadata = {
                 <li><strong>Responsive design:</strong> Ensured the blog looked good on mobile and desktop.</li>
               </ul>
   
-              <h2 className="blog-post-subtitle">🗂️ Project Structure</h2>
+              <h2 className="blog-post-subtitle">Project Structure</h2>
               <p>
                 As the blog grew, I organized the codebase to support new features. The current structure reflects the addition of dynamic blog posts, API routes, and reusable components:
               </p>
@@ -90,7 +90,7 @@ export const metadata = {
   page.js`}
               </div>
   
-              <h2 className="blog-post-subtitle">🚀 Adding Interactivity</h2>
+              <h2 className="blog-post-subtitle">Adding Interactivity</h2>
               <p>
                 To make the blog more engaging, I introduced interactive features. The biggest upgrades were category tabs, a search bar, and a featured post section. These additions made it easier for visitors—especially potential employers—to explore my work.
               </p>
@@ -100,7 +100,7 @@ export const metadata = {
                 <li><strong>Featured post:</strong> Highlights my best work at the top of the blog page.</li>
               </ul>
   
-              <h2 className="blog-post-subtitle">🌟 Improving User Experience</h2>
+              <h2 className="blog-post-subtitle">Improving User Experience</h2>
               <p>
                 User experience became a priority as the blog grew. I added animations to make transitions smoother, improved accessibility with ARIA attributes, and ensured the site was fully responsive. These changes made the blog more polished and inclusive.
               </p>
@@ -110,7 +110,7 @@ export const metadata = {
                 <li><strong>Responsiveness:</strong> Grid layouts adapt to mobile screens seamlessly.</li>
               </ul>
   
-              <h2 className="blog-post-subtitle">📚 Lessons Learned and Future Plans</h2>
+              <h2 className="blog-post-subtitle">Lessons Learned and Future Plans</h2>
               <p>
                 This journey taught me more than just coding. I learned to tackle errors (like hydration issues and module errors), organize complex codebases, and prioritize user needs. Each challenge was a chance to grow as a developer.
               </p>

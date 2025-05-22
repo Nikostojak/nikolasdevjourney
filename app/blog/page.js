@@ -87,11 +87,10 @@ export default function BlogPage() {
       }}
     >
       <Navbar />
-
       <Container>
         <section className="blog-section" role="region" aria-labelledby="blog-title">
           <h1 className="blog-list-title" id="blog-title">
-            📝 Developer Blog
+            Developer Blog
           </h1>
 
           {error ? (
@@ -248,7 +247,6 @@ export default function BlogPage() {
           )}
         </section>
       </Container>
-
       <Footer />
     </main>
   );

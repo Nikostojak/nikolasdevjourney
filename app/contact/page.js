@@ -21,11 +21,10 @@ export default function ContactPage() {
       }}
     >
       <Navbar />
-
       <Container>
         <section className="contact-section" role="region" aria-labelledby="contact-title">
           <h1 className="contact-title" id="contact-title">
-            📬 Contact
+            Contact
           </h1>
           <div className="contact-content">
             <p>
@@ -55,7 +54,6 @@ export default function ContactPage() {
           </div>
         </section>
       </Container>
-
       <Footer />
     </main>
   );

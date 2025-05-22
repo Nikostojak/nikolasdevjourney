@@ -35,7 +35,7 @@ export default function BlogPost() {
               When I first began learning programming, I chose Python because of its simple syntax and readability. It felt welcoming, especially for someone coming from a non-technical background. My goal was to understand the core logic behind programming and be able to communicate with a machine through code.
             </p>
 
-            <h2 className="blog-post-subtitle">📘 Starting with the Basics</h2>
+            <h2 className="blog-post-subtitle">Starting with the Basics</h2>
             <p>
               I began by learning how to output text to the screen using <code>print()</code>. This simple command taught me how programs provide feedback.
               Then I explored variables — how to store and reuse data — and understood how types like strings, integers, and booleans work.
@@ -49,7 +49,7 @@ export default function BlogPost() {
               <li><strong>User input:</strong> <code>input()</code> for dynamic data</li>
             </ul>
 
-            <h2 className="blog-post-subtitle">🔄 Controlling Logic with Conditions</h2>
+            <h2 className="blog-post-subtitle">Controlling Logic with Conditions</h2>
             <p>
               One of the biggest breakthroughs for me was learning how to make the computer &quot;decide&quot; something based on conditions. This is where <code>if</code>, <code>elif</code>, and <code>else</code> come into play.
             </p>
@@ -68,14 +68,14 @@ else:
               This structure gave me control over how a program should respond. It felt like having a conversation with the computer — giving it choices and instructing it on what to do next.
             </p>
 
-            <h2 className="blog-post-subtitle">💡 Insights and Realizations</h2>
+            <h2 className="blog-post-subtitle">Insights and Realizations</h2>
             <ul>
               <li><strong>Conditional logic</strong> is the foundation of programming logic.</li>
               <li>Even simple programs can become powerful when you add choices.</li>
               <li>Learning the difference between <code>=</code> and <code>==</code> was crucial!</li>
             </ul>
 
-            <h2 className="blog-post-subtitle">🔜 What I&apos;m Looking Forward To</h2>
+            <h2 className="blog-post-subtitle">What I&apos;m Looking Forward To</h2>
             <p>
               With conditions mastered, I&apos;m excited to dive into loops (<code>for</code>, <code>while</code>), which will allow me to automate tasks and repeat actions efficiently. I&apos;ll also start exploring data structures like lists and dictionaries to manage collections of data.
             </p>

@@ -21,7 +21,6 @@ export default function AboutPage() {
       }}
     >
       <Navbar />
-
       <Container>
         <section className="about-section" role="region" aria-labelledby="about-title">
           <div className="about-header">
@@ -34,7 +33,6 @@ export default function AboutPage() {
               My Journey
             </h1>
           </div>
-
           <div className="about-content">
             <p>
               Before I ever wrote a single line of code, I was on a very different path — the priesthood.
@@ -57,15 +55,13 @@ export default function AboutPage() {
               Now, in <strong>April 2025</strong>, I&apos;ve launched this blog to document my developer journey. I&apos;m preparing
               to build my first real project soon and look forward to everything I&apos;ll learn along the way.
             </p>
-
-            <h2 className="about-subtitle">💬 Final Thought</h2>
+            <h2 className="about-subtitle">Final Thought</h2>
             <p className="final-thought">
               From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started.
-            </p>
+              </p>
           </div>
         </section>
       </Container>
-
       <Footer />
     </main>
   );

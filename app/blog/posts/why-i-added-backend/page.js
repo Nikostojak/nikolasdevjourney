@@ -37,7 +37,7 @@ export default function BlogPost() {
               like blog posts, comments, and future project updates, I realized I needed a backend to fetch and manage data properly.
             </p>
 
-            <h2 className="blog-post-subtitle">🔁 Benefits of Adding a Backend</h2>
+            <h2 className="blog-post-subtitle">Benefits of Adding a Backend</h2>
             <ul>
               <li><strong>Dynamic Content:</strong> Blog posts are now fetched from an API, not hardcoded.</li>
               <li><strong>Scalability:</strong> Easier to connect to a real database later.</li>
@@ -45,7 +45,7 @@ export default function BlogPost() {
               <li><strong>API Routes:</strong> I used <code>/app/api/blog/route.js</code> to return structured JSON data for my blog.</li>
             </ul>
 
-            <h2 className="blog-post-subtitle">🧱 Folder Structure Update</h2>
+            <h2 className="blog-post-subtitle">Folder Structure Update</h2>
             <div className="blog-post-code">
               {`/app
   /api
@@ -58,13 +58,13 @@ export default function BlogPost() {
         page.js`}
             </div>
 
-            <h2 className="blog-post-subtitle">🔌 Connecting API + Frontend</h2>
+            <h2 className="blog-post-subtitle">Connecting API + Frontend</h2>
             <p>
               On the <code>/blog</code> page, I fetch all blog posts using <code>fetch(&quot;/api/blog&quot;)</code>. This lets me render new posts automatically
               just by updating the backend response — no need to manually edit the page.
             </p>
 
-            <h2 className="blog-post-subtitle">✅ What I Gained</h2>
+            <h2 className="blog-post-subtitle">What I Gained</h2>
             <ul>
               <li>More dynamic and scalable blog architecture</li>
               <li>Practice with API design and separation of concerns</li>

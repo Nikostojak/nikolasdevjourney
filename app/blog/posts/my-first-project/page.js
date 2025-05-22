@@ -35,7 +35,7 @@ export const metadata = {
                 I&apos;m thrilled to announce my first major project: a web application for tracking chess openings! As a chess enthusiast and self-taught developer, I&apos;m combining my passion for the game with my growing skills in web development. This project will allow me to store and analyze past chess games, focusing on their opening moves, and showcase my abilities to potential employers. In this post, I&apos;ll share the vision, planned features, and a clear development plan for this exciting journey.
               </p>
   
-              <h2 className="blog-post-subtitle">♛ Why a Chess App?</h2>
+              <h2 className="blog-post-subtitle">Why a Chess App?</h2>
               <p>
                 Chess has always fascinated me with its depth and strategy. As I&apos;ve been building my <strong>Nikolas Dev Journey</strong> blog, I realized that a chess-related project could merge my interests and demonstrate my technical skills. Tracking openings—a critical part of any chess game—offers a practical way to organize past games and learn from them. This project is my chance to create something meaningful while proving I can build a full-fledged web app from scratch.
               </p>
@@ -45,12 +45,12 @@ export const metadata = {
                 <li><strong>Community benefit:</strong> Chess players can use it to analyze their games.</li>
               </ul>
   
-              <h2 className="blog-post-subtitle">🏗️ Core Idea and Features</h2>
+              <h2 className="blog-post-subtitle">Core Idea and Features</h2>
               <p>
                 The core idea is simple: a web app where I can log every chess game I&apos;ve played, along with the opening used (e.g., Sicilian Defense, Queen&apos;s Gambit). The app will store game details like date, opponent, result, and opening name, and display them in an organized, user-friendly way. Beyond this foundation, I plan to add features that make the app versatile and impressive.
               </p>
   
-              <h2 className="blog-post-subtitle">🚀 Planned Features</h2>
+              <h2 className="blog-post-subtitle">Planned Features</h2>
               <p>
                 To make the app truly stand out, I&apos;ve brainstormed a range of features that showcase both technical depth and user-focused design:
               </p>
@@ -70,7 +70,7 @@ export const metadata = {
                 These features will make the app functional, engaging, and a strong portfolio piece.
               </p>
   
-              <h2 className="blog-post-subtitle">📅 Development Plan</h2>
+              <h2 className="blog-post-subtitle">Development Plan</h2>
               <p>
                 To bring this app to life, I&apos;ve outlined a clear plan using technologies I&apos;ve honed and new ones I&apos;m excited to explore. For the front-end, I&apos;ll use <strong>JavaScript</strong> to build interactive UI components with React and Next.js, ensuring a responsive and dynamic experience. For the back-end, I&apos;ll leverage <strong>Python</strong> (using FastAPI or Flask) to create APIs and handle data processing. Additional tools include CSS for styling, JSON or SQLite for data storage, chessboard.js for board visualization, Chart.js for statistics, and NextAuth.js for authentication.
               </p>
@@ -110,7 +110,7 @@ export const metadata = {
                 This plan balances ambition with feasibility, starting with a minimum viable product (MVP) and adding features iteratively.
               </p>
   
-              <h2 className="blog-post-subtitle">💼 Skills for Employers</h2>
+              <h2 className="blog-post-subtitle">Skills for Employers</h2>
               <p>
                 This project will showcase a wide range of skills that employers value:
               </p>
@@ -125,7 +125,7 @@ export const metadata = {
                 By documenting my progress, I aim to demonstrate not just technical ability but also my approach to planning and learning.
               </p>
   
-              <h2 className="blog-post-subtitle">🔮 What&apos;s Next?</h2>
+              <h2 className="blog-post-subtitle">What&apos;s Next?</h2>
               <p>
                 This chess app marks the start of my journey to build impactful projects. I&apos;m excited to dive into coding, tackle challenges, and share updates on my blog. After completing this app, I plan to explore AI-driven projects, such as building machine learning models with Python or creating web apps with AI-powered features using libraries like TensorFlow. My goal is to create innovative tools that solve real problems and showcase my growing expertise.
               </p>
