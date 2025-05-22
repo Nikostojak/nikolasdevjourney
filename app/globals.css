@@ -83,6 +83,7 @@ a:focus, button:focus, input:focus {
   padding: 0.5rem;
   transition: transform 0.3s ease, background-color 0.3s ease;
   display: none;
+  z-index: 1001; /* // Osigurava da je iznad menija */
 }
 
 .hamburger:hover {
@@ -111,22 +112,26 @@ a:focus, button:focus, input:focus {
 .navbar-menu {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0; /* // Cijela širina ekrana */
   bottom: 0;
-  background-color: rgba(26, 32, 44, 0.95);
+  background-color: #1a202c; /* // Nepprozirna tamna pozadina */
+  backdrop-filter: blur(10px); /* // Efekt zamućenja */
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   display: none;
-  width: 250px;
-  animation: slideOut 0.3s ease-in-out forwards;
-  box-shadow: -4px 0 8px rgba(0,0,0,0.2);
+  width: 100%; /* // Puni ekran za bolju vidljivost */
+  z-index: 1000;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* // Glatka animacija */
 }
 
 .navbar-menu.open {
   display: flex !important;
-  animation: slideInMenu 0.3s ease-in-out forwards;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .navbar-link {
@@ -142,6 +147,33 @@ a:focus, button:focus, input:focus {
 .navbar-link:hover {
   color: #63b3ed;
   transform: translateY(-2px);
+}
+
+/* Home button in menu */
+.home-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #63b3ed;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 1rem; /* // Razmak od ostalih linkova */
+}
+
+.home-button:hover {
+  background-color: #90cdf4;
+  transform: scale(1.05);
+}
+
+.home-button:focus {
+  outline: 2px solid #63b3ed;
+  outline-offset: 2px;
 }
 
 /* Mobilni stilovi */
@@ -221,7 +253,7 @@ a:focus, button:focus, input:focus {
 
 /* Homepage */
 .hero-section {
-  padding: 6rem 0;
+  padding: 2rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -254,7 +286,7 @@ a:focus, button:focus, input:focus {
     font-size: clamp(1.8rem, 5vw, 2.5rem);
   }
   .hero-section {
-    padding: 4rem 0;
+    padding: 1.5rem 0;
     min-height: 80vh;
   }
 }
@@ -265,7 +297,7 @@ a:focus, button:focus, input:focus {
     letter-spacing: -0.04em;
   }
   .hero-section {
-    padding: 3rem 0;
+    padding: 1rem 0;
   }
 }
 

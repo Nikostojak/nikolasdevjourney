@@ -10,18 +10,16 @@ export default function HomePage() {
   const [error, setError] = useState(null);
   const [displayedTitle, setDisplayedTitle] = useState('');
   const [showSubtitle, setShowSubtitle] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for hamburger menu
   const fullTitle = 'NIKOLASDEVJOURNEY';
+  const menuRef = useRef(null); // Reference for mobile menu
 
-  const featuredRef = useRef(null);
-  const recentRef = useRef(null);
-  const projectsRef = useRef(null);
-
-  // Skrolaj na vrh stranice prilikom učitavanja
+  // // Skrolaj na vrh stranice prilikom učitavanja
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // Tipkajući efekt za naslov
+  // // Tipkajući efekt za naslov
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
@@ -36,7 +34,7 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
-  // Dohvat blog postova
+  // // Dohvat blog postova
   useEffect(() => {
     async function fetchPosts() {
       try {
@@ -61,7 +59,7 @@ export default function HomePage() {
     fetchPosts();
   }, []);
 
-  // Intersection Observer za sekcije i elemente unutar njih
+  // // Intersection Observer za sekcije i elemente unutar njih
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -105,6 +103,48 @@ export default function HomePage() {
     };
   }, [isLoading, posts]);
 
+  // // Fokusiranje na prvi link kada se meni otvori
+  useEffect(() => {
+    if (isMenuOpen) {
+      const firstLink = menuRef.current?.querySelector('.navbar-link');
+      firstLink?.focus();
+    }
+  }, [isMenuOpen]);
+
+  // // Zatvaranje menija klikom izvan ili Escape tipkom
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isMenuOpen]);
+
+  // // Funkcija za otvaranje/zatvaranje menija
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const featuredRef = useRef(null);
+  const recentRef = useRef(null);
+  const projectsRef = useRef(null);
+
   const featuredPost = posts.find(post => post?.isFeatured);
   const recentPosts = posts
     .filter(post => !post?.isFeatured)
@@ -114,12 +154,61 @@ export default function HomePage() {
   return (
     <main className="page-transition" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1a202c', color: '#e2e8f0' }}>
       <nav className="homepage-nav" role="navigation" aria-label="Main navigation">
+        {/* // Hamburger gumb za mobilne uređaje */}
+        <button
+          className={`hamburger ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
+        >
+          <svg
+            className="hamburger-icon"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#e2e8f0"
+            strokeWidth="2"
+            aria-hidden="true"
+          >
+            {isMenuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+        {/* // Desktop navigacija */}
         <div className="navbar-desktop">
           {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
             <Link
               key={page}
               href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
               className="navbar-link"
+              aria-label={`Go to ${page} page`}
+            >
+              {page}
+            </Link>
+          ))}
+        </div>
+
+        {/* // Mobilni meni */}
+        <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`} ref={menuRef}>
+          <Link
+            href="/"
+            className="navbar-link home-button"
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Go to Home page"
+          >
+            Home
+          </Link>
+          {['Blog', 'Projects', 'About', 'Contact'].map((page) => (
+            <Link
+              key={page}
+              href={`/${page.toLowerCase()}`}
+              className="navbar-link"
+              onClick={() => setIsMenuOpen(false)}
               aria-label={`Go to ${page} page`}
             >
               {page}
