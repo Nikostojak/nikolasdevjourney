@@ -36,7 +36,7 @@ a:focus, button:focus, input:focus {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 1rem;
   box-sizing: border-box;
 }
 
@@ -47,7 +47,7 @@ a:focus, button:focus, input:focus {
   left: 0;
   right: 0;
   display: flex;
-  justify-content: flex-end; /* Samo desno za hamburger */
+  justify-content: flex-end;
   align-items: center;
   padding: 1.5rem 2rem;
   background-color: transparent;
@@ -64,7 +64,7 @@ a:focus, button:focus, input:focus {
 
 .hamburger:hover {
   transform: scale(1.1);
-  background-color: rgba(99, 179, 237, 0.1); /* Suptilna pozadina na hover */
+  background-color: rgba(99, 179, 237, 0.1);
   border-radius: 50%;
 }
 
@@ -75,7 +75,7 @@ a:focus, button:focus, input:focus {
 }
 
 .hamburger-icon path {
-  transition: d 0.3s ease; /* Glatka promjena iz linija u X */
+  transition: d 0.3s ease;
 }
 
 .navbar-menu {
@@ -161,14 +161,15 @@ a:focus, button:focus, input:focus {
 }
 
 .hero-title {
-  font-size: clamp(3rem, 8vw, 4.5rem); /* Povećan font za naslov */
+  font-size: clamp(2.5rem, 8vw, 4rem);
   margin-bottom: 1.5rem;
-  font-weight: 900; /* Maksimalna debljina za snažan dojam */
+  font-weight: 900;
   animation: fadeIn 1s ease-in-out;
   line-height: 1.2;
   max-width: 90%;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Promijenjeno u Inter */
-  letter-spacing: -0.02em; /* Suptilno smanjen razmak između slova */
+  word-break: break-word;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.03em;
 }
 
 .hero-title:hover {
@@ -177,7 +178,14 @@ a:focus, button:focus, input:focus {
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(2rem, 6vw, 3rem); /* Povećan font i za mobilne uređaje */
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    letter-spacing: -0.04em;
   }
 }
 
@@ -205,14 +213,14 @@ a:focus, button:focus, input:focus {
 }
 
 .hero-description {
-  font-size: clamp(1.2rem, 3vw, 1.5rem); /* Povećan font za podnaslov */
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: #e2e8f0;
-  max-width: 700px;
-  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin: 0 auto 3rem; /* Increased bottom margin to 3rem */
   line-height: 1.6;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Osiguravamo Inter font */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .hero-description.visible {
@@ -221,14 +229,16 @@ a:focus, button:focus, input:focus {
 
 .hero-buttons {
   display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .hero-button {
-  padding: 1rem 2rem;
-  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.95rem;
   background-color: #63b3ed;
   color: #ffffff;
   border: none;
@@ -237,13 +247,29 @@ a:focus, button:focus, input:focus {
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.2s ease;
   animation: fadeIn 1s ease-in-out 0.6s both;
-  min-width: 200px;
+  width: 100%;
+  max-width: 250px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .hero-button:hover {
   background-color: #90cdf4;
   transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .hero-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .hero-button {
+    width: auto;
+    min-width: 200px;
+  }
+  .container {
+    padding: 0 2rem;
+  }
 }
 
 /* Sekcije s boxovima */
@@ -837,7 +863,7 @@ a:focus, button:focus, input:focus {
   .scroll-reveal {
     animation: none;
     transition: none;
-    opacity: 1; /* Osigurava vidljivost bez animacija */
+    opacity: 1;
     transform: none;
   }
 }

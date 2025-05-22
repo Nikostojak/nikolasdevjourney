@@ -19,7 +19,7 @@ export default function HomePage() {
 
   // Skrolaj na vrh stranice prilikom učitavanja
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll for better UX
   }, []);
 
   // Tipkajući efekt za naslov
@@ -66,19 +66,18 @@ export default function HomePage() {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '0px 0px -10% 0px', // Povećana margina za ranije otkrivanje
+      rootMargin: '0px 0px -10% 0px',
       threshold: 0.1,
     };
 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Za sekcije i njihove pod-elemente
           const elements = entry.target.querySelectorAll('.scroll-reveal');
           elements.forEach((el, index) => {
             setTimeout(() => {
               el.classList.add('visible');
-            }, index * 150); // Postupna animacija s razmakom od 150ms
+            }, index * 150);
           });
         }
       });
@@ -133,10 +132,10 @@ export default function HomePage() {
           </p>
           <div className="hero-buttons">
             <Link href="/blog">
-              <button className="hero-button" role="button" aria-label="Go to blog page">Read My Blog</button>
+              <button className="hero-button" role="button" aria-label="Read my blog posts">Read My Blog</button>
             </Link>
             <Link href="/projects">
-              <button className="hero-button" role="button" aria-label="View my projects">View My Projects</button>
+              <button className="hero-button" role="button" aria-label="View my project portfolio">View My Projects</button>
             </Link>
           </div>
         </section>
