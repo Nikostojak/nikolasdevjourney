@@ -917,7 +917,7 @@ a:focus, button:focus, input:focus {
   padding: 3rem 0 3rem;
   max-width: 1000px;
   margin: 0 auto;
-  animation: fadeIn кипятильник 1s ease-in-out;
+  animation: fadeIn 1s ease-in-out;
   padding-top: 60px;
 }
 
@@ -1004,6 +1004,70 @@ a:focus, button:focus, input:focus {
   100% { transform: translate(0); }
 }
 
+/* Prijelazi za stranice */
+.page-transition {
+  animation: slideInPage 0.4s ease-in-out forwards;
+}
+
+.page-transition-exit {
+  animation: slideOutPage 0.4s ease-in-out forwards;
+}
+
+@keyframes slideInPage {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutPage {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+/* Prilagodba za mobilne uređaje */
+@media (max-width: 768px) {
+  .page-transition {
+    animation: slideInPageMobile 0.5s ease-in-out forwards;
+  }
+
+  .page-transition-exit {
+    animation: slideOutPageMobile 0.5s ease-in-out forwards;
+  }
+
+  @keyframes slideInPageMobile {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOutPageMobile {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+  }
+}
+
 /* Podrška za smanjeno kretanje */
 @media (prefers-reduced-motion: reduce) {
   .hero-title, .hamburger, .typing-cursor, .hamburger-icon,
@@ -1016,7 +1080,7 @@ a:focus, button:focus, input:focus {
   .blog-pagination, .blog-pagination-button,
   .blog-post-section, .blog-post-title, .blog-post-content, .blog-post-quote,
   .section-title, .featured-post-section, .recent-posts-section, .projects-section,
-  .scroll-reveal {
+  .scroll-reveal, .page-transition, .page-transition-exit {
     animation: none;
     transition: none;
     opacity: 1;
@@ -1025,14 +1089,6 @@ a:focus, button:focus, input:focus {
 }
 
 /* Tranzicije za stranice */
-.page-transition {
-  animation: fadeIn 0.3s ease-in forwards;
-}
-
-.page-transition-exit {
-  animation: fadeOut 0.3s ease-out forwards;
-}
-
 @keyframes fadeOut {
   from { opacity: 1; }
   to { opacity: 0; }
