@@ -118,8 +118,8 @@ a:focus, button:focus, input:focus {
   backdrop-filter: blur(10px);
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  justify-content: flex-start;
+  padding: 4rem 2rem 2rem;
   display: none;
   width: 70%;
   max-width: 300px;
@@ -194,6 +194,8 @@ a:focus, button:focus, input:focus {
 
   .navbar-menu {
     display: none;
+    justify-content: flex-start;
+    padding-top: 3rem; /* Smanjeno za bolju vidljivost "X" gumba */
   }
 
   .navbar-menu.open {
@@ -285,7 +287,7 @@ a:focus, button:focus, input:focus {
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(1.8rem, 5vw, 2.7rem); /* Increased for mobile */
+    font-size: clamp(2.2rem, 6vw, 3rem); /* Increased for mobile */
   }
   .hero-section {
     padding: 1.5rem 0;
@@ -295,7 +297,7 @@ a:focus, button:focus, input:focus {
 
 @media (max-width: 400px) {
   .hero-title {
-    font-size: clamp(1.5rem, 4vw, 2rem); /* Increased for small screens */
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Increased for small screens */
     letter-spacing: -0.04em;
   }
   .hero-section {
@@ -765,9 +767,10 @@ a:focus, button:focus, input:focus {
 
 @media (max-width: 768px) {
   .about-header {
-    flex-direction: row;
-    justify-content: flex-start;
-    min-height: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: auto;
   }
 }
 
@@ -789,6 +792,14 @@ a:focus, button:focus, input:focus {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .about-title-wrapper {
+    position: static;
+    transform: none;
+    margin-top: 0.5rem;
+  }
 }
 
 .about-title {
@@ -1048,7 +1059,7 @@ a:focus, button:focus, input:focus {
   @keyframes slideInPageMobile {
     from {
       opacity: 0;
-      transform: translateX(30px);
+      transform:  translateX(30px);
     }
     to {
       opacity: 1;

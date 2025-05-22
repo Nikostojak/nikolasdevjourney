@@ -7,13 +7,6 @@ export default function Navbar() {
   const menuRef = useRef(null);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      const firstLink = menuRef.current?.querySelector('.navbar-link');
-      firstLink?.focus();
-    }
-  }, [isMenuOpen]);
-
-  useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target) && !event.target.closest('.hamburger')) {
         setIsMenuOpen(false);
