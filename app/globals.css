@@ -285,7 +285,7 @@ a:focus, button:focus, input:focus {
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(2.2rem, 6vw, 3rem); /* Increased for mobile */
+    font-size: clamp(2.0rem, 6vw, 3rem); /* Increased for mobile */
   }
   .hero-section {
     padding: 1.5rem 0;
@@ -295,7 +295,7 @@ a:focus, button:focus, input:focus {
 
 @media (max-width: 400px) {
   .hero-title {
-    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Increased for small screens */
+    font-size: clamp(1.7rem, 5vw, 2.5rem); /* Increased for small screens */
     letter-spacing: -0.04em;
   }
   .hero-section {
@@ -756,15 +756,18 @@ a:focus, button:focus, input:focus {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
+  justify-content: flex-start;
+  position: relative;
   margin-bottom: 2.5rem;
   animation: fadeIn 1s ease-in-out;
+  min-height: 100px; /* Ensure space for image height */
 }
 
 @media (max-width: 768px) {
   .about-header {
     flex-direction: row;
-    gap: 0.5rem;
+    justify-content: flex-start;
+    min-height: 100px;
   }
 }
 
@@ -779,6 +782,13 @@ a:focus, button:focus, input:focus {
 
 .profile-img:hover {
   transform: scale(1.05);
+}
+
+.about-title-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 .about-title {
@@ -907,7 +917,7 @@ a:focus, button:focus, input:focus {
   padding: 3rem 0 3rem;
   max-width: 1000px;
   margin: 0 auto;
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn кипятильник 1s ease-in-out;
   padding-top: 60px;
 }
 

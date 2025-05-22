@@ -29,9 +29,11 @@ export default function AboutPage() {
               alt="Nikolas Stojak, self-taught developer"
               className="profile-img"
             />
-            <h1 className="about-title" id="about-title">
-              My Journey
-            </h1>
+            <div className="about-title-wrapper">
+              <h1 className="about-title" id="about-title">
+                My Journey
+              </h1>
+            </div>
           </div>
           <div className="about-content">
             <p>
