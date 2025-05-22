@@ -285,7 +285,7 @@ a:focus, button:focus, input:focus {
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(2.0rem, 5vw, 3rem); /* Increased for mobile */
+    font-size: clamp(1.9rem, 5vw, 2.8rem); /* Increased for mobile */
   }
   .hero-section {
     padding: 1.5rem 0;
