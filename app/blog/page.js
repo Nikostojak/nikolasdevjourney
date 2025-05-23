@@ -61,6 +61,7 @@ export default function BlogPage() {
   const categoryIcons = {
     'Blog Development': '🛠️',
     'Python': '🐍',
+    'Javascript': '🌐',
     'Uncategorized': '📝',
     'All': '🌐'
   };
