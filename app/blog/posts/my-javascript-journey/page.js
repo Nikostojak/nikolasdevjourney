@@ -37,7 +37,7 @@ export const metadata = {
   
               <h2 className="blog-post-subtitle">Transitioning from Python: The Mental Model Shift</h2>
               <p>
-                Back in April 2025, JavaScript was completely new to me. Coming from Python&apos;s straightforward, synchronous mindset, I had to rewire my thinking around JavaScript&apos;s asynchronous, event-driven nature. The biggest mental shift was understanding that JavaScript is single-threaded yet handles concurrency through the event loop—a concept that doesn't exist in the same way in Python.
+                Back in April 2025, JavaScript was completely new to me. Coming from Python&apos;s straightforward, synchronous mindset, I had to rewire my thinking around JavaScript&apos;s asynchronous, event-driven nature. The biggest mental shift was understanding that JavaScript is single-threaded yet handles concurrency through the event loop—a concept that doesn&apos;t exist in the same way in Python.
               </p>
               <ul>
                 <li><strong>First challenge:</strong> Understanding why <code>console.log()</code> order matters in async contexts.</li>
