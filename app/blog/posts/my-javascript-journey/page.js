@@ -360,7 +360,7 @@ export const metadata = {
                 <li><strong>Performance monitoring:</strong> Using browser DevTools and Web Vitals for measurement.</li>
               </ul>
               <p>
-                Here's an example of a performance-optimized search component I built:
+                Here&apos;s an example of a performance-optimized search component I built:
               </p>
               <div className="blog-post-code">
                 {`// Performance-optimized search with debouncing and memoization
