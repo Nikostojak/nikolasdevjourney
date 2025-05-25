@@ -2,12 +2,12 @@ export async function GET() {
   try {
     const posts = [
       {
-        title: "My JavaScript Journey: From Zero to Modern Fundamentals",
+        title: "From Zero to Functional: My First Month with JavaScript",
         slug: "my-javascript-journey",
         date: "2025-05-24",
-        excerpt: "A deep dive into my JavaScript learning journey - from Python background to mastering modern JS fundamentals, async patterns, and production-ready practices.",
+        excerpt: "How I learned JavaScript fundamentals by building my blog instead of watching tutorials - and why this approach works better for real skill development.",
         category: "JavaScript",
-        tags: ["JavaScript", "Web Development", "Async Programming", "React", "Performance"],
+        tags: ["JavaScript", "Learning Journey", "Blog Development", "React"],
         isFeatured: true
       },
       {
@@ -17,7 +17,7 @@ export async function GET() {
         excerpt: "Announcing my first project: a web app for tracking chess openings, with a detailed development plan.",
         category: "Projects",
         tags: ["Chess", "Web Development", "Projects"],
-        isFeatured: true // Označi kao istaknuti
+        isFeatured: false
       },
       {
         title: "My CSS Journey: From Basics to Advanced Styling",
