@@ -37,7 +37,7 @@ export default function BlogPost() {
 
             <h2 className="blog-post-subtitle">Learning JavaScript Through Building: Why I Skipped Tutorials</h2>
             <p>
-              A month ago, JavaScript looked like gibberish to me. Coming from Python's clean, predictable syntax, JavaScript seemed chaotic with its curly braces, semicolons, and weird behaviors. I initially planned to spend weeks watching tutorials and reading documentation, but I quickly realized this wasn't working. So I made a decision: I would learn JavaScript by building my blog, figuring out features as I needed them. This turned out to be the best learning strategy I could have chosen.
+              A month ago, JavaScript looked like gibberish to me. Coming from Python&apos;s clean, predictable syntax, JavaScript seemed chaotic with its curly braces, semicolons, and weird behaviors. I initially planned to spend weeks watching tutorials and reading documentation, but I quickly realized this wasn&apos;t working. So I made a decision: I would learn JavaScript by building my blog, figuring out features as I needed them. This turned out to be the best learning strategy I could have chosen.
             </p>
             <ul>
               <li><strong>Problem-driven learning:</strong> Each blog feature forced me to learn specific JavaScript concepts.</li>
@@ -46,7 +46,7 @@ export default function BlogPost() {
               <li><strong>Motivation boost:</strong> Seeing my blog come to life kept me excited about learning more.</li>
             </ul>
             <p>
-              My very first JavaScript need came when I wanted to create an animated typing effect for my homepage title. I couldn&apos;t just have static text—I wanted "NIKOLASDEVJOURNEY" to appear letter by letter. This practical need forced me to learn about JavaScript timing, string manipulation, and React state management.
+              My very first JavaScript need came when I wanted to create an animated typing effect for my homepage title. I couldn&apos;t just have static text—I wanted &quot;NIKOLASDEVJOURNEY&quot; to appear letter by letter. This practical need forced me to learn about JavaScript timing, string manipulation, and React state management.
             </p>
 
             <h2 className="blog-post-subtitle">First Challenge: Understanding Variables and State</h2>
@@ -216,7 +216,7 @@ const filteredPosts = posts.filter(post =>
 
             <h2 className="blog-post-subtitle">What I Actually Know After One Month</h2>
             <p>
-              Looking honestly at my progress, here's what I can confidently build with JavaScript:
+              Looking honestly at my progress, here&apos;s what I can confidently build with JavaScript:
             </p>
             <ul>
               <li><strong>React components:</strong> Functional components with hooks for state management and side effects.</li>
