@@ -45,7 +45,7 @@ export const metadata = {
                 <li><strong>Scope revelation:</strong> Discovering that <code>var</code> has function scope while <code>let</code> and <code>const</code> are block-scoped.</li>
               </ul>
               <p>
-                My first "aha" moment came when I encountered this behavior:
+                My first &quot;aha&quot; moment came when I encountered this behavior:
               </p>
               <div className="blog-post-code">
                 {`console.log("1");
@@ -519,7 +519,7 @@ export const metadata = {
               </p>
   
               <blockquote className="blog-post-quote">
-                "From zero to production-ready JavaScript fundamentals in one month—the journey taught me that modern web development isn&apos;t just about syntax, but about understanding performance, accessibility, and maintainable architecture. I&apos;m excited to apply these patterns to increasingly complex projects."
+                &quot;From zero to production-ready JavaScript fundamentals in one month—the journey taught me that modern web development isn&apos;t just about syntax, but about understanding performance, accessibility, and maintainable architecture. I&apos;m excited to apply these patterns to increasingly complex projects.&quot;
               </blockquote>
             </div>
           </article>
