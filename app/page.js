@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import Footer from './components/Footer';
 import Container from './components/Container';
 import Navbar from './components/Navbar';
+import FloatingCode from './components/animations/FloatingCode';
 import Link from 'next/link';
 
 export default function HomePage() {
@@ -109,7 +110,10 @@ export default function HomePage() {
     .slice(0, 3);
 
   return (
-    <main className="page-transition" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1a202c', color: '#e2e8f0' }}>
+    <main className="page-transition" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1a202c', color: '#e2e8f0', position: 'relative', overflow: 'hidden' 
+    }}>
+
+      <FloatingCode />
       <Navbar />
       <Container>
         <section className="hero-section" role="region" aria-labelledby="hero-title">

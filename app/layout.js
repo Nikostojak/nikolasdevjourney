@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
+import GoogleAnalytics from './components/GoogleAnalytics';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -14,7 +15,7 @@ export const metadata = {
     title: 'Nikolas Dev Journey',
     description: 'Follow my journey in software development.',
     url: 'https://nikolasdevjourney.com', 
-    images: ['/og-image.jpg'], // Dodaj sliku ako imaš
+    images: ['/og-image.jpg'], // sliku ako imam
   },
 };
 
@@ -22,6 +23,9 @@ export default function RootLayout({ children }) {
   console.log('RootLayout rendering | Built with Next.js v14.2.3');
   return (
     <html lang="hr">
+      <head>
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-CMEMLMEFFR" />
+      </head>
       <body
         className={`${inter.variable}`}
         style={{

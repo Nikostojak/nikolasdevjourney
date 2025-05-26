@@ -1108,3 +1108,55 @@ a:focus, button:focus, input:focus {
   from { opacity: 1; }
   to { opacity: 0; }
 }
+
+.floating-code-container {
+  backdrop-filter: blur(0.5px);
+}
+
+/* Animacije za smooth performance */
+@media (max-width: 768px) {
+  .floating-code-container {
+    opacity: 0.4 !important;
+  }
+
+  .floating-code-container div {
+    font-size: 10px !important;
+    text-shadow: none !important; /* Ukloni glow na mobile */
+  }
+}
+
+/* High performance mode */
+@media (prefers-reduced-motion: reduce) {
+  .floating-code-container div {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Poboljšanja za hover interakciju */
+.floating-code-container div {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-code-container div:hover {
+  cursor: pointer;
+}
+
+/* Subtle animation za smooth hover */
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Performance optimizacija */
+.floating-code-container {
+  will-change: transform;
+}
+
+/* Dark mode optimization */
+@media (prefers-color-scheme: dark) {
+  .floating-code-container div {
+    filter: brightness(0.9);
+  }
+}
+
