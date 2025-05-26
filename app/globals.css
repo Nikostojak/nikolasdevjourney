@@ -1160,3 +1160,21 @@ a:focus, button:focus, input:focus {
   }
 }
 
+/* Mobile optimizacija za FloatingCode */
+@media (max-width: 768px) {
+  .floating-code-container {
+    opacity: 0.6 !important;
+  }
+  
+  .floating-code-container div {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Za vrlo male ekrane */
+@media (max-width: 480px) {
+  .floating-code-container {
+    opacity: 0.4 !important;
+  }
+}

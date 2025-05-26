@@ -24,64 +24,77 @@ const FloatingCode = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
 
-  // Track mouse za interaktivnost
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    // Samo desktop ima mouse tracking
+    if (window.innerWidth > 768) {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
+    
+    return () => {
+      if (window.innerWidth > 768) {
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
+    };
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Definiraj svojstva slojeva
+    // Mobile optimizacije
+    const isMobile = window.innerWidth <= 768;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
     const layerProperties = {
       front: { 
-        speedMultiplier: 1.4, 
-        scale: 1.1, 
-        opacity: 0.35, 
+        speedMultiplier: isMobile ? 0.8 : 1.4, 
+        scale: isMobile ? 0.9 : 1.1, 
+        opacity: isMobile ? 0.25 : 0.35, 
         zIndex: 3,
-        parallaxStrength: 1.2
+        parallaxStrength: isMobile ? 0.5 : 1.2
       },
       middle: { 
-        speedMultiplier: 1.0, 
-        scale: 1.0, 
-        opacity: 0.25, 
+        speedMultiplier: isMobile ? 0.6 : 1.0, 
+        scale: isMobile ? 0.8 : 1.0, 
+        opacity: isMobile ? 0.18 : 0.25, 
         zIndex: 2,
-        parallaxStrength: 1.0
+        parallaxStrength: isMobile ? 0.3 : 1.0
       },
       back: { 
-        speedMultiplier: 0.6, 
-        scale: 0.85, 
-        opacity: 0.15, 
+        speedMultiplier: isMobile ? 0.4 : 0.6, 
+        scale: isMobile ? 0.7 : 0.85, 
+        opacity: isMobile ? 0.12 : 0.15, 
         zIndex: 1,
-        parallaxStrength: 0.8
+        parallaxStrength: isMobile ? 0.2 : 0.8
       }
     };
 
-    // Stvori elemente s layer properties
-    const elements = codeSnippets.map((snippet, index) => {
+    // Smanji broj elemenata na mobile
+    const elementsToShow = isMobile ? codeSnippets.slice(0, 8) : codeSnippets;
+
+    const elements = elementsToShow.map((snippet, index) => {
       const layerProps = layerProperties[snippet.layer];
       
       return {
         id: index,
         ...snippet,
-        x: Math.random() * (window.innerWidth - 300),
-        y: Math.random() * (window.innerHeight - 100),
-        speed: (0.4 + Math.random() * 0.6) * layerProps.speedMultiplier,
+        x: Math.random() * (screenWidth - (isMobile ? 150 : 300)),
+        y: Math.random() * (screenHeight - (isMobile ? 50 : 100)),
+        speed: (0.3 + Math.random() * 0.4) * layerProps.speedMultiplier,
         direction: Math.random() * Math.PI * 2,
-        baseOpacity: layerProps.opacity + Math.random() * 0.1,
-        opacity: layerProps.opacity + Math.random() * 0.1,
+        baseOpacity: layerProps.opacity + Math.random() * 0.05,
+        opacity: layerProps.opacity + Math.random() * 0.05,
         scale: layerProps.scale * (0.9 + Math.random() * 0.2),
-        rotationSpeed: (Math.random() - 0.5) * 0.015,
+        rotationSpeed: (Math.random() - 0.5) * (isMobile ? 0.008 : 0.015),
         currentRotation: 0,
         pulsePhase: Math.random() * Math.PI * 2,
         zIndex: layerProps.zIndex,
         parallaxStrength: layerProps.parallaxStrength,
-        panicLevel: 0
+        isMobile: isMobile
       };
     });
     
@@ -94,39 +107,38 @@ const FloatingCode = () => {
     const animateElements = () => {
       setFloatingElements(prev => 
         prev.map(element => {
-          // Osnovni pokret
           let newX = element.x + Math.cos(element.direction) * element.speed;
           let newY = element.y + Math.sin(element.direction) * element.speed;
           
-          // Bounce off edges
-          const padding = 50;
-          if (newX < padding || newX > window.innerWidth - 300) {
+          // Mobile-aware boundaries
+          const padding = element.isMobile ? 20 : 50;
+          const maxX = element.isMobile ? window.innerWidth - 150 : window.innerWidth - 300;
+          const maxY = element.isMobile ? window.innerHeight - 50 : window.innerHeight - 100;
+          
+          if (newX < padding || newX > maxX) {
             element.direction = Math.PI - element.direction;
-            newX = Math.max(padding, Math.min(window.innerWidth - 300, newX));
+            newX = Math.max(padding, Math.min(maxX, newX));
           }
-          if (newY < padding || newY > window.innerHeight - 100) {
+          if (newY < padding || newY > maxY) {
             element.direction = -element.direction;
-            newY = Math.max(padding, Math.min(window.innerHeight - 100, newY));
+            newY = Math.max(padding, Math.min(maxY, newY));
           }
 
-          // MINIMAL mouse effect - samo parallax
           let finalX = newX;
           let finalY = newY;
 
-          // Subtle parallax effect - VRLO minimalan
+          // Smanjen parallax na mobile
+          const parallaxMultiplier = element.isMobile ? 0.002 : 0.005;
           const parallaxStrength = element.parallaxStrength;
-          const parallaxOffsetX = (mousePosition.x - window.innerWidth / 2) * 0.005 * parallaxStrength; // Smanjen s 0.02 na 0.005
-          const parallaxOffsetY = (mousePosition.y - window.innerHeight / 2) * 0.005 * parallaxStrength;
+          const parallaxOffsetX = (mousePosition.x - window.innerWidth / 2) * parallaxMultiplier * parallaxStrength;
+          const parallaxOffsetY = (mousePosition.y - window.innerHeight / 2) * parallaxMultiplier * parallaxStrength;
           
-          // Finalna pozicija s minimal parallax effectom
           const displayX = finalX + parallaxOffsetX;
           const displayY = finalY + parallaxOffsetY;
 
-          // Simple pulse effect - bez mouse utjecaja
-          const pulseOffset = Math.sin(element.pulsePhase + Date.now() * 0.002) * 0.04;
+          const pulseOffset = Math.sin(element.pulsePhase + Date.now() * 0.002) * (element.isMobile ? 0.02 : 0.04);
           const newOpacity = Math.max(0.05, element.baseOpacity + pulseOffset);
 
-          // Konstantna rotacija
           const newRotation = element.currentRotation + element.rotationSpeed;
 
           return {
@@ -142,7 +154,7 @@ const FloatingCode = () => {
       );
     };
 
-    const interval = setInterval(animateElements, 32); // 30fps za bolju performance
+    const interval = setInterval(animateElements, 32);
     return () => clearInterval(interval);
   }, [floatingElements, mousePosition]);
 
@@ -171,38 +183,36 @@ const FloatingCode = () => {
             opacity: element.opacity,
             color: element.color,
             fontFamily: 'Fira Code, monospace',
-            fontSize: `${12 * element.scale}px`,
+            fontSize: `${(element.isMobile ? 10 : 12) * element.scale}px`,
             fontWeight: element.type === 'comment' ? '400' : '500',
             whiteSpace: 'nowrap',
             transform: `rotate(${element.currentRotation}rad) scale(${element.scale})`,
-            transition: 'opacity 0.2s ease', // Samo opacity transition
-            textShadow: `0 0 ${6 + element.zIndex * 2}px ${element.color}${Math.floor(30 + element.zIndex * 10)}, 0 0 ${10 + element.zIndex * 3}px ${element.color}${Math.floor(15 + element.zIndex * 5)}`, // Konstantan glow
-            filter: `brightness(${0.8 + element.zIndex * 0.15}) blur(${(4 - element.zIndex) * 0.3}px)`, // Konstantan brightness
+            transition: 'opacity 0.2s ease',
+            textShadow: element.isMobile ? 'none' : `0 0 ${6 + element.zIndex * 2}px ${element.color}${Math.floor(30 + element.zIndex * 10)}, 0 0 ${10 + element.zIndex * 3}px ${element.color}${Math.floor(15 + element.zIndex * 5)}`,
+            filter: element.isMobile ? 'none' : `brightness(${0.8 + element.zIndex * 0.15}) blur(${(4 - element.zIndex) * 0.3}px)`,
             zIndex: element.zIndex,
             userSelect: 'none'
           }}
         >
-          {/* Dodaj prefix ikone ovisno o tipu */}
           <span style={{ 
-            marginRight: '4px', 
+            marginRight: '2px', 
             opacity: 0.7,
-            fontSize: '10px'
+            fontSize: element.isMobile ? '8px' : '10px'
           }}>
-            {element.type === 'function' && '⚡'}
-            {element.type === 'variable' && '📦'}
-            {element.type === 'comment' && '💭'}
-            {element.type === 'command' && '⚙️'}
-            {element.type === 'method' && '🔧'}
-            {element.type === 'jsx' && '⚛️'}
-            {element.type === 'import' && '📥'}
-            {element.type === 'export' && '📤'}
-            {element.type === 'conditional' && '🤔'}
+            {!element.isMobile && element.type === 'function' && '⚡'}
+            {!element.isMobile && element.type === 'variable' && '📦'}
+            {!element.isMobile && element.type === 'comment' && '💭'}
+            {!element.isMobile && element.type === 'command' && '⚙️'}
+            {!element.isMobile && element.type === 'method' && '🔧'}
+            {!element.isMobile && element.type === 'jsx' && '⚛️'}
+            {!element.isMobile && element.type === 'import' && '📥'}
+            {!element.isMobile && element.type === 'export' && '📤'}
+            {!element.isMobile && element.type === 'conditional' && '🤔'}
           </span>
           {element.code}
         </div>
       ))}
 
-      {/* Minimal visual indicator (optional) */}
       <div
         style={{
           position: 'absolute',
@@ -217,7 +227,6 @@ const FloatingCode = () => {
         }}
       />
       
-      {/* Clean indicator */}
       <div
         style={{
           position: 'absolute',
@@ -230,7 +239,7 @@ const FloatingCode = () => {
           userSelect: 'none'
         }}
       >
-      
+        // Floating Code Active
       </div>
     </div>
   );
