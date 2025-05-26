@@ -199,8 +199,6 @@ const FloatingCode = () => {
             {element.type === 'conditional' && '🤔'}
           </span>
           {element.code}
-          
-          {/* Uklonjen magnetic indicator - nema sadržaja */}
         </div>
       ))}
 
@@ -232,7 +230,7 @@ const FloatingCode = () => {
           userSelect: 'none'
         }}
       >
-        // Floating Code Active
+      
       </div>
     </div>
   );
