@@ -200,7 +200,7 @@ const FloatingCode = () => {
           </span>
           {element.code}
           
-          {/* Uklonjen magnetic indicator */}
+          {/* Uklonjen magnetic indicator - nema sadržaja */}
         </div>
       ))}
 
