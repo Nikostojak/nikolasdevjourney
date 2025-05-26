@@ -239,7 +239,7 @@ const FloatingCode = () => {
           userSelect: 'none'
         }}
       >
-        // Floating Code Active
+    
       </div>
     </div>
   );
