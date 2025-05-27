@@ -6,6 +6,7 @@ export const metadata = {
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import Container from '../../../components/Container';
+import CodeBlock from '../../../components/CodeBlock';
 
 export default function BlogPost() {
   return (
@@ -56,8 +57,13 @@ export default function BlogPost() {
             <p>
               For the typing effect, I needed to track what letters had been displayed so far and whether to show the subtitle. This introduced me to multiple state variables working together—something I&apos;d never encountered in Python&apos;s straightforward variable assignment.
             </p>
-            <div className="blog-post-code">
-              {`// My first React state management for typing animation
+
+            <CodeBlock 
+              language="javascript" 
+              filename="components/TypingAnimation.js"
+              title="My First React State Management"
+            >
+{`// My first React state management for typing animation
 const [displayedTitle, setDisplayedTitle] = useState('');
 const [showSubtitle, setShowSubtitle] = useState(false);
 const fullTitle = 'NIKOLASDEVJOURNEY';
@@ -76,7 +82,8 @@ useEffect(() => {
   }, 200);
   return () => clearInterval(interval);
 }, []);`}
-            </div>
+            </CodeBlock>
+
             <p>
               This single feature taught me about React hooks, string methods, timing functions, and the importance of cleanup to prevent memory leaks. I learned that JavaScript isn&apos;t just about variables—it&apos;s about managing changing data over time.
             </p>
@@ -105,8 +112,13 @@ useEffect(() => {
             <p>
               The real learning came when I needed to filter and sort these posts. I discovered JavaScript&apos;s powerful array methods like <code>filter()</code>, <code>map()</code>, and <code>sort()</code>. Unlike Python&apos;s more explicit approach, JavaScript array methods felt like magic—I could chain them together to transform data in just a few lines.
             </p>
-            <div className="blog-post-code">
-              {`// Working with blog post data
+
+            <CodeBlock 
+              language="javascript" 
+              filename="app/blog/page.js"
+              title="Working with Blog Post Data"
+            >
+{`// Working with blog post data
 const posts = [
   { title: "My First Post", category: "Blog Development", date: "2025-04-15" },
   { title: "Learning JavaScript", category: "JavaScript", date: "2025-05-23" },
@@ -124,7 +136,8 @@ const recentPosts = posts
 const filteredPosts = posts.filter(post => 
   activeTab === 'All' || post.category === activeTab
 );`}
-            </div>
+            </CodeBlock>
+
             <p>
               These array methods became my favorite JavaScript feature. They let me manipulate data elegantly and expressively, turning complex filtering and sorting operations into readable, functional code. This was where JavaScript started to feel powerful and enjoyable to write.
             </p>

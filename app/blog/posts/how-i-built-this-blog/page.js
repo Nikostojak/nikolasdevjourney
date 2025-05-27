@@ -6,6 +6,7 @@ export const metadata = {
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import Container from '../../../components/Container';
+import CodeBlock from '../../../components/CodeBlock';
 
 export default function BlogPost() {
   return (
@@ -27,7 +28,7 @@ export default function BlogPost() {
       <Container>
         <article className="blog-post-section" role="article" aria-labelledby="blog-post-title">
           <h1 className="blog-post-title" id="blog-post-title">
-          Building Nikolas Dev Journey: How I Created My Developer Blog
+            Building Nikolas Dev Journey: How I Created My Developer Blog
           </h1>
 
           <div className="blog-post-content">
@@ -48,8 +49,13 @@ export default function BlogPost() {
             </ul>
 
             <h2 className="blog-post-subtitle">Folder Structure</h2>
-            <div className="blog-post-code">
-              {`/app
+            
+            <CodeBlock 
+              language="bash" 
+              filename="project-structure.txt"
+              title="Blog Project Structure"
+            >
+{`/app
   /about
     page.js
   /blog
@@ -62,10 +68,11 @@ export default function BlogPost() {
   /components
     Navbar.js
     Footer.js
+    CodeBlock.js
 globals.css
 layout.js
 page.js`}
-            </div>
+            </CodeBlock>
 
             <h2 className="blog-post-subtitle">Styling & Design</h2>
             <p>
@@ -77,6 +84,57 @@ page.js`}
               <li>Fonts are loaded via <a href="https://nextjs.org/docs/app/building-your-application/optimizing/fonts" target="_blank" rel="noopener noreferrer" aria-label="Next.js font optimization documentation">next/font</a>, using <strong>Inter</strong>.</li>
               <li>Backgrounds, spacing, and alignment are all responsive and visually balanced.</li>
             </ul>
+
+            <h2 className="blog-post-subtitle">CSS Styling Example</h2>
+            <p>
+              Here's some of the key CSS that makes the blog look great:
+            </p>
+
+            <CodeBlock 
+              language="css" 
+              filename="app/globals.css"
+              title="Blog Styling"
+            >
+{`:root {
+  --background: #1a202c;
+  --foreground: #e2e8f0;
+  --accent: #63b3ed;
+  --font-mono: 'Fira Code', monospace;
+}
+
+.hero-section {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 90vh;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  margin-bottom: 2.5rem;
+  font-weight: 900;
+  animation: fadeIn 1s ease-in-out;
+  line-height: 1.2;
+}
+
+.hero-button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #90cdf4;
+  transform: scale(1.05);
+}`}
+            </CodeBlock>
 
             <h2 className="blog-post-subtitle">Deployment to Vercel</h2>
             <p>
@@ -94,12 +152,108 @@ page.js`}
               Instead of hardcoding posts directly into the frontend, I created a <code>/app/api/blog/route.js</code> file
               that returns blog post data in JSON format.
             </p>
+
+            <h2 className="blog-post-subtitle">API Route Example</h2>
             <p>
-              On the frontend, the blog list page fetches this data dynamically using <code>fetch(&quot;/api/blog&quot;)</code> and renders it.
-              This approach keeps the code organized, flexible, and easy to scale when I start adding more posts in the future.
+              Here's how I structured my blog API route:
             </p>
+
+            <CodeBlock 
+              language="javascript" 
+              filename="app/api/blog/route.js"
+              title="Blog API Route"
+            >
+{`export async function GET() {
+  try {
+    const posts = [
+      {
+        title: "How I Built This Blog",
+        slug: "how-i-built-this-blog",
+        date: "2025-04-30",
+        excerpt: "Step-by-step guide of how I created my blog.",
+        category: "Blog Development",
+        tags: ["Next.js", "React", "Vercel"],
+        isFeatured: false
+      },
+      // More posts...
+    ];
+
+    return new Response(JSON.stringify(posts), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store"
+      }
+    });
+  } catch (error) {
+    return new Response(
+      JSON.stringify({ error: "Internal Server Error" }), 
+      { status: 500 }
+    );
+  }
+}`}
+            </CodeBlock>
+
+            <h2 className="blog-post-subtitle">Frontend Data Fetching</h2>
             <p>
-              Since everything is still within the same Next.js app, deployment to Vercel remains seamless. API routes are treated as serverless functions and work automatically.
+              And here's how I fetch the data on the frontend:
+            </p>
+
+            <CodeBlock 
+              language="javascript" 
+              filename="app/blog/page.js"
+              title="Blog List Component"
+            >
+{`'use client';
+import { useState, useEffect } from 'react';
+
+export default function BlogPage() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const res = await fetch('/api/blog', {
+          cache: 'no-store',
+        });
+        
+        if (!res.ok) {
+          throw new Error('Failed to fetch posts');
+        }
+        
+        const data = await res.json();
+        setPosts(data);
+      } catch (err) {
+        console.error('Error fetching posts:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchPosts();
+  }, []);
+
+  return (
+    <div>
+      {loading ? (
+        <p>Loading posts...</p>
+      ) : (
+        posts.map(post => (
+          <div key={post.slug}>
+            <h3>{post.title}</h3>
+            <p>{post.excerpt}</p>
+          </div>
+        ))
+      )}
+    </div>
+  );
+}`}
+            </CodeBlock>
+
+            <p>
+              This approach keeps the code organized, flexible, and easy to scale when I start adding more posts in the future.
+              Since everything is still within the same Next.js app, deployment to Vercel remains seamless.
             </p>
 
             <h2 className="blog-post-subtitle">Lessons Learned</h2>
@@ -121,7 +275,7 @@ page.js`}
             </ul>
 
             <blockquote className="blog-post-quote">
-              “From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started.”
+              "From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started."
             </blockquote>
           </div>
         </article>
