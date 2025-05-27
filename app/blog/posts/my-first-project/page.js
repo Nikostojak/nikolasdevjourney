@@ -171,7 +171,7 @@ Timeline: 4-6 months for full platform, starting with MVP in 3-4 weeks`}
             </ul>
 
             <blockquote className="blog-post-quote">
-              "Every great platform starts with a single move. This chess openings community will be my opening gambit in building technology that brings players together and elevates the game we all love."
+              &quot;Every great platform starts with a single move. This chess openings community will be my opening gambit in building technology that brings players together and elevates the game we all love.&quot;
             </blockquote>
           </div>
         </article>

@@ -87,7 +87,7 @@ page.js`}
 
             <h2 className="blog-post-subtitle">CSS Styling Example</h2>
             <p>
-              Here's some of the key CSS that makes the blog look great:
+              Here&apos;s some of the key CSS that makes the blog look great:
             </p>
 
             <CodeBlock 
@@ -155,7 +155,7 @@ page.js`}
 
             <h2 className="blog-post-subtitle">API Route Example</h2>
             <p>
-              Here's how I structured my blog API route:
+              Here&apos;s how I structured my blog API route:
             </p>
 
             <CodeBlock 
@@ -196,7 +196,7 @@ page.js`}
 
             <h2 className="blog-post-subtitle">Frontend Data Fetching</h2>
             <p>
-              And here's how I fetch the data on the frontend:
+              And here&apos;s how I fetch the data on the frontend:
             </p>
 
             <CodeBlock 
@@ -275,7 +275,7 @@ export default function BlogPage() {
             </ul>
 
             <blockquote className="blog-post-quote">
-              "From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started."
+              &quot;From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started.&quot;
             </blockquote>
           </div>
         </article>

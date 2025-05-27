@@ -218,7 +218,7 @@ export default function BlogPage() {
             </CodeBlock>
 
             <ul>
-              <li><strong>Tabs:</strong> Filter posts by categories like "Blog Development" and "Python".</li>
+              <li><strong>Tabs:</strong> Filter posts by categories like &quot;Blog Development&quot; and &quot;Python&quot;.</li>
               <li><strong>Search:</strong> A search bar to quickly find posts by title or excerpt.</li>
               <li><strong>Featured post:</strong> Highlights my best work at the top of the blog page.</li>
             </ul>
@@ -252,7 +252,7 @@ export default function BlogPage() {
             </p>
 
             <blockquote className="blog-post-quote">
-              "From a single page to a dynamic portfolio, every line of code tells the story of my growth as a developer."
+              &quot;From a single page to a dynamic portfolio, every line of code tells the story of my growth as a developer.&quot;
             </blockquote>
           </div>
         </article>

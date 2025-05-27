@@ -72,8 +72,8 @@ print(f"Nice to meet you, {user_name}!")`}
             </CodeBlock>
 
             <ul>
-              <li><strong>Printing:</strong> <code>print("Hello, world!")</code> - my very first command!</li>
-              <li><strong>Variables:</strong> <code>x = 10</code>, <code>name = "Nikolas"</code> - storing data</li>
+              <li><strong>Printing:</strong> <code>print(&quot;Hello, world!&quot;)</code> - my very first command!</li>
+              <li><strong>Variables:</strong> <code>x = 10</code>, <code>name = &quot;Nikolas&quot;</code> - storing data</li>
               <li><strong>Types:</strong> Strings, integers, booleans, floats - Python figures them out automatically</li>
               <li><strong>Operators:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>==</code>, <code>!=</code> - doing math and comparisons</li>
               <li><strong>User input:</strong> <code>input()</code> - making programs interactive</li>
@@ -81,7 +81,7 @@ print(f"Nice to meet you, {user_name}!")`}
 
             <h2 className="blog-post-subtitle">Controlling Logic with Conditions</h2>
             <p>
-              One of the biggest breakthroughs for me was learning how to make the computer "decide" something based on conditions. This is where <code>if</code>, <code>elif</code>, and <code>else</code> come into play.
+              One of the biggest breakthroughs for me was learning how to make the computer &quot;decide&quot; something based on conditions. This is where <code>if</code>, <code>elif</code>, and <code>else</code> come into play.
             </p>
 
             <CodeBlock 
@@ -170,17 +170,17 @@ else:
 
             <h2 className="blog-post-subtitle">Key Insights and Realizations</h2>
             <ul>
-              <li><strong>Conditional logic</strong> is the foundation of programming logic - it's everywhere!</li>
+              <li><strong>Conditional logic</strong> is the foundation of programming logic - it&apos;s everywhere!</li>
               <li>Even simple programs can become powerful when you add choices and decision-making.</li>
               <li>Learning the difference between <code>=</code> (assignment) and <code>==</code> (comparison) was crucial!</li>
-              <li><strong>Indentation matters</strong> in Python - it's not just for looks, it's part of the syntax.</li>
+              <li><strong>Indentation matters</strong> in Python - it&apos;s not just for looks, it&apos;s part of the syntax.</li>
               <li>The <code>elif</code> statement is a game-changer for handling multiple conditions elegantly.</li>
               <li>Combining conditions with <code>and</code>, <code>or</code>, and <code>not</code> opens up endless possibilities.</li>
             </ul>
 
-            <h2 className="blog-post-subtitle">What I'm Looking Forward To</h2>
+            <h2 className="blog-post-subtitle">What I&apos;m Looking Forward To</h2>
             <p>
-              With conditions mastered, I'm excited to dive into loops (<code>for</code>, <code>while</code>), which will allow me to automate tasks and repeat actions efficiently. I'll also start exploring data structures like lists and dictionaries to manage collections of data.
+              With conditions mastered, I&apos;m excited to dive into loops (<code>for</code>, <code>while</code>), which will allow me to automate tasks and repeat actions efficiently. I&apos;ll also start exploring data structures like lists and dictionaries to manage collections of data.
             </p>
 
             <CodeBlock 
@@ -209,7 +209,7 @@ def greet_user(name):
             </p>
 
             <blockquote className="blog-post-quote">
-              "Programming in Python is like learning a new language — the more I practice, the more fluent I become."
+              &quot;Programming in Python is like learning a new language — the more I practice, the more fluent I become.&quot;
             </blockquote>
           </div>
         </article>

@@ -381,7 +381,7 @@ export default function BlogPost() {
             </p>
 
             <blockquote className="blog-post-quote">
-              "From basic colors to responsive layouts, CSS has taught me how to turn code into art, one style at a time."
+              &quot;From basic colors to responsive layouts, CSS has taught me how to turn code into art, one style at a time.&quot;
             </blockquote>
           </div>
         </article>

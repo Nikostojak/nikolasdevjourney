@@ -362,7 +362,7 @@ monitor.check_prices()`}
             </p>
 
             <blockquote className="blog-post-quote">
-              "From simple scripts to advanced automation systems, Python has shown me how to turn ideas into reality—one line of code at a time. The journey from beginner to advanced isn't just about learning syntax; it&apos;s about developing the problem-solving mindset that makes great developers."
+              &quot;From simple scripts to advanced automation systems, Python has shown me how to turn ideas into reality—one line of code at a time. The journey from beginner to advanced isn&apos;t just about learning syntax; it&apos;s about developing the problem-solving mindset that makes great developers.&quot;
             </blockquote>
           </div>
         </article>
