@@ -1258,3 +1258,100 @@ a:focus, button:focus, input:focus {
     min-height: 150px;
   }
 }
+/* Comments Section Styles */
+.comments-section {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  border-top: 2px solid #2d3748;
+  background-color: transparent;
+}
+
+.comments-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.comments-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #edf2f7;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.comments-description {
+  color: #a0aec0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.comments-container {
+  margin: 2rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.comments-footer {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #2d3748;
+  border-radius: 8px;
+  border-left: 4px solid #63b3ed;
+}
+
+.comments-note {
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.comments-note strong {
+  color: #63b3ed;
+}
+
+/* Giscus iframe styling overrides */
+.comments-container iframe {
+  border-radius: 12px !important;
+  border: 1px solid #4a5568 !important;
+}
+
+/* Loading state */
+.comments-container:empty::before {
+  content: "Loading comments...";
+  display: block;
+  text-align: center;
+  padding: 2rem;
+  color: #a0aec0;
+  font-style: italic;
+  background-color: #2d3748;
+  border-radius: 8px;
+  border: 1px solid #4a5568;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .comments-section {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+  }
+  
+  .comments-title {
+    font-size: 1.3rem;
+  }
+  
+  .comments-description {
+    font-size: 0.85rem;
+    padding: 0 1rem;
+  }
+  
+  .comments-footer {
+    margin: 1rem;
+  }
+}

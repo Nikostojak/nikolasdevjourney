@@ -7,6 +7,7 @@ import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import Container from '../../../components/Container';
 import CodeBlock from '../../../components/CodeBlock';
+import { BlogComments } from '../../../components/Comments';
 
 export default function BlogPost() {
   return (
@@ -175,6 +176,9 @@ Timeline: 4-6 months for full platform, starting with MVP in 3-4 weeks`}
             </blockquote>
           </div>
         </article>
+
+        <BlogComments />
+        
       </Container>
 
       <Footer />

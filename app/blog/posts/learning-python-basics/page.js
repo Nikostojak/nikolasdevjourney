@@ -7,6 +7,7 @@ import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
 import Container from '../../../components/Container';
 import CodeBlock from '../../../components/CodeBlock';
+import { BlogComments } from '../../../components/Comments';
 
 export default function BlogPost() {
   return (
@@ -213,6 +214,9 @@ def greet_user(name):
             </blockquote>
           </div>
         </article>
+
+        <BlogComments />
+        
       </Container>
 
       <Footer />
