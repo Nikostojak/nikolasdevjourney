@@ -1355,3 +1355,164 @@ a:focus, button:focus, input:focus {
     margin: 1rem;
   }
 }
+
+/* CodeBlock Mobile Improvements */
+@media (max-width: 768px) {
+  /* CodeBlock container na mobile */
+  .code-block-container {
+    margin: 1rem -1rem; /* Extend to screen edges on mobile */
+    border-radius: 0;
+  }
+
+  /* CodeBlock header responsive behavior */
+  .code-block-header {
+    padding: 0.5rem 0.75rem !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Terminal dots smaller on mobile */
+  .terminal-dots {
+    gap: 0.2rem !important;
+  }
+
+  .terminal-dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  /* Language badge responsive */
+  .language-badge {
+    font-size: 0.65rem !important;
+    padding: 0.15rem 0.3rem !important;
+    order: 3; /* Move to new line if needed */
+  }
+
+  /* Copy button mobile optimization */
+  .copy-button {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.65rem !important;
+    min-width: 35px !important;
+  }
+
+  /* Hide "Copy" text on very small screens, keep only icon */
+  .copy-button-text {
+    display: none !important;
+  }
+
+  /* Filename/title truncation on mobile */
+  .code-title {
+    max-width: 120px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Code content mobile improvements */
+  .code-content {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    padding: 0.75rem !important;
+  }
+
+  /* Line numbers mobile */
+  .line-numbers {
+    min-width: 1.5rem !important;
+    padding-right: 0.5rem !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Very small screens (phones in portrait) */
+@media (max-width: 480px) {
+  .code-block-header {
+    padding: 0.4rem 0.5rem !important;
+  }
+
+  .code-title {
+    max-width: 80px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .language-badge {
+    font-size: 0.6rem !important;
+    padding: 0.1rem 0.25rem !important;
+  }
+
+  .copy-button {
+    padding: 0.2rem 0.4rem !important;
+    min-width: 30px !important;
+  }
+
+  /* Stack elements vertically on very small screens */
+  .code-block-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .code-header-top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
+  .code-header-bottom {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 640px) {
+  /* Make code blocks extend to screen edges on mobile */
+  .blog-post-content > div[style*="position: relative"] {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 8px !important;
+  }
+
+  /* Improve readability on small screens */
+  .blog-post-content pre {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Horizontal scroll for long code lines */
+  .blog-post-content pre code {
+    white-space: pre !important;
+    word-wrap: normal !important;
+  }
+}
+
+/* Fix for syntax highlighter on mobile */
+@media (max-width: 768px) {
+  .blog-post-content .react-syntax-highlighter {
+    font-size: 0.8rem !important;
+  }
+
+  .blog-post-content .react-syntax-highlighter code {
+    font-size: 0.8rem !important;
+  }
+
+  /* Line number improvements */
+  .blog-post-content .react-syntax-highlighter .linenumber {
+    font-size: 0.7rem !important;
+    min-width: 1.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+}
+
+/* Prevent horizontal scroll issues */
+@media (max-width: 768px) {
+  .blog-post-content {
+    overflow-x: hidden;
+  }
+
+  .blog-post-content > * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}

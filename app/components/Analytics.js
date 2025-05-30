@@ -24,6 +24,34 @@ export function Analytics() {
   return null;
 }
 
+// Dodajem tracking kada se comments učitaju
+const handleGiscusLoad = () => {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'comments_loaded', {
+      event_category: 'engagement',
+      event_label: window.location.pathname
+    });
+  }
+};
+
+// Listen za Giscus events
+window.addEventListener('message', (event) => {
+  if (event.origin !== 'https://giscus.app') return;
+  
+  const giscusData = event.data.giscus;
+  if (giscusData) {
+    // Track kada netko komentira
+    if (giscusData.type === 'discussion') {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'comment_posted', {
+          event_category: 'engagement',
+          event_label: window.location.pathname
+        });
+      }
+    }
+  }
+});
+
 function trackPageView(url) {
   // Pratim koja stranica je najpopularnija
   try {

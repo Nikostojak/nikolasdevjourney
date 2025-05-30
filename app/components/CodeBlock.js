@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -11,6 +11,20 @@ const CodeBlock = ({
   title = null 
 }) => {
   const [copied, setCopied] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const [showText, setShowText] = useState(true);
+
+  useEffect(() => {
+    setIsClient(true);
+    const checkScreenSize = () => {
+      setShowText(window.innerWidth > 480);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   const copyToClipboard = async () => {
     try {
@@ -57,30 +71,38 @@ const CodeBlock = ({
         alignItems: 'center',
         padding: '0.75rem 1rem',
         backgroundColor: '#2d3748',
-        borderBottom: '1px solid #4a5568'
+        borderBottom: '1px solid #4a5568',
+        flexWrap: 'wrap',
+        gap: '0.5rem'
       }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '0.75rem'
+          gap: '0.5rem',
+          flex: 1,
+          minWidth: 0
         }}>
           {/* Terminal dots */}
-          <div style={{ display: 'flex', gap: '0.375rem' }}>
+          <div style={{ 
+            display: 'flex', 
+            gap: '0.25rem',
+            flexShrink: 0
+          }}>
             <div style={{
-              width: '12px',
-              height: '12px',
+              width: '10px',
+              height: '10px',
               borderRadius: '50%',
               backgroundColor: '#f56565'
             }}></div>
             <div style={{
-              width: '12px',
-              height: '12px',
+              width: '10px',
+              height: '10px',
               borderRadius: '50%',
               backgroundColor: '#ed8936'
             }}></div>
             <div style={{
-              width: '12px',
-              height: '12px',
+              width: '10px',
+              height: '10px',
               borderRadius: '50%',
               backgroundColor: '#48bb78'
             }}></div>
@@ -89,10 +111,14 @@ const CodeBlock = ({
           {/* Title or filename */}
           {(title || filename) && (
             <span style={{
-              fontSize: '0.875rem',
+              fontSize: '0.8rem',
               color: '#a0aec0',
               fontFamily: 'Fira Code, monospace',
-              fontWeight: '500'
+              fontWeight: '500',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              flex: 1
             }}>
               {title || filename}
             </span>
@@ -100,14 +126,15 @@ const CodeBlock = ({
           
           {/* Language badge */}
           <span style={{
-            fontSize: '0.75rem',
+            fontSize: '0.7rem',
             color: '#63b3ed',
             backgroundColor: '#1a202c',
-            padding: '0.25rem 0.5rem',
-            borderRadius: '4px',
+            padding: '0.2rem 0.4rem',
+            borderRadius: '3px',
             fontFamily: 'Fira Code, monospace',
             textTransform: 'uppercase',
-            fontWeight: '600'
+            fontWeight: '600',
+            flexShrink: 0
           }}>
             {language}
           </span>
@@ -119,17 +146,19 @@ const CodeBlock = ({
           style={{
             background: copied ? '#48bb78' : 'transparent',
             border: `1px solid ${copied ? '#48bb78' : '#4a5568'}`,
-            borderRadius: '6px',
-            padding: '0.375rem 0.75rem',
+            borderRadius: '4px',
+            padding: '0.3rem 0.6rem',
             color: copied ? '#ffffff' : '#a0aec0',
-            fontSize: '0.75rem',
+            fontSize: '0.7rem',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
             fontFamily: 'Fira Code, monospace',
             fontWeight: '500',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.375rem'
+            gap: '0.25rem',
+            flexShrink: 0,
+            minWidth: 'fit-content'
           }}
           onMouseEnter={(e) => {
             if (!copied) {
@@ -146,13 +175,16 @@ const CodeBlock = ({
         >
           {copied ? (
             <>
-              <span>✓</span> Copied!
+              <span>✓</span>
             </>
           ) : (
             <>
-              <span>📋</span> Copy
+              <span>📋</span>
             </>
           )}
+          <span style={{ display: isClient && showText ? 'inline' : 'none' }}>
+            {copied ? 'Copied!' : 'Copy'}
+          </span>
         </button>
       </div>
       
