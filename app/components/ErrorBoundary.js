@@ -34,8 +34,8 @@ export class ErrorBoundary extends Component {
           <div className="error-content">
             <h2>🚨 Oops! Something went wrong</h2>
             <p>
-              We're sorry for the inconvenience. The page encountered an error, 
-              but don't worry - this has been logged and I'll fix it soon!
+              We&apos;re sorry for the inconvenience. The page encountered an error, 
+              but don&apos;t worry - this has been logged and I&apos;ll fix it soon!
             </p>
             
             <div className="error-actions">
