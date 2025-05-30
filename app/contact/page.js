@@ -1,7 +1,7 @@
-export const metadata = {
-  title: 'Nikolas Dev Journey | Contact',
-  description: 'Get in touch with me directly via LinkedIn or GitHub.',
-};
+// app/contact/page.js
+import { createMetadata } from '../lib/metadata';
+
+export const metadata = createMetadata('contact');
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';

@@ -1,7 +1,7 @@
-export const metadata = {
-  title: 'Nikolas Dev Journey | About',
-  description: 'Learn about my background, from studying Thomistic philosophy in seminary to becoming a self-taught developer',
-};
+// app/about/page.js
+import { createMetadata } from '../lib/metadata';
+
+export const metadata = createMetadata('about');
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -60,7 +60,7 @@ export default function AboutPage() {
             <h2 className="about-subtitle">Final Thought</h2>
             <p className="final-thought">
               From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started.
-              </p>
+            </p>
           </div>
         </section>
       </Container>
