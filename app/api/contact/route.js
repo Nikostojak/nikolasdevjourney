@@ -123,7 +123,7 @@ Reply to: ${email}
     const { data: autoReplyData, error: autoReplyError } = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: [email],
-      subject: '✅ Thanks for reaching out! - Nikolas Dev Journey',
+      subject: 'Thanks for reaching out! - Nikolas Dev Journey',
       html: `
         <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1a202c;">
           <div style="background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); padding: 40px 20px; text-align: center;">
@@ -149,7 +149,7 @@ Reply to: ${email}
             </div>
             
             <p style="line-height: 1.6; margin-bottom: 20px; color: #4a5568;">
-              ⏰ I typically respond within <strong>24-48 hours</strong>. 
+              I typically respond within <strong>24-48 hours</strong>. 
               I'll get back to you at: <strong style="color: #2d3748;">${email}</strong>
             </p>
             
@@ -160,7 +160,7 @@ Reply to: ${email}
             <div style="text-align: center; margin: 30px 0;">
               <a href="https://nikolasdevjourney.com" 
                  style="background: #48bb78; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
-                🚀 Visit My Blog
+                Visit My Blog
               </a>
             </div>
           </div>
