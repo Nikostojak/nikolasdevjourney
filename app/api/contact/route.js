@@ -127,7 +127,7 @@ Reply to: ${email}
       html: `
         <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1a202c;">
           <div style="background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); padding: 40px 20px; text-align: center;">
-            <h1 style="color: white; margin: 0; font-size: 28px;">🎉 Thanks for reaching out!</h1>
+            <h1 style="color: white; margin: 0; font-size: 28px;">Thanks for reaching out!</h1>
             <p style="color: #f0fff4; margin: 15px 0 0 0; font-size: 16px;">Your message has been received</p>
           </div>
           
