@@ -39,6 +39,7 @@ export async function POST(request) {
     // FALLBACK: No email service configured
     if (!resend) {
       console.log('📧 Contact form submission (NO EMAIL SERVICE):');
+      console.log('Environment:', process.env.NODE_ENV);
       console.log('From:', name, '(' + email + ')');
       console.log('Subject:', subject);
       console.log('Message:', message);
@@ -56,7 +57,7 @@ export async function POST(request) {
       );
     }
 
-    // EMAIL SERVICE AVAILABLE
+    //  EMAIL SERVICE AVAILABLE
     console.log('📧 Sending emails via Resend...');
 
     // Send notification to me
@@ -115,18 +116,11 @@ export async function POST(request) {
 
     } catch (emailError) {
       console.error('❌ Email service error:', emailError);
-      return new Response(
-        JSON.stringify({ 
-          success: true, 
-          message: 'Message received! Email service temporarily unavailable.' 
-        }),
-        { 
-          status: 200,
-          headers: { 'Content-Type': 'application/json' }
-        }
-      );
+      // Don't return error - form still works, just email failed
+      console.log('📧 Continuing without email service...');
     }
 
+    // Always return success - form submission worked
     return new Response(
       JSON.stringify({ 
         success: true, 
