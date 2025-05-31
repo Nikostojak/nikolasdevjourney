@@ -93,7 +93,7 @@ export async function POST(request) {
         const { data: autoReplyData, error: autoReplyError } = await resend.emails.send({
           from: 'onboarding@resend.dev',
           to: [email],
-          subject: '✅ Thanks for reaching out! - Nikolas Dev Journey',
+          subject: 'Thanks for reaching out! - Nikolas Dev Journey',
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <h2 style="color: #16a34a;">Thanks for reaching out!</h2>
