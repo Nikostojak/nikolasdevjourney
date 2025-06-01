@@ -1,6 +1,7 @@
+// app/api/contact/route.js
 import { Resend } from 'resend';
 
-// SAFE INITIALIZATION - prevents crashes
+// 🔥 SAFE INITIALIZATION - prevents crashes
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(request) {
@@ -36,10 +37,9 @@ export async function POST(request) {
       );
     }
 
-    // FALLBACK: No email service configured
+    // 🔥 FALLBACK: No email service configured
     if (!resend) {
       console.log('📧 Contact form submission (NO EMAIL SERVICE):');
-      console.log('Environment:', process.env.NODE_ENV);
       console.log('From:', name, '(' + email + ')');
       console.log('Subject:', subject);
       console.log('Message:', message);
@@ -57,13 +57,13 @@ export async function POST(request) {
       );
     }
 
-    //  EMAIL SERVICE AVAILABLE
+    // 🚀 EMAIL SERVICE AVAILABLE
     console.log('📧 Sending emails via Resend...');
 
-    // Send notification to me
+    // Send notification to you
     try {
       const { data: notificationData, error: notificationError } = await resend.emails.send({
-        from: 'contact@nikolasdevjourney.com',
+        from: 'onboarding@resend.dev',
         to: ['stojak.nikolas@icloud.com'],
         subject: `🔔 Contact Form: ${subject}`,
         html: `
@@ -93,7 +93,7 @@ export async function POST(request) {
         const { data: autoReplyData, error: autoReplyError } = await resend.emails.send({
           from: 'onboarding@resend.dev',
           to: [email],
-          subject: 'Thanks for reaching out! - Nikolas Dev Journey',
+          subject: '✅ Thanks for reaching out! - Nikolas Dev Journey',
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <h2 style="color: #16a34a;">Thanks for reaching out!</h2>
@@ -116,11 +116,18 @@ export async function POST(request) {
 
     } catch (emailError) {
       console.error('❌ Email service error:', emailError);
-      // Don't return error - form still works, just email failed
-      console.log('📧 Continuing without email service...');
+      return new Response(
+        JSON.stringify({ 
+          success: true, 
+          message: 'Message received! Email service temporarily unavailable.' 
+        }),
+        { 
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
     }
 
-    // Always return success - form submission worked
     return new Response(
       JSON.stringify({ 
         success: true, 
