@@ -20,6 +20,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Sprečava scroll kad je mobile menu otvoren */
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
 body {
   background: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
   color: var(--foreground);
@@ -169,6 +176,14 @@ a:focus, button:focus, input:focus {
   transition: transform 0.3s ease, background-color 0.3s ease;
   display: none;
   z-index: 1001;
+  position: relative;
+}
+
+.hamburger.open {
+  position: fixed;
+  top: 1.2rem;
+  right: 2rem;
+  z-index: 1001;
 }
 
 .hamburger:hover {
@@ -195,19 +210,19 @@ a:focus, button:focus, input:focus {
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(10, 15, 28, 0.95);
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
   backdrop-filter: blur(20px);
+  display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 4rem 2rem 2rem;
-  display: none;
-  width: 70%;
-  max-width: 300px;
-  z-index: 1000;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 999;
   opacity: 0;
   transform: translateX(100%);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar-menu.open {
@@ -228,6 +243,42 @@ a:focus, button:focus, input:focus {
 
 .navbar-link:hover {
   color: #ffffff;
+}
+
+.navbar-menu .navbar-link {
+  color: var(--foreground);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  padding: 1rem 2rem;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 200px;
+  opacity: 0;
+  animation: slideInLink 0.6s ease forwards;
+}
+
+.navbar-menu.open .navbar-link:nth-child(1) { animation-delay: 0.1s; }
+.navbar-menu.open .navbar-link:nth-child(2) { animation-delay: 0.2s; }
+.navbar-menu.open .navbar-link:nth-child(3) { animation-delay: 0.3s; }
+.navbar-menu.open .navbar-link:nth-child(4) { animation-delay: 0.4s; }
+
+.navbar-menu .navbar-link:hover {
+  color: var(--accent);
+  background: rgba(74, 222, 128, 0.1);
+  transform: translateX(10px);
+}
+
+@keyframes slideInLink {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Hero Section */
@@ -416,12 +467,29 @@ a:focus, button:focus, input:focus {
 }
 
 @media (max-width: 768px) {
+  .hero-section {
+    min-height: 75vh;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.2rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1.5rem;
+    max-width: 90%;
+    word-spacing: -0.1rem;
+    letter-spacing: -1px;
   }
 
   .hero-description {
-    font-size: 1.1rem;
+    font-size: 1rem !important;
+    line-height: 1.4;
+    margin-bottom: 2rem;
     padding: 0 1rem;
   }
 

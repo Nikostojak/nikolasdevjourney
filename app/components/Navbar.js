@@ -22,11 +22,17 @@ export default function Navbar() {
     if (isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('keydown', handleEscape);
+      // Sprečava scroll kad je menu otvoren
+      document.body.classList.add('menu-open');
+    } else {
+      // Vraća scroll kad se menu zatvori
+      document.body.classList.remove('menu-open');
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleEscape);
+      document.body.classList.remove('menu-open'); // Cleanup
     };
   }, [isMenuOpen]);
 
@@ -39,6 +45,9 @@ export default function Navbar() {
       const navbar = document.querySelector('.homepage-nav');
       
       const handleScroll = () => {
+        // Ne skrivaj navbar ako je menu otvoren
+        if (isMenuOpen) return;
+        
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > lastScrollTop && scrollTop > 100) {
@@ -53,7 +62,7 @@ export default function Navbar() {
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }
-  }, []);
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -61,6 +70,10 @@ export default function Navbar() {
 
   const handleLinkClick = () => {
     setIsMenuOpen(false);
+    // Malo delay prije uklanjanja body class za smooth transition
+    setTimeout(() => {
+      document.body.classList.remove('menu-open');
+    }, 300);
   };
 
   return (
