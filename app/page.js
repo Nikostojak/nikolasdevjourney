@@ -9,6 +9,19 @@ export default function HomePage() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detektuj da li je mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -71,10 +84,13 @@ export default function HomePage() {
   }, [isLoading, posts]);
 
   const featuredPost = posts.find(post => post?.isFeatured);
+  
+  // Dinamički broj postova: 3 na mobile, 5 na desktop
+  const postsToShow = isMobile ? 3 : 5;
   const recentPosts = posts
     .filter(post => !post?.isFeatured)
     .sort((a, b) => new Date(b?.date || 0) - new Date(a?.date || 0))
-    .slice(0, 5); // Show 5 recent posts
+    .slice(0, postsToShow);
 
   return (
     <main className="homepage-layout">
@@ -154,7 +170,7 @@ export default function HomePage() {
                   </Link>
                 )}
 
-                {/* Recent Posts */}
+                {/* Recent Posts - dinamički broj ovisno o uređaju */}
                 {recentPosts.map((post) => (
                   <Link key={post.slug} href={`/blog/posts/${post.slug}`} className="post-card">
                     <div className="post-category">{post.category}</div>

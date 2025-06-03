@@ -466,6 +466,17 @@ a:focus, button:focus, input:focus {
   }
 }
 
+/* Desktop - brže animacija */
+@media (min-width: 769px) {
+  .tech-words-track {
+    animation: scroll-left 25s linear infinite; /* Brže na desktop - 25s umjesto 30s */
+  }
+  
+  .tech-word {
+    font-size: 1rem; /* Manji font na desktop - 1rem umjesto 1.1rem */
+  }
+}
+
 @media (max-width: 768px) {
   .hero-section {
     min-height: 75vh;
@@ -518,10 +529,11 @@ a:focus, button:focus, input:focus {
   
   .tech-words-track {
     gap: 3rem;
+    animation: scroll-left 15s linear infinite; /* Brže na mobile - 15s umjesto 30s */
   }
   
   .tech-word {
-    font-size: 1rem;
+    font-size: 1rem; /* Ostaje isti na mobile */
   }
 }
 
