@@ -433,7 +433,7 @@ a:focus, button:focus, input:focus {
   display: flex;
   align-items: center;
   gap: 4rem;
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 25s linear infinite;
   white-space: nowrap;
   animation-play-state: running; /* Animacija radi po defaultu */
 }
@@ -469,7 +469,7 @@ a:focus, button:focus, input:focus {
 /* Desktop - brže animacija */
 @media (min-width: 769px) {
   .tech-words-track {
-    animation: scroll-left 25s linear infinite; /* Brže na desktop - 25s umjesto 30s */
+    animation: scroll-left 20s linear infinite; /* Brže na desktop - 20s umjesto 30s */
   }
   
   .tech-word {
