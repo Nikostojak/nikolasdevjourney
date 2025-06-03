@@ -435,11 +435,12 @@ a:focus, button:focus, input:focus {
   gap: 4rem;
   animation: scroll-left 30s linear infinite;
   white-space: nowrap;
-  animation-play-state: running; /* Animacija radi po defaultu */
+  animation-play-state: running;
+  width: max-content; /* Ovo osigurava da se animacija ne resetira */
 }
 
 .tech-words-track:hover {
-  animation-play-state: paused; /* Pauzira animaciju kada mis ode na track */
+  animation-play-state: paused;
 }
 
 .tech-word {
@@ -450,6 +451,7 @@ a:focus, button:focus, input:focus {
   opacity: 0.7;
   transition: opacity 0.3s ease;
   flex-shrink: 0;
+  min-width: max-content; /* Sprečava skraćivanje riječi */
 }
 
 .tech-word:hover {
@@ -530,12 +532,14 @@ a:focus, button:focus, input:focus {
   }
   
   .tech-words-track {
-    gap: 3rem;
-    animation: scroll-left 8s linear infinite; /* PUNO brže - 8s umjesto 15s! */
+    gap: 2.5rem; /* Manji gap na mobile */
+    animation: scroll-left 12s linear infinite; /* Umjereno brže - 12s */
+    width: max-content; /* Ključno za smooth animaciju */
   }
   
   .tech-word {
-    font-size: 1rem; /* Ostaje isti na mobile */
+    font-size: 1rem;
+    min-width: max-content; /* Sprečava probleme s animacijom */
   }
 }
 

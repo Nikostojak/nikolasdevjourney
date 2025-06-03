@@ -132,6 +132,8 @@ export default function HomePage() {
               <span className="tech-word">Vercel</span>
               <span className="tech-word">FastAPI</span>
               <span className="tech-word">TypeScript</span>
+              <span className="tech-word">HTML5</span>
+              <span className="tech-word">MongoDB</span>
               {/* Duplicate for seamless loop */}
               <span className="tech-word">Python</span>
               <span className="tech-word">React</span>
@@ -143,6 +145,15 @@ export default function HomePage() {
               <span className="tech-word">Vercel</span>
               <span className="tech-word">FastAPI</span>
               <span className="tech-word">TypeScript</span>
+              <span className="tech-word">HTML5</span>
+              <span className="tech-word">MongoDB</span>
+              {/* Treći set za još smooth-iju animaciju na mobile */}
+              <span className="tech-word">Python</span>
+              <span className="tech-word">React</span>
+              <span className="tech-word">JavaScript</span>
+              <span className="tech-word">CSS3</span>
+              <span className="tech-word">Next.js</span>
+              <span className="tech-word">Node.js</span>
             </div>
           </div>
         </div>
