@@ -433,7 +433,7 @@ a:focus, button:focus, input:focus {
   display: flex;
   align-items: center;
   gap: 4rem;
-  animation: scroll-left 25s linear infinite;
+  animation: scroll-left 30s linear infinite;
   white-space: nowrap;
   animation-play-state: running; /* Animacija radi po defaultu */
 }
@@ -469,7 +469,7 @@ a:focus, button:focus, input:focus {
 /* Desktop - brže animacija */
 @media (min-width: 769px) {
   .tech-words-track {
-    animation: scroll-left 20s linear infinite; /* Brže na desktop - 20s umjesto 30s */
+    animation: scroll-left 25s linear infinite; /* Brže na desktop - 25s umjesto 30s */
   }
   
   .tech-word {
@@ -515,6 +515,8 @@ a:focus, button:focus, input:focus {
     width: 100%;
     max-width: 280px;
     justify-content: center;
+    padding: 0.8rem 2rem; /* Smanjen padding za mobile */
+    font-size: 0.85rem; /* Manji font na mobile */
   }
 
   .learning-scroll-section {
@@ -529,7 +531,7 @@ a:focus, button:focus, input:focus {
   
   .tech-words-track {
     gap: 3rem;
-    animation: scroll-left 15s linear infinite; /* Brže na mobile - 15s umjesto 30s */
+    animation: scroll-left 8s linear infinite; /* PUNO brže - 8s umjesto 15s! */
   }
   
   .tech-word {
@@ -648,6 +650,38 @@ a:focus, button:focus, input:focus {
   padding: 2rem;
   transition: all 0.3s ease;
   margin-bottom: 1.5rem;
+}
+
+/* Mobile card optimizations */
+@media (max-width: 768px) {
+  .blog-featured-item,
+  .blog-list-item,
+  .journey-item,
+  .post-card,
+  .project-card {
+    padding: 1.5rem; /* Smanjen padding na mobile */
+  }
+  
+  .blog-featured-title,
+  .blog-post-title,
+  .post-title,
+  .project-title {
+    font-size: 1.2rem; /* Smanji naslove kartica na mobile */
+    margin-bottom: 0.8rem;
+  }
+  
+  .blog-post-excerpt,
+  .post-excerpt,
+  .project-desc {
+    font-size: 0.9rem; /* Smanji tekst opisa */
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+  }
+  
+  .project-tech {
+    font-size: 0.8rem; /* Smanji tech tagove */
+    margin-bottom: 1.2rem;
+  }
 }
 
 .blog-featured-item:hover,
@@ -1523,7 +1557,12 @@ a:focus, button:focus, input:focus {
   .projects-title,
   .blog-post-title,
   .blog-list-title {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Smanjen sa 2rem na 1.8rem */
+  }
+
+  .section-title,
+  .journey-title {
+    font-size: 1.8rem; /* Smanjen sa 2rem na 1.8rem */
   }
 
   .blog-tabs {
