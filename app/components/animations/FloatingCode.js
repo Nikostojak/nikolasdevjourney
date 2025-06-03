@@ -3,21 +3,10 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const FloatingCode = () => {
   const [codeSnippets] = useState([
-    { code: 'const developer = "Nikolas";', type: 'variable', color: '#90cdf4', layer: 'front' },
-    { code: 'if (learning) { grow(); }', type: 'conditional', color: '#f093fb', layer: 'middle' },
-    { code: 'function buildFuture() {}', type: 'function', color: '#a8edea', layer: 'back' },
-    { code: '// Dreams become reality', type: 'comment', color: '#68d391', layer: 'front' },
-    { code: 'const passion = "coding";', type: 'variable', color: '#90cdf4', layer: 'middle' },
-    { code: 'console.log("Hello World!");', type: 'method', color: '#ffd89b', layer: 'back' },
-    { code: 'return <Innovation />;', type: 'jsx', color: '#a8edea', layer: 'front' },
-    { code: 'git commit -m "Progress"', type: 'command', color: '#f093fb', layer: 'middle' },
-    { code: 'npm run build-dreams', type: 'command', color: '#ffd89b', layer: 'back' },
-    { code: 'python automation.py', type: 'command', color: '#68d391', layer: 'front' },
-    { code: 'async function learn() {}', type: 'function', color: '#a8edea', layer: 'middle' },
-    { code: '// Code, Coffee, Repeat', type: 'comment', color: '#68d391', layer: 'back' },
-    { code: 'export default Success;', type: 'export', color: '#90cdf4', layer: 'front' },
-    { code: 'import { Skills } from "practice";', type: 'import', color: '#f093fb', layer: 'middle' },
-    { code: 'const progress = ++experience;', type: 'variable', color: '#ffd89b', layer: 'back' }
+    { code: 'const developer = "Nikolas";', type: 'variable', color: '#4ade80', position: { top: '20%', left: '8%' } },
+    { code: '// From philosophy to code', type: 'comment', color: '#64748b', position: { top: '60%', right: '10%' } },
+    { code: 'git commit -m "Progress"', type: 'command', color: '#22c55e', position: { bottom: '30%', left: '12%' } },
+    { code: 'export default Success;', type: 'export', color: '#10b981', position: { top: '40%', right: '8%' } },
   ]);
 
   const [floatingElements, setFloatingElements] = useState([]);
@@ -29,7 +18,7 @@ const FloatingCode = () => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-    // Samo desktop ima mouse tracking
+    // Only track mouse on desktop
     if (window.innerWidth > 768) {
       window.addEventListener('mousemove', handleMouseMove);
     }
@@ -44,57 +33,33 @@ const FloatingCode = () => {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Mobile optimizacije
     const isMobile = window.innerWidth <= 768;
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
 
-    const layerProperties = {
-      front: { 
-        speedMultiplier: isMobile ? 0.8 : 1.4, 
-        scale: isMobile ? 0.9 : 1.1, 
-        opacity: isMobile ? 0.25 : 0.35, 
-        zIndex: 3,
-        parallaxStrength: isMobile ? 0.5 : 1.2
-      },
-      middle: { 
-        speedMultiplier: isMobile ? 0.6 : 1.0, 
-        scale: isMobile ? 0.8 : 1.0, 
-        opacity: isMobile ? 0.18 : 0.25, 
-        zIndex: 2,
-        parallaxStrength: isMobile ? 0.3 : 1.0
-      },
-      back: { 
-        speedMultiplier: isMobile ? 0.4 : 0.6, 
-        scale: isMobile ? 0.7 : 0.85, 
-        opacity: isMobile ? 0.12 : 0.15, 
-        zIndex: 1,
-        parallaxStrength: isMobile ? 0.2 : 0.8
-      }
-    };
-
-    // Smanji broj elemenata na mobile
-    const elementsToShow = isMobile ? codeSnippets.slice(0, 8) : codeSnippets;
+    // Show fewer elements on mobile
+    const elementsToShow = isMobile ? [] : codeSnippets; // Hide all on mobile
 
     const elements = elementsToShow.map((snippet, index) => {
-      const layerProps = layerProperties[snippet.layer];
-      
       return {
         id: index,
         ...snippet,
-        x: Math.random() * (screenWidth - (isMobile ? 150 : 300)),
-        y: Math.random() * (screenHeight - (isMobile ? 50 : 100)),
-        speed: (0.3 + Math.random() * 0.4) * layerProps.speedMultiplier,
-        direction: Math.random() * Math.PI * 2,
-        baseOpacity: layerProps.opacity + Math.random() * 0.05,
-        opacity: layerProps.opacity + Math.random() * 0.05,
-        scale: layerProps.scale * (0.9 + Math.random() * 0.2),
-        rotationSpeed: (Math.random() - 0.5) * (isMobile ? 0.008 : 0.015),
+        x: snippet.position.left ? 
+          (parseFloat(snippet.position.left) / 100) * screenWidth : 
+          screenWidth - (parseFloat(snippet.position.right) / 100) * screenWidth - 250,
+        y: snippet.position.top ? 
+          (parseFloat(snippet.position.top) / 100) * screenHeight : 
+          screenHeight - (parseFloat(snippet.position.bottom) / 100) * screenHeight - 50,
+        speed: 0,
+        direction: 0,
+        baseOpacity: 0.4,
+        opacity: 0.4,
+        scale: 1,
+        rotationSpeed: 0,
         currentRotation: 0,
         pulsePhase: Math.random() * Math.PI * 2,
-        zIndex: layerProps.zIndex,
-        parallaxStrength: layerProps.parallaxStrength,
-        isMobile: isMobile
+        isMobile: isMobile,
+        isStatic: true
       };
     });
     
@@ -107,10 +72,21 @@ const FloatingCode = () => {
     const animateElements = () => {
       setFloatingElements(prev => 
         prev.map(element => {
+          if (element.isStatic) {
+            // Static positioning with only subtle pulse
+            const pulseOffset = Math.sin(element.pulsePhase + Date.now() * 0.0008) * 0.15;
+            const newOpacity = Math.max(0.2, element.baseOpacity + pulseOffset);
+
+            return {
+              ...element,
+              opacity: newOpacity,
+            };
+          }
+          
+          // Original moving logic for other elements (if any)
           let newX = element.x + Math.cos(element.direction) * element.speed;
           let newY = element.y + Math.sin(element.direction) * element.speed;
           
-          // Mobile-aware boundaries
           const padding = element.isMobile ? 20 : 50;
           const maxX = element.isMobile ? window.innerWidth - 150 : window.innerWidth - 300;
           const maxY = element.isMobile ? window.innerHeight - 50 : window.innerHeight - 100;
@@ -127,26 +103,25 @@ const FloatingCode = () => {
           let finalX = newX;
           let finalY = newY;
 
-          // Smanjen parallax na mobile
-          const parallaxMultiplier = element.isMobile ? 0.002 : 0.005;
-          const parallaxStrength = element.parallaxStrength;
-          const parallaxOffsetX = (mousePosition.x - window.innerWidth / 2) * parallaxMultiplier * parallaxStrength;
-          const parallaxOffsetY = (mousePosition.y - window.innerHeight / 2) * parallaxMultiplier * parallaxStrength;
-          
-          const displayX = finalX + parallaxOffsetX;
-          const displayY = finalY + parallaxOffsetY;
+          if (!element.isMobile) {
+            const parallaxMultiplier = 0.003;
+            const parallaxOffsetX = (mousePosition.x - window.innerWidth / 2) * parallaxMultiplier;
+            const parallaxOffsetY = (mousePosition.y - window.innerHeight / 2) * parallaxMultiplier;
+            
+            finalX += parallaxOffsetX;
+            finalY += parallaxOffsetY;
+          }
 
-          const pulseOffset = Math.sin(element.pulsePhase + Date.now() * 0.002) * (element.isMobile ? 0.02 : 0.04);
-          const newOpacity = Math.max(0.05, element.baseOpacity + pulseOffset);
-
+          const pulseOffset = Math.sin(element.pulsePhase + Date.now() * 0.001) * 0.2;
+          const newOpacity = Math.max(0.1, element.baseOpacity + pulseOffset);
           const newRotation = element.currentRotation + element.rotationSpeed;
 
           return {
             ...element,
-            x: finalX,
-            y: finalY,
-            displayX: displayX,
-            displayY: displayY,
+            x: newX,
+            y: newY,
+            displayX: finalX,
+            displayY: finalY,
             opacity: newOpacity,
             currentRotation: newRotation
           };
@@ -163,12 +138,12 @@ const FloatingCode = () => {
       ref={containerRef}
       className="floating-code-container"
       style={{ 
-        position: 'fixed', 
+        position: 'absolute', // Changed from fixed to absolute
         top: 0, 
         left: 0, 
         width: '100%', 
-        height: '100%', 
-        zIndex: 0,
+        height: '100%', // Only covers hero section
+        zIndex: 1,
         pointerEvents: 'none',
         overflow: 'hidden'
       }}
@@ -182,65 +157,24 @@ const FloatingCode = () => {
             top: element.displayY || element.y,
             opacity: element.opacity,
             color: element.color,
-            fontFamily: 'Fira Code, monospace',
+            fontFamily: 'Fira Code, SF Mono, Monaco, monospace',
             fontSize: `${(element.isMobile ? 10 : 12) * element.scale}px`,
-            fontWeight: element.type === 'comment' ? '400' : '500',
+            fontWeight: '500',
             whiteSpace: 'nowrap',
             transform: `rotate(${element.currentRotation}rad) scale(${element.scale})`,
             transition: 'opacity 0.2s ease',
-            textShadow: element.isMobile ? 'none' : `0 0 ${6 + element.zIndex * 2}px ${element.color}${Math.floor(30 + element.zIndex * 10)}, 0 0 ${10 + element.zIndex * 3}px ${element.color}${Math.floor(15 + element.zIndex * 5)}`,
-            filter: element.isMobile ? 'none' : `brightness(${0.8 + element.zIndex * 0.15}) blur(${(4 - element.zIndex) * 0.3}px)`,
-            zIndex: element.zIndex,
-            userSelect: 'none'
+            background: 'rgba(255, 255, 255, 0.02)',
+            border: '1px solid rgba(255, 255, 255, 0.05)',
+            borderRadius: '8px',
+            padding: '0.8rem 1rem',
+            backdropFilter: 'blur(10px)',
+            userSelect: 'none',
+            pointerEvents: 'none'
           }}
         >
-          <span style={{ 
-            marginRight: '2px', 
-            opacity: 0.7,
-            fontSize: element.isMobile ? '8px' : '10px'
-          }}>
-            {!element.isMobile && element.type === 'function' && '⚡'}
-            {!element.isMobile && element.type === 'variable' && '📦'}
-            {!element.isMobile && element.type === 'comment' && '💭'}
-            {!element.isMobile && element.type === 'command' && '⚙️'}
-            {!element.isMobile && element.type === 'method' && '🔧'}
-            {!element.isMobile && element.type === 'jsx' && '⚛️'}
-            {!element.isMobile && element.type === 'import' && '📥'}
-            {!element.isMobile && element.type === 'export' && '📤'}
-            {!element.isMobile && element.type === 'conditional' && '🤔'}
-          </span>
           {element.code}
         </div>
       ))}
-
-      <div
-        style={{
-          position: 'absolute',
-          left: mousePosition.x - 2,
-          top: mousePosition.y - 2,
-          width: '4px',
-          height: '4px',
-          borderRadius: '50%',
-          background: 'rgba(99, 179, 237, 0.3)',
-          pointerEvents: 'none',
-          transition: 'all 0.1s ease'
-        }}
-      />
-      
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '20px',
-          right: '20px',
-          color: 'rgba(99, 179, 237, 0.2)',
-          fontSize: '10px',
-          fontFamily: 'Fira Code, monospace',
-          pointerEvents: 'none',
-          userSelect: 'none'
-        }}
-      >
-    
-      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 'use client';
 
-export default function container({ children }) {
+export default function Container({ children }) {
   return (
     <div className="container" role="main">
       {children}

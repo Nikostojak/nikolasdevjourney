@@ -3,33 +3,15 @@ import { useState, useEffect, useRef } from 'react';
 import Footer from './components/Footer';
 import Container from './components/Container';
 import Navbar from './components/Navbar';
-import FloatingCode from './components/animations/FloatingCode';
 import Link from 'next/link';
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [displayedTitle, setDisplayedTitle] = useState('');
-  const [showSubtitle, setShowSubtitle] = useState(false);
-  const fullTitle = 'NIKOLASDEVJOURNEY';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index < fullTitle.length) {
-        setDisplayedTitle(fullTitle.slice(0, index + 1));
-        index++;
-      } else {
-        clearInterval(interval);
-        setTimeout(() => setShowSubtitle(true), 500);
-      }
-    }, 200);
-    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -57,197 +39,190 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
+    // Add intersection observer for fade-in animations
     const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -10% 0px',
       threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
     };
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const elements = entry.target.querySelectorAll('.scroll-reveal');
-          elements.forEach((el, index) => {
-            setTimeout(() => {
-              el.classList.add('visible');
-            }, index * 150);
-          });
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
         }
       });
-    };
+    }, observerOptions);
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    const sections = [
-      { ref: featuredRef, name: 'featured' },
-      { ref: recentRef, name: 'recent' },
-      { ref: projectsRef, name: 'projects' },
-    ];
-
-    sections.forEach(({ ref }) => {
-      if (ref.current) {
-        observer.observe(ref.current);
-      } else {
-        console.warn(`Reference for section is null`);
-      }
+    // Observe sections for animations
+    const sections = document.querySelectorAll('.journey-section, .posts-section, .projects-section');
+    sections.forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(section);
     });
 
     return () => {
-      sections.forEach(({ ref }) => {
-        if (ref.current) observer.unobserve(ref.current);
+      sections.forEach(section => {
+        if (section) observer.unobserve(section);
       });
     };
   }, [isLoading, posts]);
-
-  const featuredRef = useRef(null);
-  const recentRef = useRef(null);
-  const projectsRef = useRef(null);
 
   const featuredPost = posts.find(post => post?.isFeatured);
   const recentPosts = posts
     .filter(post => !post?.isFeatured)
     .sort((a, b) => new Date(b?.date || 0) - new Date(a?.date || 0))
-    .slice(0, 3);
+    .slice(0, 5); // Show 5 recent posts
 
   return (
-    <main className="page-transition" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1a202c', color: '#e2e8f0', position: 'relative', overflow: 'hidden' 
-    }}>
-
-      <FloatingCode />
+    <main className="homepage-layout">
       <Navbar />
+      
       <Container>
+        {/* Hero Section */}
         <section className="hero-section" role="region" aria-labelledby="hero-title">
-          <h1 className="hero-title" id="hero-title" aria-live="polite">
-            <span className="hero-title-typed">
-              {displayedTitle.split('').map((char, index) => (
-                <span key={index} className={index < 7 ? 'hero-title-nikolas' : 'hero-title-journey'}>
-                  {char}
-                </span>
-              ))}
-              {displayedTitle.length < fullTitle.length && <span className="typing-cursor" aria-hidden="true">|</span>}
-            </span>
+          <h1 className="hero-title" id="hero-title">
+            Nikolas Dev Journey
           </h1>
-          <p className={`hero-description ${showSubtitle ? 'visible' : ''}`}>
-            Exploring Python, Web Development, and Software Engineering with passion.
+          <p className="hero-description">
+            Self-taught developer passionate about Python, JavaScript, and creating digital solutions that matter.
           </p>
           <div className="hero-buttons">
-            <Link href="/blog">
-              <button className="hero-button" role="button" aria-label="Read my blog posts">Read My Blog</button>
+            <Link href="/blog" className="hero-button hero-button-primary">
+              Read My Blog
             </Link>
-            <Link href="/projects">
-              <button className="hero-button" role="button" aria-label="View my project portfolio">View My Projects</button>
+            <Link href="/projects" className="hero-button hero-button-secondary">
+              View Projects
             </Link>
-          </div>
-        </section>
-
-        {isLoading ? (
-          <div className="loading-message scroll-reveal">Loading posts...</div>
-        ) : error ? (
-          <div className="error-message scroll-reveal">Error: {error}</div>
-        ) : (
-          <>
-            {featuredPost ? (
-              <section
-                ref={featuredRef}
-                className="featured-post-section"
-                role="region"
-                aria-labelledby="featured-post-title"
-              >
-                <h2 className="section-title scroll-reveal" id="featured-post-title">Featured Post</h2>
-                <article className="blog-featured-item scroll-reveal">
-                  <div className="blog-post-badge">{featuredPost.category}</div>
-                  <h3 className="blog-featured-title">
-                    <Link href={`/blog/posts/${featuredPost.slug}`} className="blog-post-link" aria-label={`Read featured blog post: ${featuredPost.title}`}>
-                      {featuredPost.title}
-                    </Link>
-                  </h3>
-                  <p className="blog-post-date">{featuredPost.date}</p>
-                  <p className="blog-post-excerpt">{featuredPost.excerpt}</p>
-                  <Link href={`/blog/posts/${featuredPost.slug}`} className="blog-list-read-more" aria-label={`Read more about ${featuredPost.title}`}>
-                    Read more
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </article>
-              </section>
-            ) : (
-              <div className="no-posts-message scroll-reveal">No featured post available.</div>
-            )}
-
-            {recentPosts.length > 0 ? (
-              <section
-                ref={recentRef}
-                className="recent-posts-section"
-                role="region"
-                aria-labelledby="recent-posts-title"
-              >
-                <h2 className="section-title scroll-reveal" id="recent-posts-title">Recent Posts</h2>
-                <div className="blog-category-grid">
-                  {recentPosts.map((post, index) => (
-                    <article key={post.slug} className="blog-list-item scroll-reveal">
-                      <div className="blog-post-badge">{post.category}</div>
-                      <h3 className="blog-post-title">
-                        <Link href={`/blog/posts/${post.slug}`} className="blog-post-link" aria-label={`Read blog post: ${post.title}`}>
-                          {post.title}
-                        </Link>
-                      </h3>
-                      <p className="blog-post-date">{post.date}</p>
-                      <p className="blog-post-excerpt">{post.excerpt}</p>
-                      <Link href={`/blog/posts/${post.slug}`} className="blog-list-read-more" aria-label={`Read more about ${post.title}`}>
-                        Read more
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                          <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    </article>
-                  ))}
-                </div>
-                <div className="view-all-posts scroll-reveal">
-                  <Link href="/blog" className="hero-button" aria-label="View all blog posts">
-                    View All Posts
-                  </Link>
-                </div>
-              </section>
-            ) : (
-              !featuredPost && <div className="no-posts-message scroll-reveal">No recent posts available.</div>
-            )}
-          </>
-        )}
-
-        <section
-          ref={projectsRef}
-          className="projects-section"
-          role="region"
-          aria-labelledby="projects-title"
-        >
-          <h2 className="section-title scroll-reveal" id="projects-title">My Projects</h2>
-          <div className="projects-content">
-            <article className="blog-list-item scroll-reveal">
-              <h3 className="blog-post-title">
-                <Link href="/blog/posts/my-first-project" className="blog-post-link" aria-label="Read about my chess openings project">
-                  Chess Openings Web App
-                </Link>
-              </h3>
-              <p className="blog-post-excerpt">
-                A web app for tracking chess openings, built with JavaScript (React, Next.js) and Python (FastAPI/Flask).
-              </p>
-              <p className="blog-post-badge">JavaScript, Python, Next.js, FastAPI</p>
-              <Link href="/blog/posts/my-first-project" className="blog-list-read-more" aria-label="Read more about the chess openings project">
-                Read More
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </article>
-            <div className="view-all-posts scroll-reveal">
-              <Link href="/projects" className="hero-button" aria-label="View all projects">
-                View All Projects
-              </Link>
-            </div>
           </div>
         </section>
       </Container>
+
+      {/* Learning Journey Scroll - RIGHT AFTER HERO */}
+      <section className="learning-scroll-section">
+        <div className="container">
+          <h2 className="learning-scroll-title">My Learning Journey So Far</h2>
+          <div className="tech-words-container">
+            <div className="tech-words-track">
+              <span className="tech-word">Python</span>
+              <span className="tech-word">React</span>
+              <span className="tech-word">JavaScript</span>
+              <span className="tech-word">CSS3</span>
+              <span className="tech-word">Next.js</span>
+              <span className="tech-word">Node.js</span>
+              <span className="tech-word">Git</span>
+              <span className="tech-word">Vercel</span>
+              <span className="tech-word">FastAPI</span>
+              <span className="tech-word">TypeScript</span>
+              {/* Duplicate for seamless loop */}
+              <span className="tech-word">Python</span>
+              <span className="tech-word">React</span>
+              <span className="tech-word">JavaScript</span>
+              <span className="tech-word">CSS3</span>
+              <span className="tech-word">Next.js</span>
+              <span className="tech-word">Node.js</span>
+              <span className="tech-word">Git</span>
+              <span className="tech-word">Vercel</span>
+              <span className="tech-word">FastAPI</span>
+              <span className="tech-word">TypeScript</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Container>
+        {/* Latest Blog Posts */}
+        <section className="posts-section" role="region" aria-labelledby="blog-posts-title">
+          <h2 className="section-title" id="blog-posts-title">Latest Insights</h2>
+          
+          {isLoading ? (
+            <div className="loading-message">Loading posts...</div>
+          ) : error ? (
+            <div className="error-message">Error: {error}</div>
+          ) : (
+            <>
+              <div className="posts-grid">
+                {/* Featured Post */}
+                {featuredPost && (
+                  <Link href={`/blog/posts/${featuredPost.slug}`} className="post-card">
+                    <div className="post-category">{featuredPost.category}</div>
+                    <h3 className="post-title">{featuredPost.title}</h3>
+                    <p className="post-excerpt">{featuredPost.excerpt}</p>
+                    <span className="post-link">Read More →</span>
+                  </Link>
+                )}
+
+                {/* Recent Posts */}
+                {recentPosts.map((post) => (
+                  <Link key={post.slug} href={`/blog/posts/${post.slug}`} className="post-card">
+                    <div className="post-category">{post.category}</div>
+                    <h3 className="post-title">{post.title}</h3>
+                    <p className="post-excerpt">{post.excerpt}</p>
+                    <span className="post-link">Read More →</span>
+                  </Link>
+                ))}
+              </div>
+              
+              <div className="view-all-posts">
+                <Link href="/blog" className="view-all-btn">
+                  View All Posts →
+                </Link>
+              </div>
+            </>
+          )}
+        </section>
+
+        {/* Projects Section */}
+        <section className="projects-section" role="region" aria-labelledby="projects-title">
+          <h2 className="section-title" id="projects-title">Projects</h2>
+          <div className="projects-grid">
+            <div className="project-card">
+              <h3 className="project-title">Chess Openings Web App</h3>
+              <p className="project-desc">
+                A comprehensive web application for tracking chess openings, featuring game logging, 
+                analysis, and interactive chessboard visualization.
+              </p>
+              <p className="project-tech">JavaScript • React • Next.js • Python • FastAPI</p>
+              <Link href="/blog/posts/my-first-project" className="post-link">
+                Learn More →
+              </Link>
+            </div>
+            
+            <div className="project-card">
+              <h3 className="project-title">Developer Portfolio Blog</h3>
+              <p className="project-desc">
+                This very blog you're reading! A modern, responsive developer portfolio built 
+                from scratch with custom animations and clean design.
+              </p>
+              <p className="project-tech">Next.js • React • CSS • JavaScript</p>
+              <Link href="/blog/posts/how-i-built-this-blog" className="post-link">
+                View Code →
+              </Link>
+            </div>
+            
+            <div className="project-card">
+              <h3 className="project-title">Python Automation Scripts</h3>
+              <p className="project-desc">
+                Collection of Python scripts for data analysis, web scraping, and automation tasks
+                that demonstrate practical programming skills.
+              </p>
+              <p className="project-tech">Python • Pandas • BeautifulSoup • Requests</p>
+              <Link href="/blog/posts/my-python-journey" className="post-link">
+                Explore →
+              </Link>
+            </div>
+          </div>
+          
+          <div className="view-all-posts">
+            <Link href="/projects" className="view-all-btn">
+              View All Projects →
+            </Link>
+          </div>
+        </section>
+      </Container>
+      
       <Footer />
     </main>
   );

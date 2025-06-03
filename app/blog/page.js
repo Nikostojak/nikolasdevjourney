@@ -1,3 +1,4 @@
+// app/blog/page.js
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -61,7 +62,10 @@ export default function BlogPage() {
   const categoryIcons = {
     'Blog Development': '🛠️',
     'Python': '🐍',
-    'Javascript': '🌐',
+    'JavaScript': '🌐',
+    'CSS': '🎨',
+    'Projects': '🚀',
+    'Learning': '📚',
     'Uncategorized': '📝',
     'All': '🌐'
   };
@@ -76,17 +80,7 @@ export default function BlogPage() {
   };
 
   return (
-    <main
-      className="page-transition"
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: '#1a202c',
-        color: '#e2e8f0',
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-      }}
-    >
+    <main className="page-layout">
       <Navbar />
       <Container>
         <section className="blog-section" role="region" aria-labelledby="blog-title">

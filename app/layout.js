@@ -14,34 +14,21 @@ const inter = Inter({
 export const metadata = createMetadata('home');
 
 export default function RootLayout({ children }) {
-  console.log('RootLayout rendering | Built with Next.js v15.3.1');
-  
   return (
-    <html lang="en">
-      <head>
-        {/* Google Analytics */}
+    <html lang="en" className={inter.variable}>
+      <body
+        style={{
+          backgroundColor: '#0a0f1c',
+          color: '#e1e5e9',
+          margin: 0,
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         <GoogleAnalytics GA_MEASUREMENT_ID="G-CMEMLMEFFR" />
+        {children}
         
-        {/* Dodatni SEO meta tagovi */}
-        <meta name="theme-color" content="#1a202c" />
-        <meta name="msapplication-TileColor" content="#1a202c" />
-        
-        {/* Favicons - trebate dodati ove u public folder */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        
-        {/* Preload key resources za performance */}
-        <link
-          rel="preload"
-          href="/fonts/inter-var.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin=""
-        />
-        
-        {/* JSON-LD Schema markup za Google */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -70,19 +57,6 @@ export default function RootLayout({ children }) {
             })
           }}
         />
-      </head>
-      <body
-        className={`${inter.variable}`}
-        style={{
-          backgroundColor: '#1a202c',
-          color: '#e2e8f0',
-          margin: 0,
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        {children}
       </body>
     </html>
   );

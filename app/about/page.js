@@ -1,25 +1,16 @@
 // app/about/page.js
-import { createMetadata } from '../lib/metadata';
-
-export const metadata = createMetadata('about');
-
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 
+export const metadata = {
+  title: 'About Nikolas | From Seminary to Software Development',
+  description: 'Learn about my unique journey from studying Thomistic philosophy in seminary to becoming a self-taught software developer.',
+};
+
 export default function AboutPage() {
   return (
-    <main
-      className="page-transition"
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-        backgroundColor: '#1a202c',
-        color: '#e2e8f0',
-      }}
-    >
+    <main className="page-layout">
       <Navbar />
       <Container>
         <section className="about-section" role="region" aria-labelledby="about-title">
@@ -59,7 +50,7 @@ export default function AboutPage() {
             </p>
             <h2 className="about-subtitle">Final Thought</h2>
             <p className="final-thought">
-              From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started.
+              &quot;From metaphysics to machine code — it&apos;s been a surprising journey, but I&apos;m just getting started.&quot;
             </p>
           </div>
         </section>

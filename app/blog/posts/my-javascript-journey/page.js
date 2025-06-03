@@ -12,7 +12,7 @@ import { BlogComments } from '../../../components/Comments';
 export default function BlogPost() {
   return (
     <main
-      className="page-transition"
+      className="page-layout"
       style={{
         minHeight: '100vh',
         display: 'flex',

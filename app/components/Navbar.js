@@ -30,6 +30,31 @@ export default function Navbar() {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    // Navbar hide/show on scroll - ONLY on homepage
+    const isHomepage = window.location.pathname === '/';
+    
+    if (isHomepage) {
+      let lastScrollTop = 0;
+      const navbar = document.querySelector('.homepage-nav');
+      
+      const handleScroll = () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+          if (navbar) navbar.style.transform = 'translateY(-100%)';
+        } else {
+          if (navbar) navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -40,55 +65,61 @@ export default function Navbar() {
 
   return (
     <nav className="homepage-nav" role="navigation" aria-label="Main navigation">
-      <button
-        className={`hamburger ${isMenuOpen ? 'open' : ''}`}
-        onClick={toggleMenu}
-        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-        aria-expanded={isMenuOpen}
-      >
-        <svg
-          className="hamburger-icon"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#e2e8f0"
-          strokeWidth="2"
-          aria-hidden="true"
+      <div className="nav-content">
+        <Link href="/" className="logo" aria-label="Go to homepage">
+          Nikolas<span className="logo-highlight">.Dev</span>
+        </Link>
+
+        <button
+          className={`hamburger ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
         >
-          {isMenuOpen ? (
-            <path d="M6 18L18 6M6 6l12 12" />
-          ) : (
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          )}
-        </svg>
-      </button>
-
-      <div className="navbar-desktop">
-        {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
-          <Link
-            key={page}
-            href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
-            className="navbar-link"
-            aria-label={`Go to ${page} page`}
+          <svg
+            className="hamburger-icon"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#e2e8f0"
+            strokeWidth="2"
+            aria-hidden="true"
           >
-            {page}
-          </Link>
-        ))}
-      </div>
+            {isMenuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
 
-      <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`} ref={menuRef}>
-        {['Home', 'Blog', 'Projects', 'About', 'Contact'].map((page) => (
-          <Link
-            key={page}
-            href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
-            className="navbar-link"
-            onClick={() => handleLinkClick(page)}
-            aria-label={`Go to ${page} page`}
-          >
-            {page}
-          </Link>
-        ))}
+        <div className="navbar-desktop">
+          {['Blog', 'Projects', 'About', 'Contact'].map((page) => (
+            <Link
+              key={page}
+              href={`/${page.toLowerCase()}`}
+              className="navbar-link"
+              aria-label={`Go to ${page} page`}
+            >
+              {page}
+            </Link>
+          ))}
+        </div>
+
+        <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`} ref={menuRef}>
+          {['Blog', 'Projects', 'About', 'Contact'].map((page) => (
+            <Link
+              key={page}
+              href={`/${page.toLowerCase()}`}
+              className="navbar-link"
+              onClick={() => handleLinkClick(page)}
+              aria-label={`Go to ${page} page`}
+            >
+              {page}
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );

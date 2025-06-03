@@ -1,3 +1,4 @@
+// app/projects/page.js
 'use client';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -6,34 +7,62 @@ import Link from 'next/link';
 
 export default function ProjectsPage() {
   return (
-    <main className="page-transition" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1a202c', color: '#e2e8f0' }}>
+    <main className="page-layout">
       <Navbar />
       <Container>
         <section className="projects-section" role="region" aria-labelledby="projects-title">
-          <h1 className="projects-title" id="projects-title">My Projects</h1>
+          <h1 className="projects-title" id="projects-title">Projects</h1>
           <div className="projects-content">
             <p className="projects-description">
-              I&apos;m excited to announce that I&apos;ve started working on my first project, a Chess Openings Web App, to showcase my skills in Python, JavaScript, and web development.
+              I&apos;m excited to showcase my growing collection of projects that demonstrate my skills in Python, JavaScript, and web development.
             </p>
-            <article className="blog-list-item">
-              <h2 className="blog-post-title">
-                <Link href="/blog/posts/my-first-project" className="blog-post-link" aria-label="Read about my chess openings project">
+            
+            <div className="projects-grid">
+              <article className="project-card">
+                <h2 className="project-title">
                   Chess Openings Web App
+                </h2>
+                <p className="project-desc">
+                  A comprehensive web application for tracking chess openings, built with JavaScript (React, Next.js) and Python (FastAPI/Flask). 
+                  Features include game logging, filtering, and interactive chessboard visualization.
+                </p>
+                <p className="project-tech">JavaScript, Python, Next.js, FastAPI</p>
+                <Link href="/blog/posts/my-first-project" className="post-link" aria-label="Read about the chess openings project">
+                  Read More →
                 </Link>
-              </h2>
-              <p className="blog-post-excerpt">
-                A web app for tracking chess openings, built with JavaScript (React, Next.js) and Python (FastAPI/Flask). Features include game logging, filtering, and interactive chessboard visualization.
-              </p>
-              <p className="blog-post-badge">JavaScript, Python, Next.js, FastAPI</p>
-              <Link href="/blog/posts/my-first-project" className="blog-list-read-more" aria-label="Read more about the chess openings project">
-                Read More
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </article>
+              </article>
+
+              <article className="project-card">
+                <h2 className="project-title">
+                  Developer Portfolio Blog
+                </h2>
+                <p className="project-desc">
+                  This very blog you're reading! A modern, responsive developer portfolio built from scratch 
+                  with custom animations, dark theme, and clean design principles.
+                </p>
+                <p className="project-tech">Next.js, React, CSS, JavaScript</p>
+                <Link href="/blog/posts/how-i-built-this-blog" className="post-link" aria-label="Read about how I built this blog">
+                  View Code →
+                </Link>
+              </article>
+
+              <article className="project-card">
+                <h2 className="project-title">
+                  Python Automation Scripts
+                </h2>
+                <p className="project-desc">
+                  Collection of Python scripts for data analysis, web scraping, and automation tasks 
+                  that demonstrate practical programming skills and real-world problem solving.
+                </p>
+                <p className="project-tech">Python, Pandas, BeautifulSoup, Requests</p>
+                <Link href="/blog/posts/my-python-journey" className="post-link" aria-label="Read about my Python projects">
+                  Explore →
+                </Link>
+              </article>
+            </div>
+            
             <div className="view-all-posts">
-              <Link href="/blog" className="hero-button" aria-label="View all blog posts">
+              <Link href="/blog" className="view-all-btn" aria-label="View all blog posts">
                 View All Blog Posts
               </Link>
             </div>
