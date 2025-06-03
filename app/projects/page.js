@@ -37,7 +37,7 @@ export default function ProjectsPage() {
                   Developer Portfolio Blog
                 </h2>
                 <p className="project-desc">
-                  This very blog you're reading! A modern, responsive developer portfolio built from scratch 
+                  This very blog you&apos;re reading! A modern, responsive developer portfolio built from scratch 
                   with custom animations, dark theme, and clean design principles.
                 </p>
                 <p className="project-tech">Next.js, React, CSS, JavaScript</p>

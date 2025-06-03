@@ -193,7 +193,7 @@ export default function HomePage() {
             <div className="project-card">
               <h3 className="project-title">Developer Portfolio Blog</h3>
               <p className="project-desc">
-                This very blog you're reading! A modern, responsive developer portfolio built 
+                This very blog you&apos;re reading! A modern, responsive developer portfolio built 
                 from scratch with custom animations and clean design.
               </p>
               <p className="project-tech">Next.js • React • CSS • JavaScript</p>
