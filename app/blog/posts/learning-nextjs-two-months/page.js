@@ -167,7 +167,7 @@ export const metadata = {
   
               <h2 className="blog-post-subtitle">Client vs Server Components: When to Use Which</h2>
               <p>
-                One of the biggest learning curves in Next.js is understanding when to use server components (default) versus client components (marked with <code>'use client'</code>). Here&apos;s what I learned through building my blog:
+                One of the biggest learning curves in Next.js is understanding when to use server components (default) versus client components (marked with <code>&apos;use client&apos;</code>). Here&apos;s what I learned through building my blog:
               </p>
   
               <h3 className="blog-post-subtitle">Server Components (Default)</h3>
@@ -276,7 +276,7 @@ export const metadata = {
               </CodeBlock>
   
               <p>
-                The rule I follow: if it needs state, event handlers, or browser APIs, use <code>'use client'</code>. If it&apos;s just rendering static content, keep it as a server component for better performance.
+                The rule I follow: if it needs state, event handlers, or browser APIs, use <code>&apos;use client&apos;</code>. If it&apos;s just rendering static content, keep it as a server component for better performance.
               </p>
   
               <h2 className="blog-post-subtitle">API Routes: Building a Backend in Next.js</h2>
@@ -331,7 +331,7 @@ export const metadata = {
               </CodeBlock>
   
               <p>
-                This API endpoint can be called from anywhere in my app with <code>fetch('/api/blog')</code>. Next.js handles all the server setup—I just focus on writing the logic.
+                This API endpoint can be called from anywhere in my app with <code>fetch(&apos;/api/blog&apos;)</code>. Next.js handles all the server setup—I just focus on writing the logic.
               </p>
   
               <h2 className="blog-post-subtitle">Data Fetching: From Static to Dynamic</h2>
@@ -485,7 +485,7 @@ export const metadata = {
   
               <h2 className="blog-post-subtitle">Deployment with Vercel</h2>
               <p>
-                Deploying Next.js apps is incredibly smooth with Vercel. Here's my deployment setup:
+                Deploying Next.js apps is incredibly smooth with Vercel. Here&apos;s my deployment setup:
               </p>
   
               <CodeBlock 
@@ -538,9 +538,9 @@ export const metadata = {
   
               <h3 className="blog-post-subtitle">1. Server vs Client Component Confusion</h3>
               <p>
-                <strong>Problem:</strong> I initially marked everything as <code>'use client'</code> because I didn&apos;t understand the difference.
+                <strong>Problem:</strong> I initially marked everything as <code>&apos;use client&apos;</code> because I didn&apos;t understand the difference.
                 <br />
-                <strong>Solution:</strong> I learned to start with server components by default and only add <code>'use client'</code> when I need interactivity.
+                <strong>Solution:</strong> I learned to start with server components by default and only add <code>&apos;use client&apos;</code> when I need interactivity.
               </p>
   
               <h3 className="blog-post-subtitle">2. Hydration Errors</h3>
