@@ -8,13 +8,13 @@ export default function sitemap() {
         url: baseUrl,
         lastModified: currentDate,
         changeFrequency: 'weekly',
-        priority: 1, // Najveći prioritet za homepage
+        priority: 1,
       },
       {
-        url: `${baseUrl}/blog`,
+        url:`${baseUrl}/blog`,
         lastModified: currentDate,
         changeFrequency: 'weekly',
-        priority: 0.8, // Visok prioritet za blog
+        priority: 0.8, // 
       },
       {
         url: `${baseUrl}/about`,
@@ -38,6 +38,7 @@ export default function sitemap() {
   
     // Blog postovi - svi moji postojeći postovi
     const blogPosts = [
+      'learning-nextjs-two-months',
       'my-javascript-journey',
       'my-first-project',
       'my-css-journey',

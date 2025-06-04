@@ -2,13 +2,22 @@ export async function GET() {
   try {
     const posts = [
       {
+        title: "Learning Next.js: Two Months of Building in Production",
+        slug: "learning-nextjs-two-months",
+        date: "2025-06-04",
+        excerpt: "My practical journey learning Next.js by building a real developer blog - from App Router basics to deployment, featuring real code examples and lessons learned.",
+        category: "Next.js",
+        tags: ["Next.js", "React", "Web Development", "App Router", "Learning Journey"],
+        isFeatured: true
+      },
+      {
         title: "From Zero to Functional: My First Month with JavaScript",
         slug: "my-javascript-journey",
         date: "2025-05-24",
         excerpt: "How I learned JavaScript fundamentals by building my blog instead of watching tutorials - and why this approach works better for real skill development.",
         category: "JavaScript",
         tags: ["JavaScript", "Learning Journey", "Blog Development", "React"],
-        isFeatured: true
+        isFeatured: false
       },
       {
         title: "My First Project: A Chess Openings Web App",
