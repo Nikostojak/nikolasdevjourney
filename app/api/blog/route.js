@@ -2,6 +2,51 @@ export async function GET() {
   try {
     const posts = [
       {
+        title: "My Networking Journey: From Zero to VPN Understanding",
+        slug: "my-networking-journey",
+        date: "2025-06-29",
+        excerpt: "How I went from knowing nothing about networks to understanding VPNs, WireGuard, and modern networking concepts in just two months.",
+        category: "Networking",
+        tags: ["Networking", "VPN", "WireGuard", "Learning Journey"],
+        isFeatured: false
+      },
+      {
+        title: "Learning Linux: Setting Up My First VPS",
+        slug: "learning-linux-vps", 
+        date: "2025-06-28",
+        excerpt: "My journey from Windows user to Linux server administrator, learning SSH, security, and cloud infrastructure along the way.",
+        category: "Linux",
+        tags: ["Linux", "VPS", "Hetzner", "Server Administration"],
+        isFeatured: false
+      },
+      {
+        title: "Exploring Modern VPN Solutions: Tailscale vs Traditional Approaches",
+        slug: "modern-vpn-solutions",
+        date: "2025-06-27", 
+        excerpt: "Comparing traditional VPN setups with modern mesh networking solutions like Tailscale, ZeroTier, and WireGuard.",
+        category: "VPN",
+        tags: ["VPN", "Tailscale", "WireGuard", "Networking"],
+        isFeatured: true  
+      },
+      {
+        title: "Docker and Self-Hosting: My First Steps",
+        slug: "docker-selfhosting",
+        date: "2025-06-26",
+        excerpt: "Learning Docker fundamentals and discovering the world of self-hosting, from basic containers to complex multi-service deployments.",
+        category: "Docker", 
+        tags: ["Docker", "Self-hosting", "DevOps", "Containers"],
+        isFeatured: false
+      },
+      {
+        title: "Understanding Network Security: What I Learned Building Network Tools",
+        slug: "network-security-journey",
+        date: "2025-06-25",
+        excerpt: "My journey into network security fundamentals, from firewall rules to encryption, Zero Trust architecture, and best practices.",
+        category: "Security",
+        tags: ["Security", "Networking", "Linux", "Best Practices"],
+        isFeatured: false
+      },
+      {
         title: "Learning Next.js: Two Months of Building in Production",
         slug: "learning-nextjs-two-months",
         date: "2025-06-04",

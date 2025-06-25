@@ -38,6 +38,11 @@ export default function sitemap() {
   
     // Blog postovi - svi moji postojeći postovi
     const blogPosts = [
+      'my-networking-journey',
+      'learning-linux-vps',
+      'modern-vpn-solutions',
+      'docker-selfhosting',
+      'network-security-journey',
       'learning-nextjs-two-months',
       'my-javascript-journey',
       'my-first-project',
