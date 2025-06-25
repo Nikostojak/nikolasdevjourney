@@ -4,7 +4,7 @@ export async function GET() {
       {
         title: "My Networking Journey: From Zero to VPN Understanding",
         slug: "my-networking-journey",
-        date: "2025-06-29",
+        date: "2025-06-25",
         excerpt: "How I went from knowing nothing about networks to understanding VPNs, WireGuard, and modern networking concepts in just two months.",
         category: "Networking",
         tags: ["Networking", "VPN", "WireGuard", "Learning Journey"],
@@ -13,7 +13,7 @@ export async function GET() {
       {
         title: "Learning Linux: Setting Up My First VPS",
         slug: "learning-linux-vps", 
-        date: "2025-06-28",
+        date: "2025-06-23",
         excerpt: "My journey from Windows user to Linux server administrator, learning SSH, security, and cloud infrastructure along the way.",
         category: "Linux",
         tags: ["Linux", "VPS", "Hetzner", "Server Administration"],
@@ -22,7 +22,7 @@ export async function GET() {
       {
         title: "Exploring Modern VPN Solutions: Tailscale vs Traditional Approaches",
         slug: "modern-vpn-solutions",
-        date: "2025-06-27", 
+        date: "2025-06-22", 
         excerpt: "Comparing traditional VPN setups with modern mesh networking solutions like Tailscale, ZeroTier, and WireGuard.",
         category: "VPN",
         tags: ["VPN", "Tailscale", "WireGuard", "Networking"],
@@ -31,7 +31,7 @@ export async function GET() {
       {
         title: "Docker and Self-Hosting: My First Steps",
         slug: "docker-selfhosting",
-        date: "2025-06-26",
+        date: "2025-06-18",
         excerpt: "Learning Docker fundamentals and discovering the world of self-hosting, from basic containers to complex multi-service deployments.",
         category: "Docker", 
         tags: ["Docker", "Self-hosting", "DevOps", "Containers"],
@@ -40,7 +40,7 @@ export async function GET() {
       {
         title: "Understanding Network Security: What I Learned Building Network Tools",
         slug: "network-security-journey",
-        date: "2025-06-25",
+        date: "2025-06-12",
         excerpt: "My journey into network security fundamentals, from firewall rules to encryption, Zero Trust architecture, and best practices.",
         category: "Security",
         tags: ["Security", "Networking", "Linux", "Best Practices"],
